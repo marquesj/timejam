@@ -23,7 +23,7 @@ public class CheckGround : MonoBehaviour
             if(landedEvent != null)
                 landedEvent.Invoke();
             grounded = true;
-            Debug.Log("landedEvent");
+//            Debug.Log("landedEvent");
         }
         else if(grounded && !checkResult /*&& ungroundQueue == null*/)
         {

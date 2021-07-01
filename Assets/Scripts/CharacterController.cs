@@ -93,8 +93,7 @@ public class CharacterController : MonoBehaviour
         checkWall = GetComponent<CheckWall>();
 
         playerControls = new Controls();
-        checkWall.playerControls = playerControls;
-        checkWall.checkGround = checkGround;
+
 
         playerControls.player.Jump.performed += _ => Jump();
 

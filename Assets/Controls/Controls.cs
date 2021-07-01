@@ -27,6 +27,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""interactions"": ""Press""
                 },
                 {
+                    ""name"": ""JumpRelease"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""8678b122-ca31-477e-a259-5ba0b2303626"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
+                },
+                {
                     ""name"": ""Shoot"",
                     ""type"": ""PassThrough"",
                     ""id"": ""f154911e-8013-439d-afca-b9571bae12e2"",
@@ -286,7 +294,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""negative"",
                     ""id"": ""fde20750-e22f-4961-8b97-e0e7b7ad75cd"",
-                    ""path"": ""<Keyboard>/a"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""player"",
@@ -297,13 +305,46 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": ""positive"",
                     ""id"": ""3a555c46-4ffa-474f-9e86-5c734986d2e9"",
-                    ""path"": ""<Keyboard>/d"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""player"",
                     ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7766c7d1-fe04-4ac9-8dc8-a5224e04ec17"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""player"",
+                    ""action"": ""JumpRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cf5a321a-0736-4dae-9d6c-344b2bc37015"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""player"",
+                    ""action"": ""JumpRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94bf265a-f323-4ab2-ba2c-0cebe3a98b94"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""player"",
+                    ""action"": ""JumpRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -330,6 +371,7 @@ public class @Controls : IInputActionCollection, IDisposable
         // player
         m_player = asset.FindActionMap("player", throwIfNotFound: true);
         m_player_Jump = m_player.FindAction("Jump", throwIfNotFound: true);
+        m_player_JumpRelease = m_player.FindAction("JumpRelease", throwIfNotFound: true);
         m_player_Shoot = m_player.FindAction("Shoot", throwIfNotFound: true);
         m_player_Horizontal = m_player.FindAction("Horizontal", throwIfNotFound: true);
         m_player_Vertical = m_player.FindAction("Vertical", throwIfNotFound: true);
@@ -383,6 +425,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_player;
     private IPlayerActions m_PlayerActionsCallbackInterface;
     private readonly InputAction m_player_Jump;
+    private readonly InputAction m_player_JumpRelease;
     private readonly InputAction m_player_Shoot;
     private readonly InputAction m_player_Horizontal;
     private readonly InputAction m_player_Vertical;
@@ -391,6 +434,7 @@ public class @Controls : IInputActionCollection, IDisposable
         private @Controls m_Wrapper;
         public PlayerActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Jump => m_Wrapper.m_player_Jump;
+        public InputAction @JumpRelease => m_Wrapper.m_player_JumpRelease;
         public InputAction @Shoot => m_Wrapper.m_player_Shoot;
         public InputAction @Horizontal => m_Wrapper.m_player_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_player_Vertical;
@@ -406,6 +450,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
                 @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @JumpRelease.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpRelease;
+                @JumpRelease.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpRelease;
+                @JumpRelease.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJumpRelease;
                 @Shoot.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
                 @Shoot.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnShoot;
@@ -422,6 +469,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @JumpRelease.started += instance.OnJumpRelease;
+                @JumpRelease.performed += instance.OnJumpRelease;
+                @JumpRelease.canceled += instance.OnJumpRelease;
                 @Shoot.started += instance.OnShoot;
                 @Shoot.performed += instance.OnShoot;
                 @Shoot.canceled += instance.OnShoot;
@@ -447,6 +497,7 @@ public class @Controls : IInputActionCollection, IDisposable
     public interface IPlayerActions
     {
         void OnJump(InputAction.CallbackContext context);
+        void OnJumpRelease(InputAction.CallbackContext context);
         void OnShoot(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);

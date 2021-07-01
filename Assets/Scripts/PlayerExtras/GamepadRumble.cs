@@ -10,10 +10,12 @@ public class GamepadRumble : MonoBehaviour
     public float rumbleTime = 0.5f;
 
     private void Start() {
+        if(Gamepad.current == null)return;
         Gamepad.current.ResetHaptics();
     }
     private IEnumerator PlayHaptics(float leftMotorIntensityPercent,float rightMotorIntensityPercent)
     {
+        if(Gamepad.current == null)yield break;
         Gamepad.current.SetMotorSpeeds(maxIntensity*leftMotorIntensityPercent,maxIntensity*rightMotorIntensityPercent);
         yield return new WaitForSeconds(rumbleTime);
         Gamepad.current.ResetHaptics();
@@ -21,6 +23,7 @@ public class GamepadRumble : MonoBehaviour
 
     public void StartHaptics()
     {
+        if(Gamepad.current == null)return;
         StartCoroutine(PlayHaptics(1,1));
     }
 
@@ -30,6 +33,7 @@ public class GamepadRumble : MonoBehaviour
             StartCoroutine(PlayHaptics(1,1));
     }
     private void OnDestroy() {
+        if(Gamepad.current == null)return;
         Gamepad.current.ResetHaptics();
     }
 }

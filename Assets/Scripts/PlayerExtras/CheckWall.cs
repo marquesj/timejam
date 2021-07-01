@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class CheckWall : MonoBehaviour
 {
     public float distanceToWall = 1;
+    public float heightOffset = 1;
 
     public LayerMask wallLayers;
     public LayerMask jumpableLayers;
@@ -13,29 +14,26 @@ public class CheckWall : MonoBehaviour
     public bool isJumpable = false;
     public bool isLeft = false;
     public float cooldownTime = 1;
-    public bool playerMode = true;
+    public float sideOffset = 0.1f;
     
-    [HideInInspector]public Controls playerControls;
-    [HideInInspector]public CheckGround checkGround;
+    private CharacterControl characterControl;
+    private CheckGround checkGround;
 
     private Rigidbody2D rb;
     private bool asleep = false;
 
-    private bool pressingLeft = false;
-    private bool pressingRight = false;
+    public bool pressingLeft = false;
+    public bool pressingRight = false;
     private Coroutine leftCooldownRoutine = null;
     private Coroutine rightCooldownRoutine = null;
     private bool inRoutineLeft = false;
     private bool inRoutineRight = false;
 
     [HideInInspector]public event UnityAction<bool> walledEvent;
-    private void Start() {
+    private void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        if(!playerMode)
-        {
-            pressingLeft = true;
-            pressingRight = true;
-        }
+        checkGround = GetComponent<CheckGround>();
+        characterControl = GetComponent<CharacterControl>();
             
     }
     void FixedUpdate()
@@ -46,21 +44,21 @@ public class CheckWall : MonoBehaviour
 
     }
     private void Update() {
-        if(playerMode)
+
             UpdateKeys();
     }
 
 
     private void UpdateKeys()
     {
-        bool leftPressedRightNow = playerControls.player.Horizontal.ReadValue<float>() < 0;
-        bool rightPressedRightNow = playerControls.player.Horizontal.ReadValue<float>() > 0;
+        bool leftPressedRightNow = characterControl.bufferedMovementInput < 0;
+        bool rightPressedRightNow = characterControl.bufferedMovementInput > 0;
         if(leftPressedRightNow)
         {   
             if(leftCooldownRoutine != null)
                 StopCoroutine(leftCooldownRoutine);
             pressingLeft = true;
-        }else if(pressingLeft&& ! inRoutineLeft)
+        }else if(pressingLeft && ! inRoutineLeft)
         {
             leftCooldownRoutine = StartCoroutine(LeftKeyCooldown(cooldownTime));
          
@@ -97,11 +95,11 @@ public class CheckWall : MonoBehaviour
     {
         (bool,bool) leftCheck = Check(Vector2.left);
         (bool,bool) rightCheck = Check(Vector2.right);
-        bool checkWallLeft  = leftCheck.Item1 && pressingLeft ;
-        bool checkWallRight = rightCheck.Item1 && pressingRight;
+        bool checkWallLeft  = leftCheck.Item1;// && (pressingLeft) ;
+        bool checkWallRight = rightCheck.Item1;// && (pressingRight);
         bool checkWall = (checkWallLeft||checkWallRight) ;
         if(checkGround != null)
-            checkWall = checkWall && !checkGround.grounded;
+            checkWall = checkWall && !checkGround.grounded && GoingDown();
         
         bool previousStateOfisJumpable = isJumpable;
         isJumpable = leftCheck.Item2 || rightCheck.Item2;
@@ -110,8 +108,8 @@ public class CheckWall : MonoBehaviour
             if(walledEvent != null)
             {
                 walledEvent.Invoke(checkWallLeft);
-                isLeft = checkWallLeft;
             }
+            isLeft = checkWallLeft;
             walled = true;
         }
         else if(walled && !checkWall)
@@ -135,18 +133,21 @@ public class CheckWall : MonoBehaviour
 
     private (bool,bool) Check(Vector2 dir)
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, dir, distanceToWall, wallLayers);
-        Debug.DrawRay(transform.position, dir * distanceToWall, Color.blue);
+        RaycastHit2D hit;
         bool jumpable = false;
-        // If it hits something...
-        if (hit.collider != null)
+        for(int i = 0; i < 3; i++)
         {
-            if(jumpableLayers == (jumpableLayers | (1 << hit.collider.gameObject.layer) ))
-                jumpable = true;
+            Vector3 pos = transform.position + Vector3.up* heightOffset + Vector3.down*sideOffset *(i-1) ;
+            hit = Physics2D.Raycast(pos, dir, distanceToWall, wallLayers);
+            Debug.DrawRay(pos, dir * distanceToWall, Color.blue);
+            if (hit.collider != null)
+            {   
+                if(jumpableLayers == (jumpableLayers | (1 << hit.collider.gameObject.layer) ))
+                    jumpable = true;
         
-            return (true,jumpable);
+                return (true,jumpable);
+            }
         }
-
         return (false,jumpable);
     }
 

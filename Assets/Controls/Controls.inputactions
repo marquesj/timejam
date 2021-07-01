@@ -14,6 +14,14 @@
                     "interactions": "Press"
                 },
                 {
+                    "name": "JumpRelease",
+                    "type": "PassThrough",
+                    "id": "8678b122-ca31-477e-a259-5ba0b2303626",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
+                },
+                {
                     "name": "Shoot",
                     "type": "PassThrough",
                     "id": "f154911e-8013-439d-afca-b9571bae12e2",
@@ -273,7 +281,7 @@
                 {
                     "name": "negative",
                     "id": "fde20750-e22f-4961-8b97-e0e7b7ad75cd",
-                    "path": "<Keyboard>/a",
+                    "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
@@ -284,13 +292,46 @@
                 {
                     "name": "positive",
                     "id": "3a555c46-4ffa-474f-9e86-5c734986d2e9",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/w",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
                     "action": "Vertical",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "7766c7d1-fe04-4ac9-8dc8-a5224e04ec17",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "player",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "cf5a321a-0736-4dae-9d6c-344b2bc37015",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "player",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "94bf265a-f323-4ab2-ba2c-0cebe3a98b94",
+                    "path": "<Gamepad>/buttonEast",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "player",
+                    "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
