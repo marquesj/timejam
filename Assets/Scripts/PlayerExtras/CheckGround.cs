@@ -6,6 +6,7 @@ public class CheckGround : MonoBehaviour
 {
     public float distanceToFloor = 1;
     public LayerMask groundLayers;
+    public LayerMask bouncyLayers;
     public bool grounded = false;
     public float sideOffset = 0.1f;
     public float gracePeriod = 0;
@@ -14,6 +15,7 @@ public class CheckGround : MonoBehaviour
  //   private bool queuedUnground = false;
 
     [HideInInspector]public event UnityAction landedEvent;
+    [HideInInspector]public event UnityAction<float> bounceEvent;
     void FixedUpdate()
     {
         bool checkResult = TripleCheck();
@@ -73,13 +75,30 @@ public class CheckGround : MonoBehaviour
     private bool Check(float xOffset)
     {
         Vector3 pos = transform.position + Vector3.right*xOffset + Vector3.up * verticalOffset;
-        RaycastHit2D hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, groundLayers);
+
+        RaycastHit2D hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, bouncyLayers);
+        if (hit.collider != null)
+        {
+            BouncyElement bounce = hit.collider.gameObject.GetComponent<BouncyElement>();
+            if(bounce == null)
+            {
+                Debug.Log(hit.collider.gameObject.name + " is missing bouncyElement component");
+                return true;
+            }
+            if(bounceEvent != null)
+                bounceEvent.Invoke(bounce.bounciness);
+        }
+
+        hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, groundLayers);
         Debug.DrawRay(pos, Vector3.down * distanceToFloor, Color.blue);
         // If it hits something...
         if (hit.collider != null)
         {
             return true;
         }
+
+
+
         return false;
     }
 }

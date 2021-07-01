@@ -58,7 +58,7 @@ MonoBehaviour:
     m_Bits: 128
   grounded: 0
   sideOffset: 0.1
-  gracePeriod: 0
+  gracePeriod: 1
   verticalOffset: 0.01
 --- !u!114 &-1790731193023277950
 MonoBehaviour:
