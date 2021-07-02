@@ -49,6 +49,16 @@ public class CharacterControl : MonoBehaviour
             
         if(checkWall.walled)
         {
+            if(!checkWall.GoingDown())
+            {
+                if(checkWall.isLeft && bufferedMovementInput < 0)
+                    bufferedMovementInput = 0;
+                if(!checkWall.isLeft && bufferedMovementInput > 0)
+                    bufferedMovementInput = 0;
+                return;
+            }
+
+
             if(rb.velocity.x > 0 && !checkWall.isLeft)
                 rb.velocity = Vector2.zero;
             if(rb.velocity.x < 0 && checkWall.isLeft)

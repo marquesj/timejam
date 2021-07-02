@@ -93,13 +93,13 @@ public class CheckWall : MonoBehaviour
         (bool,bool) rightCheck = Check(Vector2.right);
         bool checkWallLeft  = leftCheck.Item1;// && (pressingLeft) ;
         bool checkWallRight = rightCheck.Item1;// && (pressingRight);
-        bool checkWall = (checkWallLeft||checkWallRight) ;
+        bool checkWall = (checkWallLeft||checkWallRight);// && GoingDown();
         if(checkGround != null)
-            checkWall = checkWall && !checkGround.grounded && GoingDown();
+            checkWall = checkWall && !checkGround.grounded ;
         
         bool previousStateOfisJumpable = isJumpable;
         isJumpable = leftCheck.Item2 || rightCheck.Item2;
-        if(!walled && checkWall && GoingDown())
+        if(!walled && checkWall)
         {
             if(walledEvent != null)
             {
@@ -120,7 +120,7 @@ public class CheckWall : MonoBehaviour
   
     }
 
-    private bool GoingDown()
+    public bool GoingDown()
     {
         if(rb == null) return true;
         if(rb.velocity.y <= 0) return true;
