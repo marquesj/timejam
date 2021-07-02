@@ -12,3 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebc6ad6d5d3ab90478b32ad400425a43, type: 3}
   m_Name: InputLog
   m_EditorClassIdentifier: 
+  inputs: []

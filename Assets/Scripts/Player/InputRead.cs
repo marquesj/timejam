@@ -4,6 +4,9 @@ using UnityEngine;
 using UnityEngine.Events;
 public class InputRead : InputGenerator
 {
+    [HideInInspector]public event UnityAction SlowTimeEvent;
+    [HideInInspector]public event UnityAction RestoreTimeEvent;
+    
     private Controls playerControls;
 
     void Awake()
@@ -14,6 +17,8 @@ public class InputRead : InputGenerator
         playerControls.player.Shoot.performed += _ => Shoot();
         playerControls.player.Horizontal.performed += dir => BufferMovementHorizontal(dir.ReadValue<float>());
         playerControls.player.Vertical.performed += dir => BufferMovementVertical(dir.ReadValue<float>());
+        playerControls.player.SlowTime.performed += _ => SlowTime();
+        playerControls.player.RestoreTime.performed += _ => RestoreTime();
     }
 
     private void OnEnable() 
@@ -28,6 +33,7 @@ public class InputRead : InputGenerator
 
     protected override void Jump()
     {
+        
         inputLog.AddAction(Time.time, InputActionType.Jump);
         RaiseJumpEvent();
     }
@@ -50,6 +56,17 @@ public class InputRead : InputGenerator
     {
         inputLog.AddAction(Time.time, InputActionType.Aim, dir);
         RaiseChangeDirVerticalEvent(dir);
+    }
+
+    private void SlowTime()
+    {
+        if(SlowTimeEvent!=null)
+            SlowTimeEvent.Invoke();
+    }
+    private void RestoreTime()
+    {
+        if(RestoreTimeEvent!=null)
+            RestoreTimeEvent.Invoke();
     }
 
 }

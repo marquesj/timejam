@@ -57,6 +57,22 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SlowTime"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""a61bce8e-3dfe-4739-893c-55219cb6667a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""RestoreTime"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""be93e221-c499-4a55-917d-d84e2c85123c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press(behavior=1)""
                 }
             ],
             ""bindings"": [
@@ -85,7 +101,7 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""7c4ffa28-3ba3-47a2-926c-90a72ba64dad"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""player"",
@@ -338,11 +354,55 @@ public class @Controls : IInputActionCollection, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""94bf265a-f323-4ab2-ba2c-0cebe3a98b94"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/buttonWest"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""player"",
                     ""action"": ""JumpRelease"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a6b8a923-657f-4d7d-be10-c6f9e535fc93"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b37e12ef-deb8-4a98-bf91-54d1b011c8dc"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""adb54eae-8ba2-4e53-8b25-150fa9e6bef8"",
+                    ""path"": ""<Keyboard>/shift"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestoreTime"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""60241d61-927f-49f6-b976-72605798300f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestoreTime"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -375,6 +435,8 @@ public class @Controls : IInputActionCollection, IDisposable
         m_player_Shoot = m_player.FindAction("Shoot", throwIfNotFound: true);
         m_player_Horizontal = m_player.FindAction("Horizontal", throwIfNotFound: true);
         m_player_Vertical = m_player.FindAction("Vertical", throwIfNotFound: true);
+        m_player_SlowTime = m_player.FindAction("SlowTime", throwIfNotFound: true);
+        m_player_RestoreTime = m_player.FindAction("RestoreTime", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -429,6 +491,8 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_player_Shoot;
     private readonly InputAction m_player_Horizontal;
     private readonly InputAction m_player_Vertical;
+    private readonly InputAction m_player_SlowTime;
+    private readonly InputAction m_player_RestoreTime;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -438,6 +502,8 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @Shoot => m_Wrapper.m_player_Shoot;
         public InputAction @Horizontal => m_Wrapper.m_player_Horizontal;
         public InputAction @Vertical => m_Wrapper.m_player_Vertical;
+        public InputAction @SlowTime => m_Wrapper.m_player_SlowTime;
+        public InputAction @RestoreTime => m_Wrapper.m_player_RestoreTime;
         public InputActionMap Get() { return m_Wrapper.m_player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -462,6 +528,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Vertical.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertical;
                 @Vertical.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertical;
                 @Vertical.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnVertical;
+                @SlowTime.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowTime;
+                @SlowTime.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowTime;
+                @SlowTime.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnSlowTime;
+                @RestoreTime.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestoreTime;
+                @RestoreTime.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestoreTime;
+                @RestoreTime.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestoreTime;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -481,6 +553,12 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Vertical.started += instance.OnVertical;
                 @Vertical.performed += instance.OnVertical;
                 @Vertical.canceled += instance.OnVertical;
+                @SlowTime.started += instance.OnSlowTime;
+                @SlowTime.performed += instance.OnSlowTime;
+                @SlowTime.canceled += instance.OnSlowTime;
+                @RestoreTime.started += instance.OnRestoreTime;
+                @RestoreTime.performed += instance.OnRestoreTime;
+                @RestoreTime.canceled += instance.OnRestoreTime;
             }
         }
     }
@@ -501,5 +579,7 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnShoot(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
         void OnVertical(InputAction.CallbackContext context);
+        void OnSlowTime(InputAction.CallbackContext context);
+        void OnRestoreTime(InputAction.CallbackContext context);
     }
 }

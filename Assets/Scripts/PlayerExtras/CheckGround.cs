@@ -11,12 +11,13 @@ public class CheckGround : MonoBehaviour
     public float sideOffset = 0.1f;
     public float gracePeriod = 0;
     public float verticalOffset  =0;
+    public float circleRadius = 0.05f;
     private Coroutine ungroundQueue = null;
  //   private bool queuedUnground = false;
 
     [HideInInspector]public event UnityAction landedEvent;
     [HideInInspector]public event UnityAction<float> bounceEvent;
-    void FixedUpdate()
+    void Update()
     {
         bool checkResult = TripleCheck();
         if(!grounded && checkResult /*&& !queuedUnground*/ )
@@ -60,8 +61,9 @@ public class CheckGround : MonoBehaviour
     }
     private bool TripleCheck()
     {
-        Check(-sideOffset);
-        Check(sideOffset);
+        /*Check(-sideOffset);
+        Check(sideOffset);*/
+        CheckBounce();
         if(Check(0))
             return true;
         else if(Check(-sideOffset))
@@ -76,29 +78,30 @@ public class CheckGround : MonoBehaviour
     {
         Vector3 pos = transform.position + Vector3.right*xOffset + Vector3.up * verticalOffset;
 
-        RaycastHit2D hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, bouncyLayers);
-        if (hit.collider != null)
-        {
-            BouncyElement bounce = hit.collider.gameObject.GetComponent<BouncyElement>();
-            if(bounce == null)
-            {
-                Debug.Log(hit.collider.gameObject.name + " is missing bouncyElement component");
-                return true;
-            }
-            if(bounceEvent != null)
-                bounceEvent.Invoke(bounce.bounciness);
-        }
-
-        hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, groundLayers);
+        RaycastHit2D hit = Physics2D.Raycast(pos, -Vector2.up, distanceToFloor, groundLayers);
         Debug.DrawRay(pos, Vector3.down * distanceToFloor, Color.blue);
         // If it hits something...
         if (hit.collider != null)
         {
             return true;
         }
-
-
-
         return false;
+    }
+    private void CheckBounce()
+    {
+        Vector3 pos = transform.position + Vector3.up * verticalOffset;
+        Collider2D hit = Physics2D.OverlapCapsule(new Vector2(pos.x,pos.y),new Vector2(0.28f,0.06f), CapsuleDirection2D.Horizontal,0,bouncyLayers);
+
+        if (hit != null)
+        {
+            BouncyElement bounce = hit.gameObject.GetComponent<BouncyElement>();
+            if(bounce == null)
+            {
+                Debug.Log(hit.gameObject.name + " is missing bouncyElement component");
+                return;
+            }
+            if(bounceEvent != null)
+                bounceEvent.Invoke(bounce.bounciness);
+        }
     }
 }

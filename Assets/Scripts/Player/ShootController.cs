@@ -32,7 +32,7 @@ public class ShootController : MonoBehaviour
     }    
     private void Shoot()
     {
-        if(canShoot)
+        if(canShoot && Time.timeScale > 0)
         {
             weapon.Shoot();
             canShoot = false;
