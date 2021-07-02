@@ -40,6 +40,8 @@ public class SlowDownTime : MonoBehaviour
         float percent = 0;
         while(percent < 1)
         {
+            if(Time.timeScale == 0)
+                yield break;
             percent = (Time.time - startTime)/transitionDuration;
 //            Debug.Log(transitionDuration);
             Time.timeScale = Mathf.Lerp(initialScale, goalScale, percent );
