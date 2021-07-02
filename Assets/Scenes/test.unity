@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 213938148}
   - component: {fileID: 213938147}
   - component: {fileID: 213938146}
+  - component: {fileID: 213938149}
   m_Layer: 7
   m_Name: Square (1)
   m_TagString: Untagged
@@ -232,6 +233,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &213938149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 213938145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27c5145fa91e748aac5a1719706d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounciness: 1
 --- !u!1 &442678111
 GameObject:
   m_ObjectHideFlags: 0
@@ -243,6 +257,7 @@ GameObject:
   - component: {fileID: 442678113}
   - component: {fileID: 442678112}
   - component: {fileID: 442678114}
+  - component: {fileID: 442678115}
   m_Layer: 7
   m_Name: Square
   m_TagString: Untagged
@@ -341,6 +356,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &442678115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 442678111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27c5145fa91e748aac5a1719706d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounciness: 1
 --- !u!1001 &558405129
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -696,7 +724,7 @@ GameObject:
   - component: {fileID: 1505084720}
   - component: {fileID: 1505084719}
   - component: {fileID: 1505084718}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Square (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -788,8 +816,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505084717}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.87, y: 1.38, z: 0}
-  m_LocalScale: {x: 0.8990479, y: 5.9989, z: 1}
+  m_LocalPosition: {x: 5.87, y: -0.2, z: 0}
+  m_LocalScale: {x: 0.8990479, y: 2.7001648, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8

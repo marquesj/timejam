@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public abstract class InputGenerator : MonoBehaviour
 {
     public InputLog inputLog;
+    protected float timeSinceAwake;
     [HideInInspector]public event UnityAction JumpEvent;
     [HideInInspector]public event UnityAction<float> ChangeDirHorizontalEvent;
     [HideInInspector]public event UnityAction ShootEvent;

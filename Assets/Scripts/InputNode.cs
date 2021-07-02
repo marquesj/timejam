@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-[SerializeField]
+using System;
+ [Serializable]
 public class InputNode
 {
     public InputActionType type;

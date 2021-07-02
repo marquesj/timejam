@@ -15,6 +15,18 @@ MonoBehaviour:
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
   jumpHeld: 0
   timeOffset: 1
+--- !u!114 &7212832816922009746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4656924760181929447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a709d540f35f16c44bf767a33e18f89a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5341593564048450976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -102,8 +114,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: -1
       objectReference: {fileID: 0}
+    - target: {fileID: 7028659043862504900, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: projectilePrefab
+      value: 
+      objectReference: {fileID: 8271358129027913968, guid: 37f787534eed58642a6601ac74938104, type: 3}
     m_RemovedComponents:
     - {fileID: 4414015657050889916, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+    - {fileID: 5266592118577542966, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+    - {fileID: 975310632238008626, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
 --- !u!1 &4656924760181929447 stripped
 GameObject:

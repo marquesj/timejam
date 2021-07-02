@@ -35,6 +35,8 @@ public class CharacterControl : MonoBehaviour
 
         inputGenerator.JumpEvent += Jump;
         inputGenerator.ChangeDirHorizontalEvent += BufferMovement;
+
+        checkGround.bounceEvent += Bounce;
     }    
 
     private void FixedUpdate() {
@@ -89,7 +91,7 @@ public class CharacterControl : MonoBehaviour
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
 
            }
-            Debug.Log(dir);
+//            Debug.Log(dir);
             rb.AddForce(dir ,ForceMode2D.Impulse);
            // bufferedImpulse = bufferedMovementInput*speed*horizontalSpeedModifier;
            // hasTurnedInAir = false;
@@ -109,6 +111,11 @@ public class CharacterControl : MonoBehaviour
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJump - 1) * Time.deltaTime ;
         }
         rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * graviyMod);
+    }
+
+    private void Bounce(float bounciness)
+    {
+        rb.AddForce(Vector2.up * jumpForce * bounciness ,ForceMode2D.Impulse);
     }
 
     private void BlockMovement()

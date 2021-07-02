@@ -36,16 +36,12 @@ public class CheckWall : MonoBehaviour
         characterControl = GetComponent<CharacterControl>();
             
     }
-    void FixedUpdate()
-    {
-        
-        if(!asleep)
-            UpdateState();
 
-    }
     private void Update() {
 
             UpdateKeys();
+            if(!asleep)
+                UpdateState();
     }
 
 

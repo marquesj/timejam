@@ -93,7 +93,12 @@ GameObject:
   - component: {fileID: 8979479040470641901}
   - component: {fileID: 1354139672055716334}
   - component: {fileID: 6993186640736478458}
-  m_Layer: 0
+  - component: {fileID: 8665360930194335359}
+  - component: {fileID: 5025464225469801416}
+  - component: {fileID: 7078463187992503381}
+  - component: {fileID: 612496276116124116}
+  - component: {fileID: 2436088877763692337}
+  m_Layer: 10
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,7 +135,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -148,4 +153,74 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8be9d9536fe593f40b4e5ede1860f63b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7
+  speed: 5
+--- !u!58 &8665360930194335359
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.09
+--- !u!114 &5025464225469801416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27c5145fa91e748aac5a1719706d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounciness: 0.5
+--- !u!114 &7078463187992503381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bcfa6cc092a7434cbad4d061ef44a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  totalHP: 1
+--- !u!114 &612496276116124116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86ed110571cee24498e079e4c5870ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layermask:
+    serializedVersion: 2
+    m_Bits: 1216
+  damage: 1
+--- !u!114 &2436088877763692337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a709d540f35f16c44bf767a33e18f89a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -44,6 +44,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "SlowTime",
+                    "type": "PassThrough",
+                    "id": "a61bce8e-3dfe-4739-893c-55219cb6667a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press"
+                },
+                {
+                    "name": "RestoreTime",
+                    "type": "PassThrough",
+                    "id": "be93e221-c499-4a55-917d-d84e2c85123c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "Press(behavior=1)"
                 }
             ],
             "bindings": [
@@ -72,7 +88,7 @@
                 {
                     "name": "",
                     "id": "7c4ffa28-3ba3-47a2-926c-90a72ba64dad",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
@@ -325,11 +341,55 @@
                 {
                     "name": "",
                     "id": "94bf265a-f323-4ab2-ba2c-0cebe3a98b94",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
                     "action": "JumpRelease",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a6b8a923-657f-4d7d-be10-c6f9e535fc93",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b37e12ef-deb8-4a98-bf91-54d1b011c8dc",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "adb54eae-8ba2-4e53-8b25-150fa9e6bef8",
+                    "path": "<Keyboard>/shift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestoreTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60241d61-927f-49f6-b976-72605798300f",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestoreTime",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -8,6 +8,7 @@ public class InputSimulator : InputGenerator
     public float timeOffset = 1;
     private int actionIndex = 0;
     
+    
     void FixedUpdate()
     {
         if(inputLog.inputs.Count <= actionIndex)return;
@@ -15,15 +16,25 @@ public class InputSimulator : InputGenerator
         float delay  = (Time.time - timeOffset) - inputLog.inputs[actionIndex].time;
         if(Mathf.Abs(delay) <= timePrecision)
         {
-            StartCoroutine(QueueInputSim(delay , inputLog.inputs[actionIndex]));
+            StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex]));
             actionIndex++;
         }
     }
 
-    private IEnumerator QueueInputSim(float delay, InputNode node)
+    private IEnumerator QueueInputSim(float desiredTime, InputNode node)
     {
-        yield return new WaitForSeconds(delay);
-        delay = Time.time -timeOffset - node.time;
+        float delay;
+        float startingOffset;
+        startingOffset = timeOffset;
+       /* do
+        {*/
+            delay = (Time.time - timeOffset) - desiredTime;
+            startingOffset = timeOffset;
+            yield return new WaitForSeconds(delay);
+       // }while(startingOffset!=timeOffset);
+
+        
+        delay = Time.time - timeOffset - node.time;
 
        // print(Time.time -timeOffset - node.time);
         SimulateAction(node);
