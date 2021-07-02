@@ -4,7 +4,8 @@ using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CheckGround))]
-//[RequireComponent(typeof(CheckWall))]
+[RequireComponent(typeof(ShootController))]
+[RequireComponent(typeof(CheckWall))]
 
 public class CharacterControl : MonoBehaviour
 {
@@ -20,54 +21,52 @@ public class CharacterControl : MonoBehaviour
     public float wallJumpHorizontalForce = 1;
     public float wallJumpForce = 1;
     public float wallJumpBlockMovementTime = 0.2f;
+    public float wallSlideSpeed = .8f;
+    [Header("Slide Parameters")]
+    public float slideForce = 1;
 
     private Rigidbody2D rb;
     private CheckGround checkGround;
     private CheckWall checkWall;
     private SpriteRenderer spriteRenderer;
+    private ShootController shootController;
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
+
+    private bool sliding = false;
+    private bool bouncing = false;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
         checkWall = GetComponent<CheckWall>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        shootController = GetComponentInChildren<ShootController>();
 
         inputGenerator.JumpEvent += Jump;
         inputGenerator.ChangeDirHorizontalEvent += BufferMovement;
+        inputGenerator.ChangeDirVerticalEvent += CheckSlide;
 
         checkGround.bounceEvent += Bounce;
+        checkGround.landedEvent += StopBounce;
+        checkWall.walledEvent += StopBounce;
     }    
 
     private void FixedUpdate() {
        
         if(!movementBlock)
         {
-            rb.velocity = new Vector2(bufferedMovementInput * speed, rb.velocity.y);
+            if(!(checkGround.grounded && sliding))
+            {
 
+                rb.velocity = new Vector2(bufferedMovementInput * speed, rb.velocity.y);
+            }
         }
             
         if(checkWall.walled)
         {
-            if(!checkWall.GoingDown())
-            {
-                if(checkWall.isLeft && bufferedMovementInput < 0)
-                    bufferedMovementInput = 0;
-                if(!checkWall.isLeft && bufferedMovementInput > 0)
-                    bufferedMovementInput = 0;
-                return;
-            }
-
-
-            if(rb.velocity.x > 0 && !checkWall.isLeft)
-                rb.velocity = Vector2.zero;
-            if(rb.velocity.x < 0 && checkWall.isLeft)
-                rb.velocity = Vector2.zero;
-            else
-                rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.velocity += Vector2.up * Physics2D.gravity.y * (0.5f - 1) * Time.deltaTime ;
+            WallSlide();
         }
-        if(!checkGround.grounded)
+        else if(!checkGround.grounded)
         {
   
             FastFall();
@@ -79,7 +78,13 @@ public class CharacterControl : MonoBehaviour
     {
 
         bufferedMovementInput = dir;
+        if(dir == 1)
+            SetRotation(0);
+        if(dir == -1)
+            SetRotation(180);
 
+        if(transform.localScale.y == 0.5f)
+            transform.localScale = new Vector3(1,1,1);
     }
 
     private void Jump()
@@ -99,7 +104,7 @@ public class CharacterControl : MonoBehaviour
 
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
-
+                rb.velocity = Vector2.zero;
            }
 //            Debug.Log(dir);
             rb.AddForce(dir ,ForceMode2D.Impulse);
@@ -116,16 +121,51 @@ public class CharacterControl : MonoBehaviour
         if(rb.velocity.y < 0 )
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMult - 1) * Time.deltaTime ;
-        }else if(rb.velocity.y > 0 && !inputGenerator.jumpHeld)
+        }else if(rb.velocity.y > 0 && !inputGenerator.jumpHeld &&  !bouncing)
         {
             rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJump - 1) * Time.deltaTime ;
         }
         rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * graviyMod);
     }
 
-    private void Bounce(float bounciness)
+    private void WallSlide()
     {
+        if(checkWall.isLeft)
+            SetRotation(0);
+        else
+            SetRotation(180);
+        if(!checkWall.GoingDown())
+        {
+            if(checkWall.isLeft && bufferedMovementInput < 0)
+                rb.velocity = new Vector2(0, rb.velocity.y);
+            if(!checkWall.isLeft && bufferedMovementInput > 0)
+            {
+
+                 rb.velocity = new Vector2(0, rb.velocity.y);
+            }
+            return;
+        }
+
+        /*if(rb.velocity.x > 0 && !checkWall.isLeft)
+            rb.velocity = Vector2.zero;
+        if(rb.velocity.x < 0 && checkWall.isLeft)
+            rb.velocity = Vector2.zero;
+        else
+            rb.velocity = new Vector2(rb.velocity.x, 0);*/
+
+       // rb.velocity += Vector2.up * Physics2D.gravity.y * (slide - 1) * Time.deltaTime ;
+        rb.velocity = Vector2.right*rb.velocity.x  + Vector2.up * Physics2D.gravity.y * wallSlideSpeed;
+
+
+    }
+
+    public void Bounce(float bounciness)
+    {
+        Debug.Log("bouncuing" + bounciness);
+        rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce * bounciness ,ForceMode2D.Impulse);
+        bouncing = true;
+        shootController.BlockShoot();
     }
 
     private void BlockMovement()
@@ -135,6 +175,49 @@ public class CharacterControl : MonoBehaviour
     private void UnblockMovement()
     {
         movementBlock = false;
+        if(bufferedMovementInput > 0)
+            SetRotation(0);
+        if(bufferedMovementInput < 0)
+            SetRotation(180);
     }
 
+    private void SetRotation(float rot)
+    {
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x,rot,transform.eulerAngles.z);
+    }
+
+    private void CheckSlide(float dir)
+    {
+        if(Time.timeScale == 0)
+            return;
+        if(dir == -1 && checkGround.grounded && bufferedMovementInput !=0)
+        {
+            if(sliding == false)
+            {
+                rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
+                transform.localScale = new Vector3(1,.5f,1);
+            }
+            sliding = true;
+        }
+        else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)
+        {
+            transform.localScale = new Vector3(1,.5f,1);
+        }
+        else
+        {
+
+            transform.localScale = new Vector3(1,1,1);
+            sliding = false;
+        }
+    }
+
+    private void StopBounce()
+    {
+//        Debug.Log(" not bouncuing" );
+        bouncing = false;
+    }
+    private void StopBounce(bool aux)
+    {
+        StopBounce();
+    }
 }

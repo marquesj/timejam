@@ -92,7 +92,7 @@ public class CheckGround : MonoBehaviour
         Vector3 pos = transform.position + Vector3.up * verticalOffset;
         Collider2D hit = Physics2D.OverlapCapsule(new Vector2(pos.x,pos.y),new Vector2(0.28f,0.06f), CapsuleDirection2D.Horizontal,0,bouncyLayers);
 
-        if (hit != null)
+        if (hit != null && hit.transform.position.y < pos.y)
         {
             BouncyElement bounce = hit.gameObject.GetComponent<BouncyElement>();
             if(bounce == null)
@@ -100,7 +100,8 @@ public class CheckGround : MonoBehaviour
                 Debug.Log(hit.gameObject.name + " is missing bouncyElement component");
                 return;
             }
-            if(bounceEvent != null)
+
+            if(bounceEvent != null && bounce.bounciness!=0)
                 bounceEvent.Invoke(bounce.bounciness);
         }
     }

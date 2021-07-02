@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+ using UnityEngine.SceneManagement;
 public class InputRead : InputGenerator
 {
     [HideInInspector]public event UnityAction SlowTimeEvent;
@@ -19,6 +20,7 @@ public class InputRead : InputGenerator
         playerControls.player.Vertical.performed += dir => BufferMovementVertical(dir.ReadValue<float>());
         playerControls.player.SlowTime.performed += _ => SlowTime();
         playerControls.player.RestoreTime.performed += _ => RestoreTime();
+        playerControls.player.Restart.performed += _ => RestartScene();
     }
 
     private void OnEnable() 
@@ -69,4 +71,9 @@ public class InputRead : InputGenerator
             RestoreTimeEvent.Invoke();
     }
 
+
+    private void RestartScene()
+    {
+        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+    }
 }

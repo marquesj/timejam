@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 78400220272334943}
   - component: {fileID: 3488327841475112557}
   - component: {fileID: 975310632238008626}
+  - component: {fileID: 4555844503807483740}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -181,6 +182,8 @@ MonoBehaviour:
   wallJumpHorizontalForce: 4
   wallJumpForce: 6
   wallJumpBlockMovementTime: 0.2
+  wallSlideSpeed: 0.2
+  slideForce: 3
   movementBlock: 0
   bufferedMovementInput: 0
 --- !u!114 &4074135058823973931
@@ -197,6 +200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inputGenerator: {fileID: 4414015657050889916}
   shootCooldown: 0.2
+  shootDownImpulse: 1
 --- !u!114 &4414015657050889916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +286,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
+--- !u!70 &4555844503807483740
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757061511394070599}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.15}
+  m_Size: {x: 0.29, y: 0.3}
+  m_Direction: 0
 --- !u!1 &3888379452183580263
 GameObject:
   m_ObjectHideFlags: 0
