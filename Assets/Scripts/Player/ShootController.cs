@@ -7,10 +7,21 @@ public class ShootController : MonoBehaviour
     public InputGenerator inputGenerator;
     
     public float shootCooldown = 0.2f;
+    public float shootDownImpulse = 1;
     private Shooter weapon;
     private GameObject arm;
     private bool canShoot = true;
+    private CharacterControl characterControl;
+    private CheckGround checkGround;
+    private CheckWall checkWall;
+
     private void Awake() {
+        characterControl = GetComponent<CharacterControl>();
+        checkGround = GetComponent<CheckGround>();
+        checkWall = GetComponent<CheckWall>();
+
+        if(characterControl == null)
+            Debug.Log("No characterControl found by shootController");
         weapon = GetComponentInChildren<Shooter>();
         if(weapon == null)
         {
@@ -29,14 +40,35 @@ public class ShootController : MonoBehaviour
             
         inputGenerator.ShootEvent += Shoot;
         inputGenerator.ChangeDirVerticalEvent += BufferMovement;
+
+        if(checkGround != null)
+            checkGround.landedEvent += RestoreShoot;
+
+        if(checkWall != null)
+            checkWall.walledEvent += RestoreShoot;
     }    
     private void Shoot()
     {
+        bool automaticRestore = true;
         if(canShoot && Time.timeScale > 0)
         {
             weapon.Shoot();
             canShoot = false;
-            Invoke("RestoreShoot", shootCooldown);
+
+            if(characterControl != null)
+            {
+
+                if(arm.transform.eulerAngles.z == 270)
+                {
+                    characterControl.Bounce(shootDownImpulse);
+                    automaticRestore = false;
+                }
+
+            }
+
+            if(automaticRestore)
+                Invoke("RestoreShoot", shootCooldown);
+
         }
 
     }
@@ -44,15 +76,15 @@ public class ShootController : MonoBehaviour
     {
         if(dir > 0)
         {
-            arm.transform.rotation = Quaternion.Euler(0,0,90);
+            arm.transform.rotation = Quaternion.Euler(0,arm.transform.eulerAngles.y,90);
         }
         else if(dir < 0)
         {
-            arm.transform.rotation = Quaternion.Euler(0,0,-90);
+            arm.transform.rotation = Quaternion.Euler(0,arm.transform.eulerAngles.y,-90);
         }
         else
         {
-            arm.transform.rotation = Quaternion.Euler(0,0,0);
+            arm.transform.rotation = Quaternion.Euler(0,arm.transform.eulerAngles.y,0);
         }
     }
 
@@ -60,4 +92,14 @@ public class ShootController : MonoBehaviour
     {
         canShoot = true;
     }
+    private void RestoreShoot(bool aux)
+    {
+        RestoreShoot();
+    }
+    public void BlockShoot()
+    {
+        canShoot = false;
+    }
+
+
 }

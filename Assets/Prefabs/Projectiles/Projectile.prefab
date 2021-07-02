@@ -183,6 +183,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bounciness: 0.5
+  bouncinessDelay: 0.1
 --- !u!114 &7078463187992503381
 MonoBehaviour:
   m_ObjectHideFlags: 0
