@@ -104,7 +104,7 @@ public class CharacterControl : MonoBehaviour
 
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
-
+                rb.velocity = Vector2.zero;
            }
 //            Debug.Log(dir);
             rb.AddForce(dir ,ForceMode2D.Impulse);
@@ -213,7 +213,7 @@ public class CharacterControl : MonoBehaviour
 
     private void StopBounce()
     {
-        Debug.Log(" not bouncuing" );
+//        Debug.Log(" not bouncuing" );
         bouncing = false;
     }
     private void StopBounce(bool aux)
