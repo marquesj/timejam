@@ -9,6 +9,7 @@ public class SetActiveOnDestroy : MonoBehaviour
     private void OnDestroy() {
         foreach(GameObject obj in objects)
         {
+            if(obj == null)return;
             obj.SetActive(true);
         }
     }

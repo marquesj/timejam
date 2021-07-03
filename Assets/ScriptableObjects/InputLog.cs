@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [CreateAssetMenu(fileName = "InputLog", menuName = "ScriptableObjects/InputLog")]
 public class InputLog : ScriptableObject
 {
@@ -10,16 +11,35 @@ public class InputLog : ScriptableObject
     }
     private void OnEnable() {
         inputs = new List<InputNode>();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+    private void OnDisable() {
+        inputs = new List<InputNode>();
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        inputs = new List<InputNode>();
     }
     public void AddAction(float time, InputActionType action, float val)
     {
         if(Time.timeScale == 0)return;
         inputs.Add(new InputNode(time, action, val));
     }
+    public void AddAction(float time, InputActionType action, float val, Vector3 pos)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action, val,pos));
+    }
     public void AddAction(float time, InputActionType action)
     {
         if(Time.timeScale == 0)return;
         inputs.Add(new InputNode(time, action));
+    }
+    public void AddAction(float time, InputActionType action,Vector3 pos)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action,pos));
     }
 
     public void RevertTo(float time)

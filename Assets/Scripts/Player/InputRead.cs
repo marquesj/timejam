@@ -21,6 +21,7 @@ public class InputRead : InputGenerator
         playerControls.player.SlowTime.performed += _ => SlowTime();
         playerControls.player.RestoreTime.performed += _ => RestoreTime();
         playerControls.player.Restart.performed += _ => RestartScene();
+        timeOffset = 0;
     }
 
     private void OnEnable() 
@@ -36,27 +37,27 @@ public class InputRead : InputGenerator
     protected override void Jump()
     {
         
-        inputLog.AddAction(Time.time, InputActionType.Jump);
+        inputLog.AddAction(Time.time, InputActionType.Jump, transform.position);
         RaiseJumpEvent();
     }
     protected override void Shoot()
     {
-        inputLog.AddAction(Time.time, InputActionType.Shoot);
+        inputLog.AddAction(Time.time, InputActionType.Shoot, transform.position);
         RaiseShootEvent();
     }
     protected override void JumpRelease()
     {
-        inputLog.AddAction(Time.time, InputActionType.JumpRelease);
+        inputLog.AddAction(Time.time, InputActionType.JumpRelease, transform.position);
         RaiseJumpReleaseEvent();
     }
     protected override void BufferMovementHorizontal(float dir)
     {
-        inputLog.AddAction(Time.time, InputActionType.Movement, dir);
+        inputLog.AddAction(Time.time, InputActionType.Movement, dir, transform.position);
         RaiseChangeDirHorizontalEvent(dir);
     }
     protected override void BufferMovementVertical(float dir)
     {
-        inputLog.AddAction(Time.time, InputActionType.Aim, dir);
+        inputLog.AddAction(Time.time, InputActionType.Aim, dir, transform.position);
         RaiseChangeDirVerticalEvent(dir);
     }
 
@@ -74,6 +75,7 @@ public class InputRead : InputGenerator
 
     private void RestartScene()
     {
+        
         Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
     }
 }

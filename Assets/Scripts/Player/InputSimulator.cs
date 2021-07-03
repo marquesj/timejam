@@ -5,7 +5,7 @@ using UnityEngine;
 public class InputSimulator : InputGenerator
 {
     private float timePrecision = 0.1f;
-    public float timeOffset = 1;
+
     private int actionIndex = 0;
     
     
@@ -62,6 +62,9 @@ public class InputSimulator : InputGenerator
                 default:
                     break;
             }
+
+            if(node.hasPos)
+                transform.position = node.pos;
     }
     protected override void Jump()
     {

@@ -186,6 +186,7 @@ MonoBehaviour:
   slideForce: 3
   movementBlock: 0
   bufferedMovementInput: 0
+  bufferedVerticalInput: 0
 --- !u!114 &4074135058823973931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +272,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layermask:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 512
   damage: 1
 --- !u!114 &975310632238008626
 MonoBehaviour:

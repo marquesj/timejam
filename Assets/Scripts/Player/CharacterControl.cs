@@ -32,6 +32,7 @@ public class CharacterControl : MonoBehaviour
     private ShootController shootController;
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
+    [HideInInspector]public float bufferedVerticalInput;
 
     private bool sliding = false;
     private bool bouncing = false;
@@ -48,6 +49,7 @@ public class CharacterControl : MonoBehaviour
 
         checkGround.bounceEvent += Bounce;
         checkGround.landedEvent += StopBounce;
+        checkGround.landedEvent += CheckSlide;
         checkWall.walledEvent += StopBounce;
     }    
 
@@ -78,13 +80,16 @@ public class CharacterControl : MonoBehaviour
     {
 
         bufferedMovementInput = dir;
-        if(dir == 1)
-            SetRotation(0);
-        if(dir == -1)
-            SetRotation(180);
+        if(Time.timeScale != 0)
+        {
+            if(dir == 1)
+                SetRotation(0);
+            if(dir == -1)
+                SetRotation(180);
 
-        if(transform.localScale.y == 0.5f)
-            transform.localScale = new Vector3(1,1,1);
+            if(transform.localScale.y == 0.5f)
+                transform.localScale = new Vector3(1,1,1);
+        }
     }
 
     private void Jump()
@@ -190,6 +195,9 @@ public class CharacterControl : MonoBehaviour
     {
         if(Time.timeScale == 0)
             return;
+        
+        bufferedVerticalInput = dir;
+
         if(dir == -1 && checkGround.grounded && bufferedMovementInput !=0)
         {
             if(sliding == false)
@@ -209,6 +217,11 @@ public class CharacterControl : MonoBehaviour
             transform.localScale = new Vector3(1,1,1);
             sliding = false;
         }
+    }
+    private void CheckSlide()
+    {
+        sliding = false;
+        CheckSlide(bufferedVerticalInput);
     }
 
     private void StopBounce()

@@ -9,4 +9,10 @@ public class Shooter : MonoBehaviour
     {
         Instantiate(projectilePrefab,transform.position,transform.rotation);
     }
+    public void Shoot(float timeOffset)
+    {
+        GameObject obj = Instantiate(projectilePrefab,transform.position,transform.rotation);
+        TimedElement timedElement = obj.GetComponent<TimedElement>();
+        timedElement.SetTimeOffset(timeOffset);
+    }
 }

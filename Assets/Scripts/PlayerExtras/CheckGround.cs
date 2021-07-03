@@ -14,18 +14,23 @@ public class CheckGround : MonoBehaviour
     public float circleRadius = 0.05f;
     private Coroutine ungroundQueue = null;
  //   private bool queuedUnground = false;
+    private InputGenerator inputGenerator;
 
     [HideInInspector]public event UnityAction landedEvent;
     [HideInInspector]public event UnityAction<float> bounceEvent;
+
+    private void Awake() {
+        inputGenerator = GetComponent<InputGenerator>();
+    }
     void Update()
     {
         bool checkResult = TripleCheck();
         if(!grounded && checkResult /*&& !queuedUnground*/ )
         {
            // MakeSureCoroutineStops(ungroundQueue);
+            grounded = true;
             if(landedEvent != null)
                 landedEvent.Invoke();
-            grounded = true;
 //            Debug.Log("landedEvent");
         }
         else if(grounded && !checkResult /*&& ungroundQueue == null*/)
@@ -100,9 +105,19 @@ public class CheckGround : MonoBehaviour
                 Debug.Log(hit.gameObject.name + " is missing bouncyElement component");
                 return;
             }
-
-            if(bounceEvent != null && bounce.bounciness!=0)
-                bounceEvent.Invoke(bounce.bounciness);
+            TimedElement timedElement = bounce.GetComponent<TimedElement>();
+            if(bounce.bounciness!=0 && IsFromPast(timedElement))
+                if(bounceEvent != null)
+                    bounceEvent.Invoke(bounce.bounciness);
         }
+    }
+
+    private bool IsFromPast(TimedElement timedElement)
+    {
+        if(timedElement == null)
+            return false;
+        if(inputGenerator.timeOffset < timedElement.timeOffset) 
+            return true;
+        return false;
     }
 }
