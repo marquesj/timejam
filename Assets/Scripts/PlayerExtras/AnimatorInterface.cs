@@ -6,7 +6,7 @@ using UnityEngine;
 public class AnimatorInterface : MonoBehaviour
 
 {
-    public CharacterControl characterControl;
+    private CharacterControl characterControl;
     private Animator animator;
     // Start is called before the first frame update
     void Awake()

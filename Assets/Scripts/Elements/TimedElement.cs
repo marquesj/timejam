@@ -8,16 +8,20 @@ public class TimedElement : MonoBehaviour
     public float timeOffset;
     public List<MonoBehaviour> deactivateComponentOnDestroy = new List<MonoBehaviour>();
     public List<GameObject> deactivateObjectOnDestroy = new List<GameObject>();
+    private Collider2D[] colliders;
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
     private float precision = 0.1f;
     private float destructedTime = -1;
     private float createTime;
     private bool destroyed = false;
+    private Vector3 creationPos;
     private void Awake() {
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.SaveStateEvent += SavePosition;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
         createTime = Time.time;
+        colliders = GetComponents<Collider2D>();
+        creationPos = transform.position;
         
     }
     public void SetTimeOffset(float n)
@@ -28,6 +32,11 @@ public class TimedElement : MonoBehaviour
     private void GoBack(float time)
     {
         float offset = (Time.time - time);
+        if(time < createTime )
+        {
+            Destroy(gameObject);
+            return;
+        }
         SetPastState(time);
         AdjustTimeline(offset);
     }
@@ -39,16 +48,26 @@ public class TimedElement : MonoBehaviour
 
     private void SetPastState(float time)
     {
+        float offset = (Time.time - time);
         if(time < createTime)
         {
-          
-            Destroy(gameObject);
+            Debug.Log("destroy");
+            //destroyed = true;
+            SetAllPartsActive(false);
+            return;
         }
-        if(destroyed && destructedTime > time)
+        if( destructedTime > time || destructedTime == -1)
         {
-           
+           Debug.Log("comming back");
             destroyed = false;
             SetAllPartsActive(true);
+
+        }
+
+        if(positions.Count >= 1 && positions[0].Item1 > time)
+        {
+            float percent = (time - createTime)/(positions[0].Item1 - createTime);
+            transform.position = Vector3.Lerp(creationPos, positions[0].Item2, percent);
         }
 
         for(int i = 0; i < positions.Count; i++)
@@ -82,7 +101,7 @@ public class TimedElement : MonoBehaviour
 
     private void SavePosition()
     {
-        Debug.Log("Saving Pos at" + Time.time);
+//        Debug.Log("Saving Pos at" + Time.time);
         positions.Add((Time.time, transform.position));
     }
 
@@ -103,10 +122,15 @@ public class TimedElement : MonoBehaviour
         {
             obj.SetActive(state);
         }
+        foreach(Collider2D c in colliders)
+        {
+            c.enabled = state;
+        }
     }
 
     private void OnDestroy() {
         timeEvents.GoBackInTimeEvent -= GoBack;
         timeEvents.SaveStateEvent -= SavePosition; 
+        timeEvents.PreviewBackInTimeEvent -= PreviewPosition;
     }
 }
