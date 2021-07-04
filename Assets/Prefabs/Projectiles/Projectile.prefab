@@ -97,8 +97,8 @@ GameObject:
   - component: {fileID: 5025464225469801416}
   - component: {fileID: 7078463187992503381}
   - component: {fileID: 612496276116124116}
-  - component: {fileID: 2436088877763692337}
   - component: {fileID: 8380723098533039198}
+  - component: {fileID: 7617136078318769359}
   m_Layer: 10
   m_Name: Projectile
   m_TagString: Untagged
@@ -214,18 +214,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1216
   damage: 1
---- !u!114 &2436088877763692337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9207835224195559861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a709d540f35f16c44bf767a33e18f89a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &8380723098533039198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,4 +226,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b8f67ff429af8545a6677e4b248f39a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   timeOffset: 0
+  deactivateComponentOnDestroy:
+  - {fileID: 5025464225469801416}
+  - {fileID: 7078463187992503381}
+  - {fileID: 612496276116124116}
+  deactivateObjectOnDestroy:
+  - {fileID: 411386706981281239}
+--- !u!114 &7617136078318769359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207835224195559861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 285a34ccb58fbbf468dc4b5e1a48e167, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

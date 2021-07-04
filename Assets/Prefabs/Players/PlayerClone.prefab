@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
-  jumpHeld: 0
   timeOffset: 1
+  jumpHeld: 0
 --- !u!114 &7212832816922009746
 MonoBehaviour:
   m_ObjectHideFlags: 0

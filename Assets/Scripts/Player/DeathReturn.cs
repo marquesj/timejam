@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(InputRead))]
 public class DeathReturn : MonoBehaviour
 {
+    public TimeEvents timeEvents;
     public InputLog inputLog;
     private Health health;
     private PlayerSpawner playerSpawner;
@@ -68,6 +69,8 @@ public class DeathReturn : MonoBehaviour
         if(changeSelectedRoutine != null)
             StopCoroutine(changeSelectedRoutine);
         changeSelectedRoutine = StartCoroutine(ChangeSelected(selected));
+        float newTime = Time.time - playerSpawner.cloneInputs[selected].timeOffset;
+        timeEvents.RaisePreviewBackInTimeEvent(newTime);
     }
 
     private IEnumerator ChangeSelected(int index)
@@ -87,8 +90,9 @@ public class DeathReturn : MonoBehaviour
     private void Select()
     {
         if(!active)return;
-        
-        inputLog.RevertTo(Time.time - playerSpawner.clones[selected].GetComponent<InputSimulator>().timeOffset);
+        float newTime = Time.time - playerSpawner.cloneInputs[selected].timeOffset;
+        inputLog.RevertTo(newTime);
+        timeEvents.RaiseGoBackInTimeEvent(newTime);
 
         playerSpawner.RemoveClones(selected);
 

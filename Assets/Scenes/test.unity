@@ -571,8 +571,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4230755916898205701, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
+      propertyPath: timeEvents
+      value: 
+      objectReference: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
+    - target: {fileID: 4230755916898205701, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
       propertyPath: timePeriod
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 9064968790176340355, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
       propertyPath: m_Name

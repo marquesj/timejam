@@ -10,6 +10,9 @@ public class Health : MonoBehaviour
     private void Awake() {
         hp = totalHP;
     }
+    private void OnEnable() {
+        hp = totalHP;
+    }
 
     public void Damage(float damage)
     {

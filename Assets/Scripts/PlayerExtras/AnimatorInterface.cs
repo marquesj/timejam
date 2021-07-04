@@ -2,14 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 [RequireComponent(typeof(Animator))]
+
 public class AnimatorInterface : MonoBehaviour
 
 {
+    public CharacterControl characterControl;
     private Animator animator;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
+        characterControl = transform.parent.GetComponent<CharacterControl>();
+
+        characterControl.StopRunningEvent += StopWalkingEvent;
+        characterControl.StartRunningEvent += StartWalkingEvent;
     }
 
     // Update is called once per frame
