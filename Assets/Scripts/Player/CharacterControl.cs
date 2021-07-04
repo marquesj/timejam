@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(CheckGround))]
@@ -30,12 +31,16 @@ public class CharacterControl : MonoBehaviour
     private CheckWall checkWall;
     private SpriteRenderer spriteRenderer;
     private ShootController shootController;
+
+    [HideInInspector]public event UnityAction StartRunningEvent;
+    [HideInInspector]public event UnityAction StopRunningEvent;
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
 
     private bool sliding = false;
     private bool bouncing = false;
+    private bool running = false;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
@@ -89,7 +94,21 @@ public class CharacterControl : MonoBehaviour
 
             if(transform.localScale.y == 0.5f)
                 transform.localScale = new Vector3(1,1,1);
+
+            if(dir != 0 && !running)
+            {
+                running = true;
+                if(StartRunningEvent!=null)
+                    StartRunningEvent.Invoke();
+            }
+            else if(dir == 0 && running)
+            {
+                running = false;
+                if(StopRunningEvent!=null)
+                    StopRunningEvent.Invoke();
+            }
         }
+
     }
 
     private void Jump()

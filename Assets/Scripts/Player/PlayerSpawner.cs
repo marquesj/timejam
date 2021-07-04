@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class PlayerSpawner : MonoBehaviour
 {
+    public TimeEvents timeEvents;
     public GameObject playerPrefab;
     public GameObject playerClonePrefab;
     public float timePeriod = .3f;
     private int currentOffset = 0;
     public List<GameObject> clones = new List<GameObject>();
-    [HideInInspector]private List<InputSimulator> cloneInputs = new List<InputSimulator>();
+    [HideInInspector]public List<InputSimulator> cloneInputs = new List<InputSimulator>();
     private GameObject player;
     void Start()
     {
@@ -21,6 +22,7 @@ public class PlayerSpawner : MonoBehaviour
 
     private IEnumerator SpawnClonesRoutine()
     {
+        timeEvents.RaiseSaveStateEvent();
         while(true)
         {
             yield return new WaitForSeconds(timePeriod);
@@ -32,6 +34,8 @@ public class PlayerSpawner : MonoBehaviour
             cloneInputs.Add(inputSimulator);   
             inputSimulator.timeOffset = currentOffset*timePeriod;
             clones.Add(clone);
+//            Debug.Log("createdAt "+Time.time);
+            timeEvents.RaiseSaveStateEvent();
         }
 
     }

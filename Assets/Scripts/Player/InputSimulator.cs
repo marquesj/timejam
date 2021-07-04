@@ -7,6 +7,8 @@ public class InputSimulator : InputGenerator
     private float timePrecision = 0.1f;
 
     private int actionIndex = 0;
+
+    private float positionalErrorFixThreshold = 0.1f;
     
     
     void FixedUpdate()
@@ -16,12 +18,12 @@ public class InputSimulator : InputGenerator
         float delay  = (Time.time - timeOffset) - inputLog.inputs[actionIndex].time;
         if(Mathf.Abs(delay) <= timePrecision)
         {
-            StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex]));
+            StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex], actionIndex));
             actionIndex++;
         }
     }
 
-    private IEnumerator QueueInputSim(float desiredTime, InputNode node)
+    private IEnumerator QueueInputSim(float desiredTime, InputNode node, int nodeIndex)
     {
         float delay;
         float startingOffset;
@@ -37,10 +39,10 @@ public class InputSimulator : InputGenerator
         delay = Time.time - timeOffset - node.time;
 
        // print(Time.time -timeOffset - node.time);
-        SimulateAction(node);
+        SimulateAction(node,nodeIndex);
     }
 
-    private void SimulateAction(InputNode node)
+    private void SimulateAction(InputNode node, int nodeIndex)
     {
             switch(node.type)
             {
@@ -64,7 +66,18 @@ public class InputSimulator : InputGenerator
             }
 
             if(node.hasPos)
+            {
+                Vector3 previousPos = transform.position;
                 transform.position = node.pos;
+                Vector3 positionalError = transform.position - previousPos;
+              /*  if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
+                {
+                     inputLog.inputs[nodeIndex-1].pos += positionalError;
+                     
+                    Debug.Log("AutoFix");
+
+                }*/
+            }
     }
     protected override void Jump()
     {
