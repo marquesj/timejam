@@ -57,16 +57,14 @@ public class DestructibleTiles : MonoBehaviour
         for(int i = 0; i < cells.Count; i++) {
             if(time < cells[i].Item2)
             {
-                destructibleTilemap.SetTile(cells[i].Item1, null);
+                destructibleTilemap.SetTile(cells[i].Item1, tileBase);
                 
             }
-            /*if(destroyed && destructedTime > time)
+            else
             {
-            
-                destroyed = false;
-                SetAllPartsActive(true);
+                destructibleTilemap.SetTile(cells[i].Item1, null);
             }
-            */
+            
         }
     }
 
