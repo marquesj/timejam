@@ -43,6 +43,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca322e966b4d419469d10d9c24beeac4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   playerPrefab: {fileID: 757061511394070599, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
   playerClonePrefab: {fileID: 4656924760181929447, guid: d5096a80175c0494596338903448313a, type: 3}
-  timePeriod: 0.3
+  timePeriod: 5
+  clones: []
+  cloneInputs: []

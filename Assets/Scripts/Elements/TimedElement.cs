@@ -5,7 +5,7 @@ using UnityEngine;
 public class TimedElement : MonoBehaviour
 {
     public TimeEvents timeEvents;
-    public float timeOffset;
+    public float timeOffset =0;
     public List<MonoBehaviour> deactivateComponentOnDestroy = new List<MonoBehaviour>();
     public List<GameObject> deactivateObjectOnDestroy = new List<GameObject>();
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
