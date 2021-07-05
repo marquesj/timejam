@@ -106,16 +106,16 @@ public class CheckGround : MonoBehaviour
                 return;
             }
             TimedElement timedElement = bounce.GetComponent<TimedElement>();
-            if(bounce.bounciness!=0 && IsFromPast(timedElement))
+            if(bounce.bounciness!=0 && IsFromPastOrPresent(timedElement))
                 if(bounceEvent != null)
                     bounceEvent.Invoke(bounce.bounciness);
         }
     }
 
-    private bool IsFromPast(TimedElement timedElement)
+    private bool IsFromPastOrPresent(TimedElement timedElement)
     {
         if(timedElement == null)
-            return false;
+            return true;
         if(inputGenerator.timeOffset < timedElement.timeOffset) 
             return true;
         return false;
