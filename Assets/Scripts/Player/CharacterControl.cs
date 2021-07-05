@@ -26,14 +26,16 @@ public class CharacterControl : MonoBehaviour
     [Header("Slide Parameters")]
     public float slideForce = 1;
 
-    private Rigidbody2D rb;
-    private CheckGround checkGround;
-    private CheckWall checkWall;
+    [HideInInspector]public Rigidbody2D rb;
+    [HideInInspector]public CheckGround checkGround;
+    [HideInInspector]public CheckWall checkWall;
     private SpriteRenderer spriteRenderer;
     private ShootController shootController;
 
     [HideInInspector]public event UnityAction StartRunningEvent;
     [HideInInspector]public event UnityAction StopRunningEvent;
+    [HideInInspector]public event UnityAction JumpEvent;
+    
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
@@ -129,6 +131,10 @@ public class CharacterControl : MonoBehaviour
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
                 rb.velocity = Vector2.zero;
+           }else//regular jump
+           {
+                if(JumpEvent!=null)
+                    JumpEvent.Invoke();
            }
 //            Debug.Log(dir);
             rb.AddForce(dir ,ForceMode2D.Impulse);

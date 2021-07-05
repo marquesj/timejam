@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 public class ShootController : MonoBehaviour
 {
+    [HideInInspector]public event UnityAction ShootEvent;
     public InputGenerator inputGenerator;
     
     public float shootCooldown = 0.2f;
@@ -52,6 +53,9 @@ public class ShootController : MonoBehaviour
         bool automaticRestore = true;
         if(canShoot && Time.timeScale > 0)
         {
+            if(ShootEvent!=null)
+                ShootEvent.Invoke();
+
             weapon.Shoot(inputGenerator.timeOffset);
             canShoot = false;
 
