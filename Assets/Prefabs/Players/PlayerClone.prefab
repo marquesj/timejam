@@ -15,6 +15,7 @@ MonoBehaviour:
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
   timeOffset: 1
   jumpHeld: 0
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
 --- !u!114 &7212832816922009746
 MonoBehaviour:
   m_ObjectHideFlags: 0
