@@ -458,17 +458,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4230755916898205701, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
-      propertyPath: timePeriod
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 9064968790176340355, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
       propertyPath: m_Name
       value: PlayerSpawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 9064968790176340355, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48c5b16a5aa59ac409fea2bc8a8fbc5c, type: 3}
@@ -2964,7 +2956,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487bdba555ca9854a912d249ec1ffafd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructibleTilemap: {fileID: 0}
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
+  tileBase: {fileID: 11400000, guid: ec36ecbe5dbd5514ba751494e183bc5b, type: 2}
+  destructibleTilemap: {fileID: 1915995529}
   layermask:
     serializedVersion: 2
     m_Bits: 1024
