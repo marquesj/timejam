@@ -108,5 +108,6 @@ public class TimedElement : MonoBehaviour
     private void OnDestroy() {
         timeEvents.GoBackInTimeEvent -= GoBack;
         timeEvents.SaveStateEvent -= SavePosition; 
+        timeEvents.PreviewBackInTimeEvent -= PreviewPosition;
     }
 }
