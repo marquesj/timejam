@@ -8,6 +8,7 @@ public class TimedElement : MonoBehaviour
     public float timeOffset;
     public List<MonoBehaviour> deactivateComponentOnDestroy = new List<MonoBehaviour>();
     public List<GameObject> deactivateObjectOnDestroy = new List<GameObject>();
+    public List<GameObject> activateObjectOnDestroy = new List<GameObject>();
     private Collider2D[] colliders;
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
     private float precision = 0.1f;
@@ -15,6 +16,7 @@ public class TimedElement : MonoBehaviour
     private float createTime;
     private bool destroyed = false;
     private Vector3 creationPos;
+    public bool startDisabled = false;
     private void Awake() {
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.SaveStateEvent += SavePosition;
@@ -22,7 +24,12 @@ public class TimedElement : MonoBehaviour
         createTime = Time.time;
         colliders = GetComponents<Collider2D>();
         creationPos = transform.position;
-        
+
+        if(startDisabled)
+        {
+            gameObject.SetActive(false);
+        }
+//        Debug.Log("HI");
     }
     public void SetTimeOffset(float n)
     {
@@ -51,14 +58,14 @@ public class TimedElement : MonoBehaviour
         float offset = (Time.time - time);
         if(time < createTime)
         {
-            Debug.Log("destroy");
+          //  Debug.Log("destroy");
             //destroyed = true;
             SetAllPartsActive(false);
             return;
         }
         if( destructedTime > time || destructedTime == -1)
         {
-           Debug.Log("comming back");
+         //  Debug.Log("comming back");
             destroyed = false;
             SetAllPartsActive(true);
 
@@ -125,6 +132,10 @@ public class TimedElement : MonoBehaviour
         foreach(Collider2D c in colliders)
         {
             c.enabled = state;
+        }
+        foreach(GameObject obj in activateObjectOnDestroy)
+        {
+            obj.SetActive(!state);
         }
     }
 
