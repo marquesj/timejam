@@ -185,12 +185,22 @@ public class CharacterControl : MonoBehaviour
 
     public void Bounce(float bounciness)
     {
-        Debug.Log("bouncuing" + bounciness);
+        if(inputGenerator.timeOffset != 0)
+            return;
+
+        ApplyBounce(bounciness);
+        
+        inputGenerator.SaveBounceInput(bounciness);
+    }
+    public void ApplyBounce(float bounciness)
+    {
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce * bounciness ,ForceMode2D.Impulse);
         bouncing = true;
         shootController.BlockShoot();
     }
+
+
 
     private void BlockMovement()
     {

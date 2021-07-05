@@ -44,5 +44,6 @@ public enum InputActionType
     Jump,
     JumpRelease,
     Shoot,
-    Aim
+    Aim,
+    Bounce
 }

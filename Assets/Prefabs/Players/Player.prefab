@@ -82,8 +82,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cf17532ccbd7254980e8d7bb35ee099, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distanceToWall: 0.2
-  heightOffset: 0.185
+  distanceToWall: 0.13
+  heightOffset: 0.2
   wallLayers:
     serializedVersion: 2
     m_Bits: 192
@@ -94,7 +94,7 @@ MonoBehaviour:
   isJumpable: 0
   isLeft: 1
   cooldownTime: 0.3
-  sideOffset: 0.19
+  sideOffset: 0.2
   pressingLeft: 1
   pressingRight: 1
 --- !u!114 &7885511917918399103
