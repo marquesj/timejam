@@ -27,7 +27,7 @@ public class DeathReturn : MonoBehaviour
     }
     private void Die()
     {
-
+        timeEvents.RaiseStopTimeEvent();
         if(playerSpawner.clones.Count == 0)
         {
             Scene scene = SceneManager.GetActiveScene(); 
@@ -108,6 +108,8 @@ public class DeathReturn : MonoBehaviour
         nextSelf = Instantiate(playerSpawner.playerPrefab,pos,Quaternion.identity);
         nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
         Destroy(gameObject);
+
+        timeEvents.RaiseContinueTimeEvent();
     }
 
     public GameObject getNextSelf(){
