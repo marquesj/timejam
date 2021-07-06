@@ -99,6 +99,7 @@ public class AnimatorInterface : MonoBehaviour
     }
     private void StopSlideEvent()
     {
+        animator.ResetTrigger("StopSlide");
         animator.SetTrigger("StopSlide");
     }
 }

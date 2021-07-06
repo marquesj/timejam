@@ -66,8 +66,8 @@ MonoBehaviour:
   bouncyLayers:
     serializedVersion: 2
     m_Bits: 1024
-  grounded: 0
-  sideOffset: 0.1
+  grounded: 1
+  sideOffset: 0.05
   gracePeriod: 1
   verticalOffset: 0.01
   circleRadius: 0.05
@@ -160,8 +160,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.18, y: 0.37}
-  m_EdgeRadius: 0
+  m_Size: {x: 0.12, y: 0.34}
+  m_EdgeRadius: 0.005
 --- !u!114 &928327646669947360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +282,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   damage: 1
+  audioSource: {fileID: 0}
 --- !u!114 &975310632238008626
 MonoBehaviour:
   m_ObjectHideFlags: 0
