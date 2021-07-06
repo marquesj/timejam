@@ -11,17 +11,25 @@ public class CloneTrailHandler : MonoBehaviour
     private SpriteRenderer spriteRenderer;
 
     private void Awake() {
-        timeEvents.SlowTimeEvent += StartTrail;
-        timeEvents.RestoreTimeEvent += StopTrail;
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
 
     }
-    private void OnDestroy() {
+   /* private void OnDestroy() {
         timeEvents.SlowTimeEvent -= StartTrail;
         timeEvents.RestoreTimeEvent -= StopTrail;
+    }*/
+    private void OnEnable() {
+        timeEvents.SlowTimeEvent += StartTrail;
+        timeEvents.RestoreTimeEvent += StopTrail;
+        if(timeEvents.isTimeSlowed)
+            StartTrail();
     }
-
+    private void OnDisable() {
+        timeEvents.SlowTimeEvent -= StartTrail;
+        timeEvents.RestoreTimeEvent -= StopTrail; 
+    }
     private void StartTrail()
     {
         trailRoutine = StartCoroutine(GenerateTrail());

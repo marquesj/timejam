@@ -10,6 +10,9 @@ public class TimeEvents : ScriptableObject
     [HideInInspector]public event UnityAction SaveStateEvent;
     [HideInInspector]public event UnityAction SlowTimeEvent;
     [HideInInspector]public event UnityAction RestoreTimeEvent;
+    [HideInInspector]public event UnityAction StopTimeEvent;
+    [HideInInspector]public event UnityAction ContinueTimeEvent;
+    public bool isTimeSlowed = false;
 
     private void OnDisable() {
         GoBackInTimeEvent = null;
@@ -17,6 +20,8 @@ public class TimeEvents : ScriptableObject
         PreviewBackInTimeEvent = null;
         SlowTimeEvent = null;
         RestoreTimeEvent = null;
+        StopTimeEvent = null;
+        ContinueTimeEvent = null;
     }
     public void RaiseSaveStateEvent()
     {
@@ -25,11 +30,13 @@ public class TimeEvents : ScriptableObject
     }
     public void RaiseSlowTimeEvent()
     {
+        isTimeSlowed = true;
         if(SlowTimeEvent != null)
             SlowTimeEvent.Invoke();
     }
     public void RaiseRestoreTimeEvent()
     {
+        isTimeSlowed = false;
         if(RestoreTimeEvent != null)
             RestoreTimeEvent.Invoke();
     }
@@ -43,6 +50,16 @@ public class TimeEvents : ScriptableObject
     {
         if(PreviewBackInTimeEvent != null)
             PreviewBackInTimeEvent.Invoke(time);
+    }
+    public void RaiseStopTimeEvent()
+    {
+        if(StopTimeEvent != null)
+            StopTimeEvent.Invoke();
+    }
+    public void RaiseContinueTimeEvent()
+    {
+        if(ContinueTimeEvent != null)
+            ContinueTimeEvent.Invoke();
     }
 
 }

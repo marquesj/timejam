@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8689549503148935818}
   - component: {fileID: 3604773841000059486}
+  - component: {fileID: 6908543491877849886}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -82,6 +83,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &6908543491877849886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 411386706981281239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7438b721f5879b4ab3e5c5cff5f4cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloneFrequency: 0.1
+  clonePrefab: {fileID: 8512425107298263307, guid: 2b294cc83f3dcc4499d82027a6a74b30, type: 3}
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
 --- !u!1 &9207835224195559861
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +250,8 @@ MonoBehaviour:
   - {fileID: 612496276116124116}
   deactivateObjectOnDestroy:
   - {fileID: 411386706981281239}
+  activateObjectOnDestroy: []
+  startDisabled: 0
 --- !u!114 &7617136078318769359
 MonoBehaviour:
   m_ObjectHideFlags: 0
