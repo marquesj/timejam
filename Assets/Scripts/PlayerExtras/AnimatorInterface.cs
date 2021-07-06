@@ -38,6 +38,7 @@ public class AnimatorInterface : MonoBehaviour
         animator.SetBool("GoingUp", characterControl.rb.velocity.y > 0);
         animator.SetFloat("AimDir", characterControl.bufferedVerticalInput);
         animator.SetBool("AimingNeutral",  characterControl.bufferedVerticalInput == 0);
+        animator.SetFloat("HorizontalSpeed",  Mathf.Abs(characterControl.rb.velocity.x)/5);
       /*  animator.SetBool("Slide",  characterControl.sliding);
         animator.SetBool("WallSlide",  characterControl.checkWall.walled && !characterControl.checkGround.grounded);*/
 
