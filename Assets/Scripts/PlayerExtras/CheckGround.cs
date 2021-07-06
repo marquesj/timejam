@@ -1,3 +1,5 @@
+using System.Transactions;
+using System.Threading.Tasks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,12 +34,12 @@ public class CheckGround : MonoBehaviour
             if(landedEvent != null)
                 landedEvent.Invoke();
 //            Debug.Log("landedEvent");
+
         }
         else if(grounded && !checkResult /*&& ungroundQueue == null*/)
         {
            grounded = false;
            // ungroundQueue = StartCoroutine(QueueUnground(gracePeriod));
-            
         }
     }
     private IEnumerator QueueUnground(float time)
@@ -88,8 +90,12 @@ public class CheckGround : MonoBehaviour
         // If it hits something...
         if (hit.collider != null)
         {
+            //Check if Moving platform
+            if(hit.collider.tag == "MovingPlatform")
+                transform.parent = hit.collider.transform;
             return true;
         }
+        transform.parent = null;
         return false;
     }
     private void CheckBounce()
@@ -109,6 +115,7 @@ public class CheckGround : MonoBehaviour
             if(bounce.bounciness!=0 && IsFromPastOrPresent(timedElement))
                 if(bounceEvent != null)
                     bounceEvent.Invoke(bounce.bounciness);
+
         }
     }
 
