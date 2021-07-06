@@ -35,6 +35,7 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction StartRunningEvent;
     [HideInInspector]public event UnityAction StopRunningEvent;
     [HideInInspector]public event UnityAction JumpEvent;
+    [HideInInspector]public event UnityAction SlideEvent;
     
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
@@ -244,6 +245,8 @@ public class CharacterControl : MonoBehaviour
                 rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
                 transform.localScale = new Vector3(1,.5f,1);
                 sliding = true;
+                if(SlideEvent!=null)
+                    SlideEvent.Invoke();
             }
         }
         else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)

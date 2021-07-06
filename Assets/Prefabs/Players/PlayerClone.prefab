@@ -95,6 +95,10 @@ PrefabInstance:
       propertyPath: inputGenerator
       value: 
       objectReference: {fileID: 2560444212036581713}
+    - target: {fileID: 6738831787677541526, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.a
       value: 1
