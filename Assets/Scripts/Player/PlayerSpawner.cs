@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -56,5 +57,15 @@ public class PlayerSpawner : MonoBehaviour
             cloneInputs[i].timeOffset -= timePeriod * (index+1);
         }
         currentOffset -= (index+1);
+    }
+
+    internal void SetPlayer(GameObject nextSelf)
+    {
+        player = nextSelf;
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }
 }

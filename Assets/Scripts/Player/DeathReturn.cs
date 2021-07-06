@@ -47,7 +47,7 @@ public class DeathReturn : MonoBehaviour
     public void SetSpawner(PlayerSpawner playerSpawner)
     {
         this.playerSpawner = playerSpawner;
-        
+        playerSpawner.SetPlayer(gameObject);
     }
 
     private void InputDir(float dir)
@@ -108,5 +108,9 @@ public class DeathReturn : MonoBehaviour
         nextSelf = Instantiate(playerSpawner.playerPrefab,pos,Quaternion.identity);
         nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
         Destroy(gameObject);
+    }
+
+    public GameObject getNextSelf(){
+        return nextSelf;
     }
 }
