@@ -27,8 +27,8 @@ public class DestructibleTiles : MonoBehaviour
             UnityEngine.Vector3 hitPosition = UnityEngine.Vector3.zero;
             UnityEngine.Vector3 otherVelocity = other.gameObject.GetComponent<Rigidbody2D>().velocity;
 
-            hitPosition.x = other.transform.position.x + 0.1f * otherVelocity.x; // add bias to enter the grid cell where the tile is
-            hitPosition.y = other.transform.position.y + 0.1f * otherVelocity.y;
+            hitPosition.x = other.transform.position.x + 0.01f * otherVelocity.x; // add bias to enter the grid cell where the tile is
+            hitPosition.y = other.transform.position.y + 0.01f * otherVelocity.y;
 
             UnityEngine.Vector3Int cell = destructibleTilemap.WorldToCell(hitPosition);
 
