@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class InputSimulator : InputGenerator
 {
+    public TimeEvents timeEvents;
     private float timePrecision = 0.1f;
 
     private int actionIndex = 0;
 
     private float positionalErrorFixThreshold = 0.1f;
-    
-    
+    private CharacterControl characterControl;
+    private void Awake() {
+        timeEvents.GoBackInTimeEvent += CancelCoroutines;
+    }
+    private void OnDestroy() {
+        timeEvents.GoBackInTimeEvent -= CancelCoroutines;
+    }
     void FixedUpdate()
     {
         if(inputLog.inputs.Count <= actionIndex)return;
@@ -21,6 +27,7 @@ public class InputSimulator : InputGenerator
             StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex], actionIndex));
             actionIndex++;
         }
+        characterControl = GetComponent<CharacterControl>();
     }
 
     private IEnumerator QueueInputSim(float desiredTime, InputNode node, int nodeIndex)
@@ -61,6 +68,9 @@ public class InputSimulator : InputGenerator
                 case InputActionType.Aim:
                     BufferMovementVertical(node.val);
                     break;
+                case InputActionType.Bounce:
+                    Bounce(node.val);
+                    break;
                 default:
                     break;
             }
@@ -70,13 +80,13 @@ public class InputSimulator : InputGenerator
                 Vector3 previousPos = transform.position;
                 transform.position = node.pos;
                 Vector3 positionalError = transform.position - previousPos;
-              /*  if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
+                if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
                 {
-                     inputLog.inputs[nodeIndex-1].pos += positionalError;
+                    // inputLog.inputs[nodeIndex-1].pos += positionalError;
                      
-                    Debug.Log("AutoFix");
+                    Debug.Log("Error");
 
-                }*/
+                }
             }
     }
     protected override void Jump()
@@ -100,4 +110,19 @@ public class InputSimulator : InputGenerator
     {
         RaiseChangeDirVerticalEvent(dir);
     }
+
+    private void Bounce(float force)
+    {
+        characterControl.ApplyBounce(force);
+    }
+    public override void SaveBounceInput(float force)
+    {
+
+    }
+
+    private void CancelCoroutines(float aux)
+    {
+        StopAllCoroutines();
+    }
+
 }

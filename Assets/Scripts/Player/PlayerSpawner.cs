@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,11 +13,12 @@ public class PlayerSpawner : MonoBehaviour
     public List<GameObject> clones = new List<GameObject>();
     [HideInInspector]public List<InputSimulator> cloneInputs = new List<InputSimulator>();
     private GameObject player;
+    private AudioSource audioSource;
     void Start()
     {
         player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
         player.GetComponent<DeathReturn>().SetSpawner(this);
-
+        audioSource = GetComponent<AudioSource>();
         StartCoroutine(SpawnClonesRoutine());
     }
 
@@ -36,6 +38,8 @@ public class PlayerSpawner : MonoBehaviour
             clones.Add(clone);
 //            Debug.Log("createdAt "+Time.time);
             timeEvents.RaiseSaveStateEvent();
+
+            audioSource.Play();
         }
 
     }
@@ -56,5 +60,15 @@ public class PlayerSpawner : MonoBehaviour
             cloneInputs[i].timeOffset -= timePeriod * (index+1);
         }
         currentOffset -= (index+1);
+    }
+
+    internal void SetPlayer(GameObject nextSelf)
+    {
+        player = nextSelf;
+    }
+
+    public GameObject GetPlayer()
+    {
+        return player;
     }
 }

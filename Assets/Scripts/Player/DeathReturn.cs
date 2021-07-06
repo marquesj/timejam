@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 [RequireComponent(typeof(Health))]
 [RequireComponent(typeof(InputRead))]
 public class DeathReturn : MonoBehaviour
@@ -14,6 +15,7 @@ public class DeathReturn : MonoBehaviour
     private bool active = false;
     private GameObject nextSelf;
     private Coroutine changeSelectedRoutine;
+    private bool midShift = false;
     
     private void Awake() 
     {
@@ -25,28 +27,27 @@ public class DeathReturn : MonoBehaviour
     }
     private void Die()
     {
+
+        if(playerSpawner.clones.Count == 0)
+        {
+            Scene scene = SceneManager.GetActiveScene(); 
+            SceneManager.LoadScene(scene.name);
+
+        }
         active = true;
         Time.timeScale = 0;
         selected = 0;
         nextSelf = Instantiate(playerSpawner.playerPrefab,transform.position,Quaternion.identity);
         nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
         SaveStartChangeSelectedRoutine();
-        StartCoroutine(SelectPastSelf());
     }
 
-    private IEnumerator SelectPastSelf()
-    {
-        while(true)
-        {
-            yield return null;
-           // Debug.Log(Time.realtimeSinceStartup);
-        }
-    }
+
 
     public void SetSpawner(PlayerSpawner playerSpawner)
     {
         this.playerSpawner = playerSpawner;
-        
+        playerSpawner.SetPlayer(gameObject);
     }
 
     private void InputDir(float dir)
@@ -75,6 +76,7 @@ public class DeathReturn : MonoBehaviour
 
     private IEnumerator ChangeSelected(int index)
     {
+        midShift = true;
         float percent = 0;
         float startTime = Time.realtimeSinceStartup;
         Vector3 startPos = nextSelf.transform.position;
@@ -86,10 +88,11 @@ public class DeathReturn : MonoBehaviour
             nextSelf.transform.position = Vector3.Lerp(startPos, playerSpawner.clones[selected].transform.position, percent);
             yield return null;
         }
+        midShift = false;
     }
     private void Select()
     {
-        if(!active)return;
+        if(!active || midShift)return;
         float newTime = Time.time - playerSpawner.cloneInputs[selected].timeOffset;
         inputLog.RevertTo(newTime);
         timeEvents.RaiseGoBackInTimeEvent(newTime);
@@ -105,5 +108,9 @@ public class DeathReturn : MonoBehaviour
         nextSelf = Instantiate(playerSpawner.playerPrefab,pos,Quaternion.identity);
         nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
         Destroy(gameObject);
+    }
+
+    public GameObject getNextSelf(){
+        return nextSelf;
     }
 }

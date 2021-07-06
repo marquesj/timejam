@@ -15,6 +15,7 @@ MonoBehaviour:
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
   timeOffset: 1
   jumpHeld: 0
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
 --- !u!114 &7212832816922009746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -94,6 +95,10 @@ PrefabInstance:
       propertyPath: inputGenerator
       value: 
       objectReference: {fileID: 2560444212036581713}
+    - target: {fileID: 6738831787677541526, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.a
       value: 1

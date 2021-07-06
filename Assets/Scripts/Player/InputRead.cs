@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
- using UnityEngine.SceneManagement;
+using UnityEngine.SceneManagement;
 public class InputRead : InputGenerator
 {
     [HideInInspector]public event UnityAction SlowTimeEvent;
@@ -27,6 +27,8 @@ public class InputRead : InputGenerator
     private void OnEnable() 
     {
         playerControls.Enable();
+        BufferMovementHorizontal(0);
+        BufferMovementVertical(0);
     }
 
     private void OnDisable() 
@@ -59,6 +61,11 @@ public class InputRead : InputGenerator
     {
         inputLog.AddAction(Time.time, InputActionType.Aim, dir, transform.position);
         RaiseChangeDirVerticalEvent(dir);
+    }
+
+    public override void SaveBounceInput(float force)
+    {
+        inputLog.AddAction(Time.time, InputActionType.Bounce, force, transform.position);
     }
 
     private void SlowTime()

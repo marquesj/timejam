@@ -17,6 +17,7 @@ public abstract class InputGenerator : MonoBehaviour
     protected abstract void JumpRelease();
     protected abstract void BufferMovementHorizontal(float dir);
     protected abstract void BufferMovementVertical(float dir);
+    public abstract void SaveBounceInput(float force);
 
     protected void RaiseJumpEvent()
     {
