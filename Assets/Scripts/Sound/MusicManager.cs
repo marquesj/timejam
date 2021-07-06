@@ -15,18 +15,23 @@ public class MusicManager : MonoBehaviour
         timeEvents.ContinueTimeEvent += ContinueTime;
 
         slowSong.volume = 0;
+        slowSong.pitch= 0.444f;
     }
 
 
     private void SlowDownTime()
     {
         slowSong.volume = 1;
+        slowSong.pitch = 1;
+        normalSong.pitch = 2.25f;
         normalSong.volume = 0;
     }
     private void RestoreTime()
     {
         slowSong.volume = 0;
-        normalSong.volume = 1;    
+        normalSong.volume = 1;  
+        slowSong.pitch = 0.444f;
+        normalSong.pitch = 1;  
     }
     private void StopTime()
     {

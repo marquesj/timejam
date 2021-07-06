@@ -37,7 +37,7 @@ public class CheckWall : MonoBehaviour
             
     }
 
-    private void Update() {
+    private void LateUpdate() {
 
             UpdateKeys();
             if(!asleep)

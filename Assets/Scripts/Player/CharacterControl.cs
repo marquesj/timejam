@@ -36,13 +36,14 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction StopRunningEvent;
     [HideInInspector]public event UnityAction JumpEvent;
     [HideInInspector]public event UnityAction SlideEvent;
+    [HideInInspector]public event UnityAction StopSlideEvent;
     
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
 
-    private bool sliding = false;
-    private bool bouncing = false;
+   [HideInInspector]public bool sliding = false;
+    [HideInInspector]public bool bouncing = false;
     private bool running = false;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -99,8 +100,8 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-            if(transform.localScale.y == 0.5f)
-                transform.localScale = new Vector3(1,1,1);
+         /*   if(transform.localScale.y == 0.5f)
+                transform.localScale = new Vector3(1,1,1);*/
 
             if(dir != 0 && !running)
             {
@@ -136,6 +137,9 @@ public class CharacterControl : MonoBehaviour
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
                 rb.velocity = Vector2.zero;
+                
+                if(JumpEvent!=null)
+                    JumpEvent.Invoke();
            }else//regular jump
            {
                 if(JumpEvent!=null)
@@ -243,7 +247,7 @@ public class CharacterControl : MonoBehaviour
             if(sliding == false)
             {
                 rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
-                transform.localScale = new Vector3(1,.5f,1);
+             //   transform.localScale = new Vector3(1,.5f,1);
                 sliding = true;
                 if(SlideEvent!=null)
                     SlideEvent.Invoke();
@@ -251,12 +255,13 @@ public class CharacterControl : MonoBehaviour
         }
         else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)
         {
-            transform.localScale = new Vector3(1,.5f,1);
+      //      transform.localScale = new Vector3(1,.5f,1);
         }
         else
         {
-
-            transform.localScale = new Vector3(1,1,1);
+            if(sliding && StopSlideEvent != null)
+                StopSlideEvent.Invoke();
+            //transform.localScale = new Vector3(1,1,1);
             sliding = false;
             if(bufferedMovementInput == 1)
                 SetRotation(0);
