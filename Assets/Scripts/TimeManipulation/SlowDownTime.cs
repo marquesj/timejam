@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(InputRead))]
 public class SlowDownTime : MonoBehaviour
 {
+    public TimeEvents timeEvents;
     private float transitionDuration = .2f;
     public float slowdown = 0.5f;
     private InputRead inputRead;
@@ -16,8 +17,14 @@ public class SlowDownTime : MonoBehaviour
         inputRead.RestoreTimeEvent += RestoreTime;
     }
 
+    private void OnDisable() {
+        inputRead.SlowTimeEvent -= SlowTime;
+        inputRead.RestoreTimeEvent -= RestoreTime;     
+    }
+
     private void SlowTime()
     {
+        timeEvents.RaiseSlowTimeEvent();
         if(changeTimeRoutine != null)
         {
             StopCoroutine(changeTimeRoutine);
@@ -26,6 +33,7 @@ public class SlowDownTime : MonoBehaviour
     }
     private void RestoreTime()
     {
+        timeEvents.RaiseRestoreTimeEvent();
         if(changeTimeRoutine != null)
         {
             StopCoroutine(changeTimeRoutine);

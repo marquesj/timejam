@@ -26,14 +26,17 @@ public class CharacterControl : MonoBehaviour
     [Header("Slide Parameters")]
     public float slideForce = 1;
 
-    private Rigidbody2D rb;
-    private CheckGround checkGround;
-    private CheckWall checkWall;
+    [HideInInspector]public Rigidbody2D rb;
+    [HideInInspector]public CheckGround checkGround;
+    [HideInInspector]public CheckWall checkWall;
     private SpriteRenderer spriteRenderer;
     private ShootController shootController;
 
     [HideInInspector]public event UnityAction StartRunningEvent;
     [HideInInspector]public event UnityAction StopRunningEvent;
+    [HideInInspector]public event UnityAction JumpEvent;
+    [HideInInspector]public event UnityAction SlideEvent;
+    
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
@@ -87,10 +90,14 @@ public class CharacterControl : MonoBehaviour
         bufferedMovementInput = dir;
         if(Time.timeScale != 0)
         {
-            if(dir == 1)
-                SetRotation(0);
-            if(dir == -1)
-                SetRotation(180);
+            if(!sliding)
+            {
+                if(dir == 1)
+                    SetRotation(0);
+                if(dir == -1)
+                    SetRotation(180);
+
+            }
 
             if(transform.localScale.y == 0.5f)
                 transform.localScale = new Vector3(1,1,1);
@@ -129,6 +136,10 @@ public class CharacterControl : MonoBehaviour
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
                 rb.velocity = Vector2.zero;
+           }else//regular jump
+           {
+                if(JumpEvent!=null)
+                    JumpEvent.Invoke();
            }
 //            Debug.Log(dir);
             rb.AddForce(dir ,ForceMode2D.Impulse);
@@ -233,8 +244,10 @@ public class CharacterControl : MonoBehaviour
             {
                 rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
                 transform.localScale = new Vector3(1,.5f,1);
+                sliding = true;
+                if(SlideEvent!=null)
+                    SlideEvent.Invoke();
             }
-            sliding = true;
         }
         else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)
         {
@@ -245,6 +258,10 @@ public class CharacterControl : MonoBehaviour
 
             transform.localScale = new Vector3(1,1,1);
             sliding = false;
+            if(bufferedMovementInput == 1)
+                SetRotation(0);
+            if(bufferedMovementInput == -1)
+                SetRotation(180);
         }
     }
     private void CheckSlide()
