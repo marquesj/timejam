@@ -184,6 +184,9 @@ MonoBehaviour:
   wallJumpBlockMovementTime: 0.2
   wallSlideSpeed: 0.2
   slideForce: 3
+  rb: {fileID: 0}
+  checkGround: {fileID: 0}
+  checkWall: {fileID: 0}
   movementBlock: 0
   bufferedMovementInput: 0
   bufferedVerticalInput: 0
@@ -242,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a841bc8f90e9074c9d4e835518625fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   slowdown: 0.2
 --- !u!70 &78400220272334943
 CapsuleCollider2D:
@@ -317,6 +321,7 @@ GameObject:
   - component: {fileID: 6971132377056877905}
   - component: {fileID: 6387992183259380369}
   - component: {fileID: 7262761537144261070}
+  - component: {fileID: 1578527971771661383}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -420,6 +425,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7a027d884a7b2c4a837bd702f1cf043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1578527971771661383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3888379452183580263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7438b721f5879b4ab3e5c5cff5f4cb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloneFrequency: 0.1
+  clonePrefab: {fileID: 8512425107298263307, guid: 2b294cc83f3dcc4499d82027a6a74b30, type: 3}
+  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
 --- !u!1 &7831977993314351501
 GameObject:
   m_ObjectHideFlags: 0

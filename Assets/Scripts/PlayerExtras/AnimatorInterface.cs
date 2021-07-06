@@ -29,7 +29,7 @@ public class AnimatorInterface : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         animator.SetBool("Grounded", characterControl.checkGround.grounded);
         animator.SetBool("GoingUp", characterControl.rb.velocity.y > 0);
