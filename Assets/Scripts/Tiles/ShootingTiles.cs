@@ -1,3 +1,4 @@
+using System.Numerics;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Tilemaps;
@@ -15,13 +16,13 @@ public class ShootingTiles : MonoBehaviour
     public Sprite upSprite;
     public Sprite rightSprite;
     public Sprite downSprite;
-    private List<(TileBase, Vector3)> shootingTiles = new List<(TileBase, Vector3)>();
+    private List<(TileBase, UnityEngine.Vector3)> shootingTiles = new List<(TileBase, UnityEngine.Vector3)>();
     public float speed = 1.0f;
     void Start()
     {
         tilemap = GetComponent<Tilemap>();
 
-        foreach (Vector3Int position in tilemap.cellBounds.allPositionsWithin){
+        foreach (UnityEngine.Vector3Int position in tilemap.cellBounds.allPositionsWithin){
             TileBase tile = tilemap.GetTile(position);
                 if (tile != null) {
                     shootingTiles.Add((tile, tilemap.CellToWorld(position)));
@@ -40,17 +41,18 @@ public class ShootingTiles : MonoBehaviour
     }
 
     private void Shoot() {
-        GameObject obj;
+        GameObject obj = new GameObject();
         for(int i = 0; i < shootingTiles.Count; i++) {
-            Vector3 worldPosition = shootingTiles[i].Item2;
-            if(tilemap.GetSprite(tilemap.WorldToCell(worldPosition)) == leftSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new Vector3(0.25f, 0.25f,0f), Quaternion.Euler(0f,180f,0f));//tilemap.GetTransformMatrix(tilemap.WorldToCell(worldPosition)).rotation);
-            else if(tilemap.GetSprite(tilemap.WorldToCell(worldPosition)) == rightSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new Vector3(0.25f, 0.25f,0f), Quaternion.Euler(0f,0f,0f));
-            else if(tilemap.GetSprite(tilemap.WorldToCell(worldPosition)) == upSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new Vector3(-1f, 0f,0f), Quaternion.Euler(0f,90f,0f));
-            else
-                obj = Instantiate(projectilePrefab, worldPosition + new Vector3(-1f, 0f,0f), Quaternion.Euler(0f,-90f,0f));
+            UnityEngine.Vector3 worldPosition = shootingTiles[i].Item2;
+            Sprite sprite = tilemap.GetSprite(tilemap.WorldToCell(worldPosition));
+            if(sprite == leftSprite)
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.25f, 0.25f,0f), UnityEngine.Quaternion.Euler(0f,180f,0f));//tilemap.GetTransformMatrix(tilemap.WorldToCell(worldPosition)).rotation);
+            else if(sprite == rightSprite)
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.25f, 0.25f,0f), UnityEngine.Quaternion.Euler(0f,0f,0f));
+            else if(sprite == upSprite)
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.25f, 0.25f,0f), UnityEngine.Quaternion.Euler(0f,0f,90f));
+            else if(sprite == downSprite)
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.25f, 0.25f,0f), UnityEngine.Quaternion.Euler(0f,0f,-90f));
             TimedElement timedElement = obj.GetComponent<TimedElement>();
         }
     }
