@@ -25,6 +25,7 @@ public class CharacterControl : MonoBehaviour
     public float wallSlideSpeed = .8f;
     [Header("Slide Parameters")]
     public float slideForce = 1;
+    
 
     [HideInInspector]public Rigidbody2D rb;
     [HideInInspector]public CheckGround checkGround;
@@ -45,12 +46,16 @@ public class CharacterControl : MonoBehaviour
 
    [HideInInspector]public bool sliding = false;
     [HideInInspector]public bool bouncing = false;
+    public bool ducking = false;
     private bool running = false;
     private Vector2 defaultColliderSize;
     private Vector2 defaultColliderOffset;
     private Vector2 slideColliderOffset = new Vector2(0.06f,0.1f);
     private Vector2 slideColliderSize = new Vector2(0.32f,0.13f);
+    private float defaultCheckWallDistance;
     private BoxCollider2D boxCollider2D;
+
+    public bool queuedGetUp = false;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
@@ -61,6 +66,7 @@ public class CharacterControl : MonoBehaviour
 
         defaultColliderSize = boxCollider2D.size;
         defaultColliderOffset = boxCollider2D.offset;
+        defaultCheckWallDistance = checkWall.distanceToWall;
 
         inputGenerator.JumpEvent += Jump;
         inputGenerator.ChangeDirHorizontalEvent += BufferMovement;
@@ -73,26 +79,34 @@ public class CharacterControl : MonoBehaviour
     }    
 
     private void FixedUpdate() {
-       
+        
+        if(queuedGetUp && CanGetUp())
+        {
+            StopSlide();
+            queuedGetUp = false;
+        }
+
         if(!movementBlock)
         {
-            if(!(checkGround.grounded && sliding))
+            if(!(checkGround.grounded && sliding ))
             {
 
                 rb.velocity = new Vector2(bufferedMovementInput * speed, rb.velocity.y);
             }
         }
             
-        if(checkWall.walled)
+        if(!checkGround.grounded )
+        {
+//            Debug.Log("dsad");
+            FastFall();
+            if(sliding)
+                CheckSlide(0);
+        }
+        
+        if(!checkGround.grounded && checkWall.walled)
         {
             WallSlide();
         }
-        else if(!checkGround.grounded)
-        {
-  
-            FastFall();
-        }
-        
     }
 
     private void BufferMovement(float dir)
@@ -110,7 +124,7 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-            if(boxCollider2D.size == slideColliderSize)
+            if(boxCollider2D.size == slideColliderSize && CanGetUp())
             {
                 SetDefaultCollider();
             }
@@ -140,6 +154,10 @@ public class CharacterControl : MonoBehaviour
             
            if(checkWall.walled)//wall jump
            {
+                if(checkWall.isLeft)
+                    SetRotation(0);
+                else
+                    SetRotation(180);
                 dir = wallJumpForce * Vector2.up;
                 checkWall.Sleep(0.1f);
                 float dirMod = 1;
@@ -182,22 +200,23 @@ public class CharacterControl : MonoBehaviour
 
     private void WallSlide()
     {
+        if(checkWall.isLeft && bufferedMovementInput < 0)
+        {
+            rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+        if(!checkWall.isLeft && bufferedMovementInput > 0)
+        {
+             rb.velocity = new Vector2(0, rb.velocity.y);
+        }
+
+        if(!checkWall.GoingDown())
+        {
+            return;
+        }
         if(checkWall.isLeft)
             SetRotation(0);
         else
             SetRotation(180);
-        if(!checkWall.GoingDown())
-        {
-            if(checkWall.isLeft && bufferedMovementInput < 0)
-                rb.velocity = new Vector2(0, rb.velocity.y);
-            if(!checkWall.isLeft && bufferedMovementInput > 0)
-            {
-
-                 rb.velocity = new Vector2(0, rb.velocity.y);
-            }
-            return;
-        }
-
         /*if(rb.velocity.x > 0 && !checkWall.isLeft)
             rb.velocity = Vector2.zero;
         if(rb.velocity.x < 0 && checkWall.isLeft)
@@ -259,33 +278,58 @@ public class CharacterControl : MonoBehaviour
         {
             if(sliding == false)
             {
-                rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
-                SetSlideCollider();
-                sliding = true;
-                if(SlideEvent!=null)
-                    SlideEvent.Invoke();
+                ApplySlide();
             }
         }
         else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)
         {
             SetSlideCollider();
+            if(!ducking)
+            {
+                rb.velocity = Vector2.zero;
+                ducking = true;
+            }
         }
-        else
+        else 
         {
-            if(sliding && StopSlideEvent != null)
-                StopSlideEvent.Invoke();
-            SetDefaultCollider();
-            sliding = false;
-            if(bufferedMovementInput == 1)
-                SetRotation(0);
-            if(bufferedMovementInput == -1)
-                SetRotation(180);
+            if(sliding && checkGround.grounded && CanGetUp())
+            {
+                StopSlide();
+            }
+            else if(!CanGetUp())
+            {
+                queuedGetUp = true;
+                rb.AddForce(transform.right * slideForce /2,ForceMode2D.Impulse);
+            }
+            if(ducking)
+                ducking = false;
         }
     }
     private void CheckSlide()
     {
         sliding = false;
         CheckSlide(bufferedVerticalInput);
+    }
+
+    private void StopSlide()
+    {
+        if(sliding && StopSlideEvent != null)
+            StopSlideEvent.Invoke();
+        SetDefaultCollider();
+        sliding = false;
+        ducking = false;
+        if(bufferedMovementInput == 1)
+            SetRotation(0);
+        if(bufferedMovementInput == -1)
+            SetRotation(180);
+    }
+    private void ApplySlide()
+    {
+        rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
+        SetSlideCollider();
+        sliding = true;
+        if(SlideEvent!=null)
+            SlideEvent.Invoke();
     }
 
     private void StopBounce()
@@ -302,10 +346,29 @@ public class CharacterControl : MonoBehaviour
     {
         boxCollider2D.size = defaultColliderSize;
         boxCollider2D.offset = defaultColliderOffset;
+
+        checkWall.distanceToWall = defaultCheckWallDistance;
     }
     private void SetSlideCollider()
     {
         boxCollider2D.size = slideColliderSize;
         boxCollider2D.offset = slideColliderOffset;
+        checkWall.distanceToWall = defaultCheckWallDistance * 2;
+    }
+
+    private bool CanGetUp()
+    {
+        RaycastHit2D hit;
+        Vector3 pos = transform.position + Vector3.up* 0.2f;
+
+        hit = Physics2D.Raycast(pos, Vector3.up, 0.3f,checkGround.groundLayers);
+        Debug.DrawRay(pos, Vector3.up*0.3f, Color.red,1);
+        if (hit.collider != null)
+        {   
+        Debug.Log(hit.collider.gameObject.name);
+            return false;
+        }
+        
+        return true;
     }
 }

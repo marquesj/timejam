@@ -7,22 +7,26 @@ public class CameraManager : MonoBehaviour
 {
     CinemachineVirtualCamera cam;
     public PlayerSpawner spawner = null;
+    private GameObject target;
     // Start is called before the first frame update
     void Start()
     {
         cam = GetComponentInChildren<CinemachineVirtualCamera>();
+        GameObject aux = GameObject.Find("PlayerSpawn");
+        if(spawner == null && aux!=null)
+            spawner = aux.GetComponent<PlayerSpawner>();
         if(spawner == null)
-            spawner = GameObject.Find("PlayerSpawn").GetComponent<PlayerSpawner>();
-    }
+            target = GameObject.Find("Player");
+    }   
 
     // Update is called once per frame
     void Update()
     {
         // TODO: subscribe to changes instead of checking every frame
         if(spawner != null){
-            GameObject player = spawner.GetPlayer();
+            target = spawner.GetPlayer();
             //player.GetComponent<DeathReturn>().getNextSelf();
-            cam.Follow = player.transform;
         }
+        cam.Follow = target.transform;
     }
 }

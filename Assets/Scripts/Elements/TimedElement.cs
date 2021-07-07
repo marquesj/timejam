@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TimedElement : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class TimedElement : MonoBehaviour
     private bool destroyed = false;
     private Vector3 creationPos;
     public bool startDisabled = false;
+    [HideInInspector]public event UnityAction<bool> SetStateEvent;
     private void Awake() {
 
         createTime = Time.time;
@@ -140,6 +142,9 @@ public class TimedElement : MonoBehaviour
         {
             obj.SetActive(!state);
         }
+
+        if(SetStateEvent!=null)
+            SetStateEvent.Invoke(state);
     }
 
     private void OnDisable() {

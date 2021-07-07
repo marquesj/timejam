@@ -28,7 +28,7 @@ public class CheckWall : MonoBehaviour
     private Coroutine rightCooldownRoutine = null;
     private bool inRoutineLeft = false;
     private bool inRoutineRight = false;
-
+    public bool nearWall = false;
     [HideInInspector]public event UnityAction<bool> walledEvent;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
@@ -94,6 +94,9 @@ public class CheckWall : MonoBehaviour
         bool checkWallLeft  = leftCheck.Item1;// && (pressingLeft) ;
         bool checkWallRight = rightCheck.Item1;// && (pressingRight);
         bool checkWall = (checkWallLeft||checkWallRight);// && GoingDown();
+
+        nearWall = checkWall;
+        isLeft = checkWallLeft;
         if(checkGround != null)
             checkWall = checkWall && !checkGround.grounded ;
         
