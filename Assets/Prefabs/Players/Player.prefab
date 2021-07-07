@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 3488327841475112557}
   - component: {fileID: 975310632238008626}
   - component: {fileID: 4555844503807483740}
+  - component: {fileID: 7386570874678979522}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -313,6 +314,33 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.19}
   m_Size: {x: 0.11, y: 0.38}
   m_Direction: 0
+--- !u!114 &7386570874678979522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 757061511394070599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7db70e0ea77f5ac47a8f4565a9406397, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ShadowGroup: 0
+  m_HasRenderer: 0
+  m_UseRendererSilhouette: 1
+  m_CastsShadows: 1
+  m_SelfShadows: 0
+  m_ApplyToSortingLayers: 00000000
+  m_ShapePath:
+  - {x: -0.06837319, y: 0.005801566, z: 0}
+  - {x: 0.049610276, y: 0.005801566, z: 0}
+  - {x: 0.05964326, y: 0.0024573803, z: 0}
+  - {x: 0.057676416, y: 0.37, z: 0}
+  - {x: -0.06232358, y: 0.37, z: 0}
+  m_ShapePathHash: -1137555362
+  m_Mesh: {fileID: 0}
+  m_InstanceId: -21006
 --- !u!1 &3888379452183580263
 GameObject:
   m_ObjectHideFlags: 0
@@ -978,6 +1006,47 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5525205651930305900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6798755447957419745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightType: 3
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0.13050914, g: 0.6923494, b: 0.8867924, a: 1}
+  m_Intensity: 1
+  m_LightVolumeOpacity: 0.476
+  m_ApplyToSortingLayers: 00000000
+  m_LightCookieSprite: {fileID: 0}
+  m_UseNormalMap: 0
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_ShadowIntensity: 0
+  m_ShadowVolumeIntensity: 0
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 0.22
+  m_PointLightDistance: 3
+  m_PointLightQuality: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &7831977993314351501
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,6 +1139,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3931843ebaf1424ea0bcfd56b0a9529, type: 3}
+--- !u!1 &6798755447957419745 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4057879998876236122, guid: a3931843ebaf1424ea0bcfd56b0a9529, type: 3}
+  m_PrefabInstance: {fileID: 7352817241407016891}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8832128522055392035 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2060522493350499480, guid: a3931843ebaf1424ea0bcfd56b0a9529, type: 3}
