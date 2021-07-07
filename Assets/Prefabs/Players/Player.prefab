@@ -64,10 +64,10 @@ MonoBehaviour:
   distanceToFloor: 0.03
   groundLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 2176
   bouncyLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 3072
   grounded: 1
   sideOffset: 0.05
   gracePeriod: 1
@@ -341,7 +341,7 @@ MonoBehaviour:
   - {x: -0.06232358, y: 0.37, z: 0}
   m_ShapePathHash: -1137555362
   m_Mesh: {fileID: 0}
-  m_InstanceId: 42842
+  m_InstanceId: 83368
 --- !u!1 &2681284753194239235
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +390,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00870e47f25a38843abf3d2d8b6cadec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   deathParticles: {fileID: 1629766578779893994}
   landParticles: {fileID: 2951805888716225507}
   slideParticles: {fileID: 6368690700074638794}

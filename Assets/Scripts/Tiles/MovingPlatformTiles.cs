@@ -10,7 +10,13 @@ public class MovingPlatformTiles : MonoBehaviour
     public List<Transform> points;
     public Transform platform;
     int goalPoint=0;
-    public float speed = 1.0f;
+    public float duration = 1.5f;
+    private float speed=0.5f;
+
+    void Start() {
+        platform.position = points[0].position;
+        speed = UnityEngine.Vector2.Distance(points[0].position, points[1].position) / (duration/2);
+    }
     void Update()
     {
         MoveTowardsPoint();
