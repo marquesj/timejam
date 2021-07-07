@@ -35,6 +35,7 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction StartRunningEvent;
     [HideInInspector]public event UnityAction StopRunningEvent;
     [HideInInspector]public event UnityAction JumpEvent;
+    [HideInInspector]public event UnityAction WallJumpEvent;
     [HideInInspector]public event UnityAction SlideEvent;
     [HideInInspector]public event UnityAction StopSlideEvent;
     
@@ -150,8 +151,8 @@ public class CharacterControl : MonoBehaviour
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
                 rb.velocity = Vector2.zero;
                 
-                if(JumpEvent!=null)
-                    JumpEvent.Invoke();
+                if(WallJumpEvent!=null)
+                    WallJumpEvent.Invoke();
            }else//regular jump
            {
                 if(JumpEvent!=null)

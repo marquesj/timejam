@@ -28,6 +28,7 @@ public class SoundPlayer : MonoBehaviour
         characterControl.StartRunningEvent += StartWalkingEvent;
         shootController.ShootEvent += ShootEvent;
         characterControl.JumpEvent += JumpEvent;
+        characterControl.WallJumpEvent += JumpEvent;
         characterControl.checkGround.landedEvent += LandEvent;
         characterControl.checkWall.walledEvent += WallSlideEvent;
         characterControl.SlideEvent += SlideEvent;
