@@ -83,6 +83,7 @@ public class InputRead : InputGenerator
     private void RestartScene()
     {
         
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 }

@@ -39,6 +39,7 @@ public class DeathReturn : MonoBehaviour
         selected = 0;
         nextSelf = Instantiate(playerSpawner.playerPrefab,transform.position,Quaternion.identity);
         nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
+        nextSelf.GetComponentInChildren<Animator>().SetTrigger("Die");
         SaveStartChangeSelectedRoutine();
     }
 

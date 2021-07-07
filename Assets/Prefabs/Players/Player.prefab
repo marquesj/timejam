@@ -100,6 +100,7 @@ MonoBehaviour:
   sideOffset: 0.2
   pressingLeft: 1
   pressingRight: 1
+  nearWall: 0
 --- !u!114 &7885511917918399103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +137,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &3451867845773300379
 BoxCollider2D:
@@ -163,7 +164,7 @@ BoxCollider2D:
   m_AutoTiling: 0
   serializedVersion: 2
   m_Size: {x: 0.12, y: 0.34}
-  m_EdgeRadius: 0.005
+  m_EdgeRadius: 0.01
 --- !u!114 &928327646669947360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -185,7 +186,7 @@ MonoBehaviour:
   wallJumpHorizontalForce: 4
   wallJumpForce: 6
   wallJumpBlockMovementTime: 0.2
-  wallSlideSpeed: 0.2
+  wallSlideSpeed: 0.1
   slideForce: 3
   rb: {fileID: 0}
   checkGround: {fileID: 0}
@@ -195,6 +196,8 @@ MonoBehaviour:
   bufferedVerticalInput: 0
   sliding: 0
   bouncing: 0
+  ducking: 0
+  queuedGetUp: 0
 --- !u!114 &4074135058823973931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,7 +344,7 @@ MonoBehaviour:
   - {x: -0.06232358, y: 0.37, z: 0}
   m_ShapePathHash: -1137555362
   m_Mesh: {fileID: 0}
-  m_InstanceId: 42842
+  m_InstanceId: 75836
 --- !u!1 &2681284753194239235
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +393,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00870e47f25a38843abf3d2d8b6cadec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   deathParticles: {fileID: 1629766578779893994}
   landParticles: {fileID: 2951805888716225507}
   slideParticles: {fileID: 6368690700074638794}
@@ -470,7 +472,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 7309844833446704383, guid: a8a8ec9fcfbcc564bbb7144dbdc3f47b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1081,7 +1083,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeOpacity: 0.476
   m_ApplyToSortingLayers: 00000000
-  m_LightCookieSprite: {fileID: 0}
+  m_LightCookieSprite: {fileID: 21300000, guid: c732b7a8f14386a49a614a62e572e771, type: 3}
   m_UseNormalMap: 0
   m_LightOrder: 0
   m_AlphaBlendOnOverlap: 0
