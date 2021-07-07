@@ -8,6 +8,7 @@ public class TakeDamageOnTouch : MonoBehaviour
     public LayerMask layermask;
     public float damage = 1;
     private Health health;
+    public AudioSource audioSource;
     private void Awake() 
     {
    
@@ -21,6 +22,8 @@ public class TakeDamageOnTouch : MonoBehaviour
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
             health.Damage(damage);
+            if(audioSource!=null)
+                audioSource.Play();
         }
     }
     private void OnCollisionEnter2D(Collision2D other) 
@@ -29,6 +32,8 @@ public class TakeDamageOnTouch : MonoBehaviour
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
             health.Damage(damage);
+            if(audioSource!=null)
+                audioSource.Play();
         }        
     }
 }

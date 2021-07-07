@@ -35,21 +35,32 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction StartRunningEvent;
     [HideInInspector]public event UnityAction StopRunningEvent;
     [HideInInspector]public event UnityAction JumpEvent;
+    [HideInInspector]public event UnityAction WallJumpEvent;
     [HideInInspector]public event UnityAction SlideEvent;
+    [HideInInspector]public event UnityAction StopSlideEvent;
     
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
 
-    private bool sliding = false;
-    private bool bouncing = false;
+   [HideInInspector]public bool sliding = false;
+    [HideInInspector]public bool bouncing = false;
     private bool running = false;
+    private Vector2 defaultColliderSize;
+    private Vector2 defaultColliderOffset;
+    private Vector2 slideColliderOffset = new Vector2(0.06f,0.1f);
+    private Vector2 slideColliderSize = new Vector2(0.32f,0.13f);
+    private BoxCollider2D boxCollider2D;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
         checkWall = GetComponent<CheckWall>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         shootController = GetComponentInChildren<ShootController>();
+        boxCollider2D = GetComponent<BoxCollider2D>();
+
+        defaultColliderSize = boxCollider2D.size;
+        defaultColliderOffset = boxCollider2D.offset;
 
         inputGenerator.JumpEvent += Jump;
         inputGenerator.ChangeDirHorizontalEvent += BufferMovement;
@@ -99,8 +110,11 @@ public class CharacterControl : MonoBehaviour
 
             }
 
-            if(transform.localScale.y == 0.5f)
-                transform.localScale = new Vector3(1,1,1);
+            if(boxCollider2D.size == slideColliderSize)
+            {
+                SetDefaultCollider();
+            }
+          
 
             if(dir != 0 && !running)
             {
@@ -136,6 +150,9 @@ public class CharacterControl : MonoBehaviour
                 BlockMovement();
                 Invoke("UnblockMovement",wallJumpBlockMovementTime);
                 rb.velocity = Vector2.zero;
+                
+                if(WallJumpEvent!=null)
+                    WallJumpEvent.Invoke();
            }else//regular jump
            {
                 if(JumpEvent!=null)
@@ -243,7 +260,7 @@ public class CharacterControl : MonoBehaviour
             if(sliding == false)
             {
                 rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
-                transform.localScale = new Vector3(1,.5f,1);
+                SetSlideCollider();
                 sliding = true;
                 if(SlideEvent!=null)
                     SlideEvent.Invoke();
@@ -251,12 +268,13 @@ public class CharacterControl : MonoBehaviour
         }
         else if(dir == -1 && checkGround.grounded && bufferedMovementInput ==0)
         {
-            transform.localScale = new Vector3(1,.5f,1);
+            SetSlideCollider();
         }
         else
         {
-
-            transform.localScale = new Vector3(1,1,1);
+            if(sliding && StopSlideEvent != null)
+                StopSlideEvent.Invoke();
+            SetDefaultCollider();
             sliding = false;
             if(bufferedMovementInput == 1)
                 SetRotation(0);
@@ -278,5 +296,16 @@ public class CharacterControl : MonoBehaviour
     private void StopBounce(bool aux)
     {
         StopBounce();
+    }
+
+    private void SetDefaultCollider()
+    {
+        boxCollider2D.size = defaultColliderSize;
+        boxCollider2D.offset = defaultColliderOffset;
+    }
+    private void SetSlideCollider()
+    {
+        boxCollider2D.size = slideColliderSize;
+        boxCollider2D.offset = slideColliderOffset;
     }
 }

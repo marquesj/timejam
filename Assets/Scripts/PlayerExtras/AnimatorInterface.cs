@@ -25,7 +25,11 @@ public class AnimatorInterface : MonoBehaviour
         characterControl.StartRunningEvent += StartWalkingEvent;
         shootController.ShootEvent += ShootEvent;
         characterControl.JumpEvent += JumpEvent;
+        characterControl.WallJumpEvent += JumpEvent;
         characterControl.checkGround.landedEvent += LandEvent;
+        characterControl.SlideEvent += SlideEvent;
+        characterControl.StopSlideEvent += StopSlideEvent;
+        characterControl.checkWall.walledEvent += ClingEvent;
     }
 
     // Update is called once per frame
@@ -35,6 +39,9 @@ public class AnimatorInterface : MonoBehaviour
         animator.SetBool("GoingUp", characterControl.rb.velocity.y > 0);
         animator.SetFloat("AimDir", characterControl.bufferedVerticalInput);
         animator.SetBool("AimingNeutral",  characterControl.bufferedVerticalInput == 0);
+        animator.SetFloat("HorizontalSpeed",  Mathf.Abs(characterControl.rb.velocity.x)/5);
+      /*  animator.SetBool("Slide",  characterControl.sliding);
+        animator.SetBool("WallSlide",  characterControl.checkWall.walled && !characterControl.checkGround.grounded);*/
 
     }
 
@@ -74,7 +81,7 @@ public class AnimatorInterface : MonoBehaviour
         animator.SetTrigger("Float");
     }
 
-    private void ClingEvent()
+    private void ClingEvent(bool aux)
     {
         animator.SetTrigger("Cling");
     }
@@ -86,5 +93,15 @@ public class AnimatorInterface : MonoBehaviour
     private void StopWalkingEvent()
     {
         animator.SetBool("Running", false);
+    }
+
+    private void SlideEvent()
+    {
+        animator.SetTrigger("Slide");
+    }
+    private void StopSlideEvent()
+    {
+        animator.ResetTrigger("StopSlide");
+        animator.SetTrigger("StopSlide");
     }
 }

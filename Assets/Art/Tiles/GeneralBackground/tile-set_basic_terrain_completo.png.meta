@@ -1,0 +1,945 @@
+fileFormatVersion: 2
+guid: c4c1a39941f59b642a2406c79994a925
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3972994421468398743
+    second: tile-set_basic_terrain_completo_0
+  - first:
+      213: -6994779797560933824
+    second: tile-set_basic_terrain_completo_1
+  - first:
+      213: -5086122245613232606
+    second: tile-set_basic_terrain_completo_2
+  - first:
+      213: 5745973436119094811
+    second: tile-set_basic_terrain_completo_3
+  - first:
+      213: -2415139115741656642
+    second: tile-set_basic_terrain_completo_4
+  - first:
+      213: 5673368894845826192
+    second: tile-set_basic_terrain_completo_5
+  - first:
+      213: 9127354035240688982
+    second: tile-set_basic_terrain_completo_6
+  - first:
+      213: -186349876124393447
+    second: tile-set_basic_terrain_completo_7
+  - first:
+      213: 6923382781015005834
+    second: tile-set_basic_terrain_completo_8
+  - first:
+      213: -4755780373843764142
+    second: tile-set_basic_terrain_completo_9
+  - first:
+      213: 4659922606147163674
+    second: tile-set_basic_terrain_completo_10
+  - first:
+      213: 3207434923677812916
+    second: tile-set_basic_terrain_completo_11
+  - first:
+      213: 3487171669354899503
+    second: tile-set_basic_terrain_completo_12
+  - first:
+      213: -2035961672718238020
+    second: tile-set_basic_terrain_completo_13
+  - first:
+      213: 1354442269736805837
+    second: tile-set_basic_terrain_completo_14
+  - first:
+      213: -6437944897307652843
+    second: tile-set_basic_terrain_completo_15
+  - first:
+      213: 7221406423566369042
+    second: tile-set_basic_terrain_completo_16
+  - first:
+      213: -2412497149729850885
+    second: tile-set_basic_terrain_completo_17
+  - first:
+      213: 5134270193755934709
+    second: tile-set_basic_terrain_completo_18
+  - first:
+      213: 6851614230309801026
+    second: tile-set_basic_terrain_completo_19
+  - first:
+      213: 9057262234629241272
+    second: tile-set_basic_terrain_completo_20
+  - first:
+      213: -2047955300402687721
+    second: tile-set_basic_terrain_completo_21
+  - first:
+      213: -8134224949526804947
+    second: tile-set_basic_terrain_completo_22
+  - first:
+      213: 8707599894162500771
+    second: tile-set_basic_terrain_completo_23
+  - first:
+      213: -1471953129519613805
+    second: tile-set_basic_terrain_completo_24
+  - first:
+      213: -7695077344048237630
+    second: tile-set_basic_terrain_completo_25
+  - first:
+      213: -281739162333850205
+    second: tile-set_basic_terrain_completo_26
+  - first:
+      213: -1465454420838367500
+    second: tile-set_basic_terrain_completo_27
+  - first:
+      213: 3962402932653187730
+    second: tile-set_basic_terrain_completo_28
+  - first:
+      213: 6775026102742530844
+    second: tile-set_basic_terrain_completo_29
+  - first:
+      213: 1596781100995836424
+    second: tile-set_basic_terrain_completo_30
+  - first:
+      213: -1287647643366512263
+    second: tile-set_basic_terrain_completo_31
+  - first:
+      213: -954936686621405385
+    second: tile-set_basic_terrain_completo_32
+  - first:
+      213: 7496877792019853676
+    second: tile-set_basic_terrain_completo_33
+  - first:
+      213: -5012998338286832909
+    second: tile-set_basic_terrain_completo_34
+  - first:
+      213: -3270116119296290496
+    second: tile-set_basic_terrain_completo_35
+  - first:
+      213: 9197406520747311717
+    second: tile-set_basic_terrain_completo_36
+  - first:
+      213: -7297460480555915320
+    second: tile-set_basic_terrain_completo_37
+  - first:
+      213: 4561692194518591387
+    second: tile-set_basic_terrain_completo_38
+  - first:
+      213: -8711320723519990003
+    second: tile-set_basic_terrain_completo_39
+  - first:
+      213: 8822003480643156607
+    second: tile-set_basic_terrain_completo_40
+  - first:
+      213: -5720791443010693073
+    second: tile-set_basic_terrain_completo_41
+  - first:
+      213: 7672718440057882996
+    second: tile-set_basic_terrain_completo_42
+  - first:
+      213: -4928083739629805888
+    second: tile-set_basic_terrain_completo_43
+  - first:
+      213: -6893821294374728572
+    second: tile-set_basic_terrain_completo_44
+  - first:
+      213: 4090154436323330070
+    second: tile-set_basic_terrain_completo_45
+  - first:
+      213: 1134655269145063001
+    second: tile-set_basic_terrain_completo_46
+  - first:
+      213: 2996807655486431014
+    second: tile-set_basic_terrain_completo_47
+  - first:
+      213: 5185747256424272185
+    second: tile-set_basic_terrain_completo_48
+  - first:
+      213: 7146451393485412007
+    second: tile-set_basic_terrain_completo_49
+  - first:
+      213: 6882065942911472237
+    second: tile-set_basic_terrain_completo_50
+  - first:
+      213: -6871203086550865810
+    second: tile-set_basic_terrain_completo_51
+  - first:
+      213: 8082466474857697512
+    second: tile-set_basic_terrain_completo_52
+  - first:
+      213: -4150274389112249658
+    second: tile-set_basic_terrain_completo_53
+  - first:
+      213: 6675561669271720631
+    second: tile-set_basic_terrain_completo_54
+  - first:
+      213: 850757158911203326
+    second: tile-set_basic_terrain_completo_55
+  - first:
+      213: 1300660173082902669
+    second: tile-set_basic_terrain_completo_56
+  - first:
+      213: 5686087532249660075
+    second: tile-set_basic_terrain_completo_57
+  - first:
+      213: 1436823277823061662
+    second: tile-set_basic_terrain_completo_58
+  - first:
+      213: 7371289446717170317
+    second: tile-set_basic_terrain_completo_59
+  - first:
+      213: 5718257877886137795
+    second: tile-set_basic_terrain_completo_60
+  - first:
+      213: 7726464812363700605
+    second: tile-set_basic_terrain_completo_61
+  - first:
+      213: -8017306393721841543
+    second: tile-set_basic_terrain_completo_62
+  - first:
+      213: 7360921611597580389
+    second: tile-set_basic_terrain_completo_63
+  - first:
+      213: 625811009400766065
+    second: tile-set_basic_terrain_completo_64
+  - first:
+      213: 4495543346470236007
+    second: tile-set_basic_terrain_completo_65
+  - first:
+      213: -770887192449149874
+    second: tile-set_basic_terrain_completo_66
+  - first:
+      213: -3758459041108630424
+    second: tile-set_basic_terrain_completo_67
+  - first:
+      213: 3119378944007077361
+    second: tile-set_basic_terrain_completo_68
+  - first:
+      213: 5207661329067301955
+    second: tile-set_basic_terrain_completo_69
+  - first:
+      213: -6814561221596203245
+    second: tile-set_basic_terrain_completo_70
+  - first:
+      213: -4659130688716175312
+    second: tile-set_basic_terrain_completo_71
+  - first:
+      213: -3877659495303081389
+    second: tile-set_basic_terrain_completo_72
+  - first:
+      213: -5346010437045253404
+    second: tile-set_basic_terrain_completo_73
+  - first:
+      213: -6482008938154596371
+    second: tile-set_basic_terrain_completo_74
+  - first:
+      213: 6616381403090029768
+    second: tile-set_basic_terrain_completo_75
+  - first:
+      213: -7823421825155300307
+    second: tile-set_basic_terrain_completo_76
+  - first:
+      213: -101961432216907999
+    second: tile-set_basic_terrain_completo_77
+  - first:
+      213: -2719409926269714529
+    second: tile-set_basic_terrain_completo_78
+  - first:
+      213: -624282622589466755
+    second: tile-set_basic_terrain_completo_79
+  - first:
+      213: -4653526124013321589
+    second: tile-set_basic_terrain_completo_80
+  - first:
+      213: 1795820464991749297
+    second: tile-set_basic_terrain_completo_81
+  - first:
+      213: 9015313177755813833
+    second: tile-set_basic_terrain_completo_82
+  - first:
+      213: -2287357239544632285
+    second: tile-set_basic_terrain_completo_83
+  - first:
+      213: -2561861333526543290
+    second: tile-set_basic_terrain_completo_84
+  - first:
+      213: -5494329620124059594
+    second: tile-set_basic_terrain_completo_85
+  - first:
+      213: 6849095424019371049
+    second: tile-set_basic_terrain_completo_86
+  - first:
+      213: 1409892804048452874
+    second: tile-set_basic_terrain_completo_87
+  - first:
+      213: 8738571342460465567
+    second: tile-set_basic_terrain_completo_88
+  - first:
+      213: -2498556821837201953
+    second: tile-set_basic_terrain_completo_89
+  - first:
+      213: 3871134386173326726
+    second: tile-set_basic_terrain_completo_90
+  - first:
+      213: 7662922411510296835
+    second: tile-set_basic_terrain_completo_91
+  - first:
+      213: 8863574303509517816
+    second: tile-set_basic_terrain_completo_92
+  - first:
+      213: -8907791883694027310
+    second: tile-set_basic_terrain_completo_93
+  - first:
+      213: -6864984532922746192
+    second: tile-set_basic_terrain_completo_94
+  - first:
+      213: -892854523094066852
+    second: tile-set_basic_terrain_completo_95
+  - first:
+      213: -1981483276192050419
+    second: tile-set_basic_terrain_completo_96
+  - first:
+      213: 3919962112138992059
+    second: tile-set_basic_terrain_completo_97
+  - first:
+      213: -2201881810660730034
+    second: tile-set_basic_terrain_completo_98
+  - first:
+      213: -7508950870472799480
+    second: tile-set_basic_terrain_completo_99
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96b74cd9f961dd8c0800000000000000
+      internalID: -3972994421468398743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0424d4485dc8dee90800000000000000
+      internalID: -6994779797560933824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ed20ad3c67a69b0800000000000000
+      internalID: -5086122245613232606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1695bc856ccdbf40800000000000000
+      internalID: 5745973436119094811
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9411b25c3bb7ed0800000000000000
+      internalID: -2415139115741656642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 094390973fadbbe40800000000000000
+      internalID: 5673368894845826192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_6
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65ddfb1e220eaae70800000000000000
+      internalID: 9127354035240688982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_7
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 910eaa566c3f96df0800000000000000
+      internalID: -186349876124393447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_8
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a8a947a25fbc41060800000000000000
+      internalID: 6923382781015005834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c944b72f2100eb0800000000000000
+      internalID: -4755780373843764142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_10
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a16d634cbee5ba040800000000000000
+      internalID: 4659922606147163674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_11
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b88ff1c119138c20800000000000000
+      internalID: 3207434923677812916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_12
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2864be482ce46030800000000000000
+      internalID: 3487171669354899503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_13
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbeb15945afceb3e0800000000000000
+      internalID: -2035961672718238020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc5af647112fbc210800000000000000
+      internalID: 1354442269736805837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_15
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51d4070c933d7a6a0800000000000000
+      internalID: -6437944897307652843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_16
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 211c56fa1e6973460800000000000000
+      internalID: 7221406423566369042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9b5b0df96158ed0800000000000000
+      internalID: -2412497149729850885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_18
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ffc2b7e987904740800000000000000
+      internalID: 5134270193755934709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_19
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24c80af47d2d51f50800000000000000
+      internalID: 6851614230309801026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9f2a4d30cd1bd70800000000000000
+      internalID: 9057262234629241272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7119e9b31833493e0800000000000000
+      internalID: -2047955300402687721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d26c550618d6d1f80800000000000000
+      internalID: -8134224949526804947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ace8c908fb97d870800000000000000
+      internalID: 8707599894162500771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile-set_basic_terrain_completo_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39875fc6d62929be0800000000000000
+      internalID: -1471953129519613805
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

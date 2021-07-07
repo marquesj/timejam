@@ -13,12 +13,22 @@ public class DestructibleTiles : MonoBehaviour
     public Tilemap destructibleTilemap;
     public LayerMask layermask;
     private List<(UnityEngine.Vector3Int, float)> cells = new List<(UnityEngine.Vector3Int, float)>();
+
+    private List<UnityEngine.Vector3Int> destructibleTiles = new List<UnityEngine.Vector3Int>();
+
     // Start is called before the first frame update
     void Start()
     {
         destructibleTilemap = GetComponent<Tilemap>();
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
+
+        foreach (UnityEngine.Vector3Int position in destructibleTilemap.cellBounds.allPositionsWithin){
+            TileBase tile = destructibleTilemap.GetTile(position);
+                if (tile != null) {
+                    destructibleTiles.Add(position);
+            }
+        }
     }
     private void OnTriggerEnter2D(Collider2D other) {
 
@@ -27,19 +37,18 @@ public class DestructibleTiles : MonoBehaviour
             UnityEngine.Vector3 hitPosition = UnityEngine.Vector3.zero;
             UnityEngine.Vector3 otherVelocity = other.gameObject.GetComponent<Rigidbody2D>().velocity;
 
-            hitPosition.x = other.transform.position.x + 0.1f * otherVelocity.x; // add bias to enter the grid cell where the tile is
-            hitPosition.y = other.transform.position.y + 0.1f * otherVelocity.y;
+            hitPosition.x = other.transform.position.x + 0.01f * otherVelocity.x; // add bias to enter the grid cell where the tile is
+            hitPosition.y = other.transform.position.y;// + 0.01f * otherVelocity.y;
 
             UnityEngine.Vector3Int cell = destructibleTilemap.WorldToCell(hitPosition);
 
-            destructibleTilemap.SetTile(cell, null);
+            foreach(UnityEngine.Vector3Int position in destructibleTiles) {
+                    if(cell == position)
+                        destructibleTilemap.SetTile(cell, null);
+            }
 
             cells.Add((cell, Time.time));
         }
-    }
-
-    private void RestoreTile(UnityEngine.Vector3Int  cell) {
-        destructibleTilemap.SetTile(cell, tileBase);
     }
 
     private void GoBack(float time) {
@@ -57,8 +66,11 @@ public class DestructibleTiles : MonoBehaviour
         for(int i = 0; i < cells.Count; i++) {
             if(time < cells[i].Item2)
             {
-                destructibleTilemap.SetTile(cells[i].Item1, tileBase);
-                
+
+                foreach(UnityEngine.Vector3Int position in destructibleTiles) {
+                    if(cells[i].Item1 == position && destructibleTilemap.GetTile(cells[i].Item1) == null)
+                        destructibleTilemap.SetTile(cells[i].Item1, tileBase);
+                }              
             }
             else
             {
