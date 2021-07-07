@@ -5,9 +5,9 @@ using UnityEngine;
 public class InputSimulator : InputGenerator
 {
     public TimeEvents timeEvents;
-    private float timePrecision = 0.1f;
+    private float timePrecision = .1f;
 
-    private int actionIndex = 0;
+    [SerializeField]private int actionIndex = 0;
 
     private float positionalErrorFixThreshold = 0.1f;
     private CharacterControl characterControl;
@@ -25,6 +25,11 @@ public class InputSimulator : InputGenerator
         if(Mathf.Abs(delay) <= timePrecision)
         {
             StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex], actionIndex));
+            actionIndex++;
+        }
+        else if( Time.time - timeOffset > inputLog.inputs[actionIndex].time)
+        {
+            Debug.Log("Missed input simulaion!",gameObject);
             actionIndex++;
         }
         characterControl = GetComponent<CharacterControl>();

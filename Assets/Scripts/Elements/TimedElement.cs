@@ -11,16 +11,14 @@ public class TimedElement : MonoBehaviour
     public List<GameObject> activateObjectOnDestroy = new List<GameObject>();
     private Collider2D[] colliders;
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
-    private float precision = 0.1f;
+    private float precision = .5f;
     private float destructedTime = -1;
     private float createTime;
     private bool destroyed = false;
     private Vector3 creationPos;
     public bool startDisabled = false;
     private void Awake() {
-        timeEvents.GoBackInTimeEvent += GoBack;
-        timeEvents.SaveStateEvent += SavePosition;
-        timeEvents.PreviewBackInTimeEvent += PreviewPosition;
+
         createTime = Time.time;
         colliders = GetComponents<Collider2D>();
         creationPos = transform.position;
@@ -30,6 +28,11 @@ public class TimedElement : MonoBehaviour
             gameObject.SetActive(false);
         }
 //        Debug.Log("HI");
+    }
+    private void OnEnable() {
+        timeEvents.GoBackInTimeEvent += GoBack;
+        timeEvents.SaveStateEvent += SavePosition;
+        timeEvents.PreviewBackInTimeEvent += PreviewPosition;
     }
     public void SetTimeOffset(float n)
     {
@@ -77,7 +80,7 @@ public class TimedElement : MonoBehaviour
             transform.position = Vector3.Lerp(creationPos, positions[0].Item2, percent);
         }
 
-        for(int i = 0; i < positions.Count; i++)
+        for(int i = 0; i < positions.Count-1; i++)
         {
             if( positions[i].Item1 < time && positions[i+1].Item1 >= time)
             {
@@ -139,7 +142,7 @@ public class TimedElement : MonoBehaviour
         }
     }
 
-    private void OnDestroy() {
+    private void OnDisable() {
         timeEvents.GoBackInTimeEvent -= GoBack;
         timeEvents.SaveStateEvent -= SavePosition; 
         timeEvents.PreviewBackInTimeEvent -= PreviewPosition;
