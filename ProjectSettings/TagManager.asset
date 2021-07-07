@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - MovingPlatform
+  - GenerateShadowCasters
   layers:
   - Default
   - TransparentFX
@@ -39,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Behind
+    uniqueID: 4211550695
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
