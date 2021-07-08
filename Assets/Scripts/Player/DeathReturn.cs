@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(InputRead))]
 public class DeathReturn : MonoBehaviour
 {
+    public GameObject cursorPrefab;
     public TimeEvents timeEvents;
     public InputLog inputLog;
     private Health health;
@@ -43,9 +44,9 @@ public class DeathReturn : MonoBehaviour
         active = true;
         Time.timeScale = 0;
         selected = 0;
-        nextSelf = Instantiate(playerSpawner.playerPrefab,transform.position,Quaternion.identity);
-        nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
-        nextSelf.GetComponentInChildren<Animator>().SetTrigger("Die");
+        nextSelf = Instantiate(cursorPrefab,transform.position,transform.rotation);
+       /* nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
+        nextSelf.GetComponentInChildren<Animator>().SetTrigger("Die");*/
         SaveStartChangeSelectedRoutine();
     }
 

@@ -79,6 +79,8 @@ public class CharacterControl : MonoBehaviour
         checkGround.landedEvent += StopBounce;
         checkGround.landedEvent += CheckSlide;
         checkWall.walledEvent += StopBounce;
+        checkWall.walledEvent += SetWallDir;
+        checkWall.walledEvent += StopSlide;
 
         physicsMaterial2D = rb.sharedMaterial;
     }    
@@ -114,6 +116,15 @@ public class CharacterControl : MonoBehaviour
             if(sliding)
                 StopSlide();
         }
+
+        if(!checkGround.grounded && !checkWall.walled)
+        {
+            if(bufferedMovementInput == 1)
+                SetRotation(0);
+            if(bufferedMovementInput == -1)
+                SetRotation(180);
+        }
+
     }
 
     private void BufferMovement(float dir)
@@ -340,6 +351,10 @@ public class CharacterControl : MonoBehaviour
         if(bufferedMovementInput == -1)
             SetRotation(180);
     }
+    private void StopSlide(bool aux)
+    {
+        StopSlide();
+    }
     private void ApplySlide()
     {
         
@@ -389,5 +404,13 @@ public class CharacterControl : MonoBehaviour
         }
         
         return true;
+    }
+
+    private void SetWallDir(bool isLeft)
+    {
+        if(isLeft)
+            SetRotation(0);
+        else
+            SetRotation(180);
     }
 }

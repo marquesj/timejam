@@ -300,6 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf017fb3c66702c4894bfc4c98ba8ab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorPrefab: {fileID: 3622280588504095495, guid: a71ea79567cbdc04aa04c03dca50d29d, type: 3}
   timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
   navigateSound: {fileID: 8469498637866214287}
