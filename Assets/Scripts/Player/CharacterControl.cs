@@ -39,6 +39,7 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction WallJumpEvent;
     [HideInInspector]public event UnityAction SlideEvent;
     [HideInInspector]public event UnityAction StopSlideEvent;
+    [HideInInspector]public event UnityAction BounceEvent;
     
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
@@ -242,6 +243,9 @@ public class CharacterControl : MonoBehaviour
     {
         if(inputGenerator.timeOffset != 0)
             return;
+
+        if(BounceEvent!=null)
+            BounceEvent.Invoke();
 
         ApplyBounce(bounciness);
         

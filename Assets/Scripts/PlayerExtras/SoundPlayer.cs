@@ -11,6 +11,8 @@ public class SoundPlayer : MonoBehaviour
     public AudioSource slideSound;
     public AudioSource walkSound;
     public AudioSource shootSound;
+    public AudioSource shootdownSound;
+    public AudioSource wallSlideSound;
     //#################################################
     private CharacterControl characterControl;
     private ShootController shootController;
@@ -32,6 +34,7 @@ public class SoundPlayer : MonoBehaviour
         characterControl.checkGround.landedEvent += LandEvent;
         characterControl.checkWall.walledEvent += WallSlideEvent;
         characterControl.SlideEvent += SlideEvent;
+        characterControl.BounceEvent += BounceEvent;
 
         timeEvents.StopTimeEvent += StopTime;
         timeEvents.ContinueTimeEvent += ContinueTime;
@@ -86,7 +89,7 @@ public class SoundPlayer : MonoBehaviour
     }
     private void WallSlideEvent(bool aux) 
     {
-      // slideSound.Play();
+      wallSlideSound.Play();
     }
     private void SlideEvent() 
     {
@@ -99,5 +102,9 @@ public class SoundPlayer : MonoBehaviour
     private void StopWalkingEvent() 
     {
        walkSound.Stop();
+    }
+    private void BounceEvent()
+    {
+      shootdownSound.Play();
     }
 }
