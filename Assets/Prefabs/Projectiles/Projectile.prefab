@@ -231,6 +231,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1216
   damage: 1
+  imuneTags:
+  - DestructibleTiles
   audioSource: {fileID: 8540803337407258992}
 --- !u!114 &8380723098533039198
 MonoBehaviour:
