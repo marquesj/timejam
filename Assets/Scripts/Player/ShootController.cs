@@ -5,6 +5,7 @@ using UnityEngine.Events;
 public class ShootController : MonoBehaviour
 {
     [HideInInspector]public event UnityAction ShootEvent;
+    [HideInInspector]public event UnityAction ShootBounceEvent;
     public InputGenerator inputGenerator;
     
     public float shootCooldown = 0.2f;
@@ -53,8 +54,6 @@ public class ShootController : MonoBehaviour
         bool automaticRestore = true;
         if(canShoot && Time.timeScale > 0)
         {
-            if(ShootEvent!=null)
-                ShootEvent.Invoke();
 
             weapon.Shoot(inputGenerator.timeOffset);
             canShoot = false;
@@ -66,6 +65,13 @@ public class ShootController : MonoBehaviour
                 {
                     characterControl.Bounce(shootDownImpulse);
                     automaticRestore = false;
+                    if(ShootBounceEvent!=null)
+                        ShootBounceEvent.Invoke();
+                }else
+                {
+
+                    if(ShootEvent!=null)
+                        ShootEvent.Invoke();
                 }
 
             }

@@ -7,6 +7,7 @@ public class MusicManager : MonoBehaviour
     public TimeEvents timeEvents; 
     public AudioSource normalSong;
     public AudioSource slowSong;
+    public AudioSource comebackSound;
     void Start()
     {
 
@@ -52,5 +53,7 @@ public class MusicManager : MonoBehaviour
     {
         slowSong.Play();
         normalSong.Play();
+
+        comebackSound.Play();
     }
 }
