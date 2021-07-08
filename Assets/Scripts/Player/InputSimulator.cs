@@ -56,6 +56,19 @@ public class InputSimulator : InputGenerator
 
     private void SimulateAction(InputNode node, int nodeIndex)
     {
+            if(node.hasPos)
+            {
+                Vector3 previousPos = transform.position;
+                transform.position = node.pos;
+                Vector3 positionalError = transform.position - previousPos;
+                if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
+                {
+                    // inputLog.inputs[nodeIndex-1].pos += positionalError;
+                     
+                    Debug.Log("Error");
+
+                }
+            }
             switch(node.type)
             {
                 case InputActionType.Jump:
@@ -80,19 +93,6 @@ public class InputSimulator : InputGenerator
                     break;
             }
 
-            if(node.hasPos)
-            {
-                Vector3 previousPos = transform.position;
-                transform.position = node.pos;
-                Vector3 positionalError = transform.position - previousPos;
-                if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
-                {
-                    // inputLog.inputs[nodeIndex-1].pos += positionalError;
-                     
-                    Debug.Log("Error");
-
-                }
-            }
     }
     protected override void Jump()
     {
