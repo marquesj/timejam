@@ -16,6 +16,11 @@ public class DeathReturn : MonoBehaviour
     private GameObject nextSelf;
     private Coroutine changeSelectedRoutine;
     private bool midShift = false;
+
+    public AudioSource navigateSound;
+
+    public AudioSource dieSound;
+
     
     private void Awake() 
     {
@@ -27,6 +32,7 @@ public class DeathReturn : MonoBehaviour
     }
     private void Die()
     {
+        dieSound.Play();
         timeEvents.RaiseStopTimeEvent();
         if(playerSpawner.clones.Count == 0)
         {
@@ -77,6 +83,7 @@ public class DeathReturn : MonoBehaviour
 
     private IEnumerator ChangeSelected(int index)
     {
+        navigateSound.Play();
         midShift = true;
         float percent = 0;
         float startTime = Time.realtimeSinceStartup;
