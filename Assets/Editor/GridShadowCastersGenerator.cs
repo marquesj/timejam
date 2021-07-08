@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEditor;
 using System.Collections.Generic;
-
+/*
 public class GridShadowCastersGenerator : MonoBehaviour {
 
     public string colliderTag = "GenerateShadowCasters";
@@ -17,7 +17,7 @@ public class GridShadowCastersGenerator : MonoBehaviour {
     public GameObject[] Generate() {
         Debug.Log("### Generating ShadowCasters ###");
 
-        /* get the bounds of the area to check */
+        /* get the bounds of the area to check 
 
         // collect colliders specified by tag
 
@@ -52,7 +52,7 @@ public class GridShadowCastersGenerator : MonoBehaviour {
         Debug.Log("Bounds: downLeft = (" + bottomLeft.x + ", " + bottomLeft.y + ")");
         Debug.Log("Bounds: topRight = (" + topRight.x + ", " + topRight.y + ")");
 
-        /* check the area for collisions */
+        /* check the area for collisions 
 
         var countX = Mathf.RoundToInt((topRight.x - bottomLeft.x)/ratio);
         var countY = Mathf.RoundToInt((topRight.y - bottomLeft.y)/ratio);
@@ -66,7 +66,7 @@ public class GridShadowCastersGenerator : MonoBehaviour {
             }
         }
 
-        /* instantiate shadow casters, merging single tiles horizontaly */
+        /* instantiate shadow casters, merging single tiles horizontaly 
 
         // removing old shadow casters! careful!
 
@@ -106,7 +106,7 @@ public class GridShadowCastersGenerator : MonoBehaviour {
             }
         }
 
-        /* merge vertically if they have the same dimensions */
+        /* merge vertically if they have the same dimensions 
 
         for (int y = 0; y < countY - 1; y++) { // -1 for skipping last row
             for (int x = 0; x < countX; x++) {
@@ -135,7 +135,7 @@ public class GridShadowCastersGenerator : MonoBehaviour {
 
         Debug.Log("ShadowCasters generated.");
 
-        /* return shadow casters */
+        /* return shadow casters 
 
         var shadowCasterInstances = new List<GameObject>();
 
@@ -195,3 +195,4 @@ public class GridShadowCastersGeneratorEditor : Editor {
         }
     }
 }
+*/
