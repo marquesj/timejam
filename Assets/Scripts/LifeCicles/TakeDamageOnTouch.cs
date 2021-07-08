@@ -7,6 +7,7 @@ public class TakeDamageOnTouch : MonoBehaviour
 {
     public LayerMask layermask;
     public float damage = 1;
+    public List<string> imuneTags;
     private Health health;
     public AudioSource audioSource;
     private void Awake() 
@@ -18,6 +19,11 @@ public class TakeDamageOnTouch : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) 
     {
       //  Debug.Log("hgeuh");
+        foreach(string t in imuneTags)
+        {
+            if(other.gameObject.tag == t)
+                return;
+        }
         
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
@@ -28,7 +34,12 @@ public class TakeDamageOnTouch : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other) 
     {
-    //    Debug.Log("hgeuh");
+    
+        foreach(string t in imuneTags)
+        {
+            if(other.gameObject.tag == t)
+                return;
+        }
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
             health.Damage(damage);
