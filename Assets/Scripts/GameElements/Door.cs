@@ -7,9 +7,11 @@ public class Door : MonoBehaviour
     public BoxCollider2D door;
     public BoxCollider2D entry;
     private Animator animator;
+    private AudioSource openSound;
     void Start()
     {
         animator = GetComponent<Animator>();
+        openSound = GetComponent<AudioSource>();
         entry.enabled = false;
        
     }
@@ -23,6 +25,7 @@ public class Door : MonoBehaviour
     [ContextMenu("Open")]
     private void Open()
     {
+        openSound.Play();
         animator.SetTrigger("Open");
         door.enabled = false;
         entry.enabled = true;
