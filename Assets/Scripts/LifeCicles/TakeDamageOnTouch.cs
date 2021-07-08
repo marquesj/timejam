@@ -21,8 +21,10 @@ public class TakeDamageOnTouch : MonoBehaviour
       //  Debug.Log("hgeuh");
         foreach(string t in imuneTags)
         {
-            if(other.gameObject.tag == t)
+            if(other.gameObject.tag == t) {
                 return;
+            }
+                
         }
         
         if( layermask == (layermask | (1 << other.gameObject.layer)))

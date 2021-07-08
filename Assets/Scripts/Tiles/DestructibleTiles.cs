@@ -41,14 +41,34 @@ public class DestructibleTiles : MonoBehaviour
             UnityEngine.Vector3 hitPosition = UnityEngine.Vector3.zero;
             UnityEngine.Vector3 otherVelocity = other.gameObject.GetComponent<Rigidbody2D>().velocity;
 
-            hitPosition.x = other.transform.position.x + 0.01f * otherVelocity.x; // add bias to enter the grid cell where the tile is
-            hitPosition.y = other.transform.position.y + 0.01f * otherVelocity.y;
+            hitPosition.x = other.transform.position.x + 0.025f * otherVelocity.x;// add bias to enter the grid cell where the tile is
+            hitPosition.y = other.transform.position.y + 0.025f * otherVelocity.y;
 
-            UnityEngine.Vector3Int cell = destructibleTilemap.WorldToCell(hitPosition);
+            UnityEngine.Vector3Int cell = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, 0.07f, 0f));
+
+            UnityEngine.Vector3Int cell2 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, -0.07f, 0f));
+
+            UnityEngine.Vector3Int cell3 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, 0.07f, 0f));
+
+            UnityEngine.Vector3Int cell4 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, -0.07f, 0f));
 
             foreach(UnityEngine.Vector3Int position in destructibleTiles) {
-                    if(cell == position)
+                    if(cell == position && destructibleTilemap.GetTile(cell) != null) {
                         destructibleTilemap.SetTile(cell, null);
+                        other.GetComponent<Health>().Damage(1);
+                    }
+                    if(cell2 == position && destructibleTilemap.GetTile(cell2) != null) {
+                        destructibleTilemap.SetTile(cell2, null);
+                        other.GetComponent<Health>().Damage(1);
+                    }
+                    if(cell3 == position && destructibleTilemap.GetTile(cell3) != null) {
+                        destructibleTilemap.SetTile(cell3, null);
+                        other.GetComponent<Health>().Damage(1);
+                    }
+                    if(cell4 == position && destructibleTilemap.GetTile(cell4) != null) {
+                        destructibleTilemap.SetTile(cell4, null);
+                        other.GetComponent<Health>().Damage(1);
+                    }
             }
 
             cells.Add((cell, Time.time));
@@ -78,7 +98,8 @@ public class DestructibleTiles : MonoBehaviour
             }
             else
             {
-                destructibleTilemap.SetTile(cells[i].Item1, null);
+                if(destructibleTilemap.GetTile(cells[i].Item1) != null)
+                    destructibleTilemap.SetTile(cells[i].Item1, null);
             }
             
         }
