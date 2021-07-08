@@ -16,7 +16,7 @@ public class CameraManager : MonoBehaviour
         if(spawner == null && aux!=null)
             spawner = aux.GetComponent<PlayerSpawner>();
         if(spawner == null)
-            target = GameObject.Find("Player");
+            target = GameObject.FindGameObjectWithTag("Player");
     }   
 
     // Update is called once per frame

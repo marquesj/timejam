@@ -20,6 +20,10 @@ public class DestructibleTiles : MonoBehaviour
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
     }
+    private void OnDestroy() {
+        timeEvents.GoBackInTimeEvent -= GoBack;
+        timeEvents.PreviewBackInTimeEvent -= PreviewPosition;
+    }
     private void OnTriggerEnter2D(Collider2D other) {
 
         if( layermask == (layermask | (1 << other.gameObject.layer))) {
