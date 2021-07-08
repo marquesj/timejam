@@ -5,9 +5,9 @@ using UnityEngine;
 public class InputSimulator : InputGenerator
 {
     public TimeEvents timeEvents;
-    private float timePrecision = 0.1f;
+    private float timePrecision = .1f;
 
-    private int actionIndex = 0;
+    [SerializeField]private int actionIndex = 0;
 
     private float positionalErrorFixThreshold = 0.1f;
     private CharacterControl characterControl;
@@ -25,6 +25,11 @@ public class InputSimulator : InputGenerator
         if(Mathf.Abs(delay) <= timePrecision)
         {
             StartCoroutine(QueueInputSim(inputLog.inputs[actionIndex].time , inputLog.inputs[actionIndex], actionIndex));
+            actionIndex++;
+        }
+        else if( Time.time - timeOffset > inputLog.inputs[actionIndex].time)
+        {
+            Debug.Log("Missed input simulaion!",gameObject);
             actionIndex++;
         }
         characterControl = GetComponent<CharacterControl>();
@@ -51,6 +56,19 @@ public class InputSimulator : InputGenerator
 
     private void SimulateAction(InputNode node, int nodeIndex)
     {
+            if(node.hasPos)
+            {
+                Vector3 previousPos = transform.position;
+                transform.position = node.pos;
+                Vector3 positionalError = transform.position - previousPos;
+                if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
+                {
+                    // inputLog.inputs[nodeIndex-1].pos += positionalError;
+                     
+                    Debug.Log("Error");
+
+                }
+            }
             switch(node.type)
             {
                 case InputActionType.Jump:
@@ -75,19 +93,6 @@ public class InputSimulator : InputGenerator
                     break;
             }
 
-            if(node.hasPos)
-            {
-                Vector3 previousPos = transform.position;
-                transform.position = node.pos;
-                Vector3 positionalError = transform.position - previousPos;
-                if(positionalError.magnitude > positionalErrorFixThreshold && nodeIndex != 0)
-                {
-                    // inputLog.inputs[nodeIndex-1].pos += positionalError;
-                     
-                    Debug.Log("Error");
-
-                }
-            }
     }
     protected override void Jump()
     {

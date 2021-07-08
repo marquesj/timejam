@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(InputRead))]
 public class DeathReturn : MonoBehaviour
 {
+    public GameObject cursorPrefab;
     public TimeEvents timeEvents;
     public InputLog inputLog;
     private Health health;
@@ -16,6 +17,11 @@ public class DeathReturn : MonoBehaviour
     private GameObject nextSelf;
     private Coroutine changeSelectedRoutine;
     private bool midShift = false;
+
+    public AudioSource navigateSound;
+
+    public AudioSource dieSound;
+
     
     private void Awake() 
     {
@@ -27,6 +33,7 @@ public class DeathReturn : MonoBehaviour
     }
     private void Die()
     {
+        dieSound.Play();
         timeEvents.RaiseStopTimeEvent();
         if(playerSpawner.clones.Count == 0)
         {
@@ -37,8 +44,9 @@ public class DeathReturn : MonoBehaviour
         active = true;
         Time.timeScale = 0;
         selected = 0;
-        nextSelf = Instantiate(playerSpawner.playerPrefab,transform.position,Quaternion.identity);
-        nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
+        nextSelf = Instantiate(cursorPrefab,transform.position,transform.rotation);
+       /* nextSelf.GetComponent<DeathReturn>().SetSpawner(playerSpawner);
+        nextSelf.GetComponentInChildren<Animator>().SetTrigger("Die");*/
         SaveStartChangeSelectedRoutine();
     }
 
@@ -76,6 +84,7 @@ public class DeathReturn : MonoBehaviour
 
     private IEnumerator ChangeSelected(int index)
     {
+        navigateSound.Play();
         midShift = true;
         float percent = 0;
         float startTime = Time.realtimeSinceStartup;

@@ -16,7 +16,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.52
     min: 0
     max: 1
 --- !u!114 &-3712866151573734080
@@ -35,7 +35,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   intensity:
     m_OverrideState: 1
-    m_Value: 0.65
+    m_Value: 0.36
     min: -1
     max: 1
   xMultiplier:
@@ -165,7 +165,7 @@ MonoBehaviour:
     max: 100
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.589, g: 0.5949057, b: 1, a: 1}
+    m_Value: {r: 0.70776075, g: 0.7111709, b: 0.8867924, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1

@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 {
     //public Leaderboard leaderboard;
     public void PlayGame() {
-        SceneManager.LoadScene("test");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
     public void LoadGame() {

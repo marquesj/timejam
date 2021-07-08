@@ -13,11 +13,11 @@ public class InputRead : InputGenerator
     void Awake()
     {
         playerControls = new Controls();
+        playerControls.player.Horizontal.performed += dir => BufferMovementHorizontal(dir.ReadValue<float>());
+        playerControls.player.Vertical.performed += dir => BufferMovementVertical(dir.ReadValue<float>());
         playerControls.player.Jump.performed += _ => Jump();
         playerControls.player.JumpRelease.performed += _ => JumpRelease();
         playerControls.player.Shoot.performed += _ => Shoot();
-        playerControls.player.Horizontal.performed += dir => BufferMovementHorizontal(dir.ReadValue<float>());
-        playerControls.player.Vertical.performed += dir => BufferMovementVertical(dir.ReadValue<float>());
         playerControls.player.SlowTime.performed += _ => SlowTime();
         playerControls.player.RestoreTime.performed += _ => RestoreTime();
         playerControls.player.Restart.performed += _ => RestartScene();
@@ -82,7 +82,8 @@ public class InputRead : InputGenerator
 
     private void RestartScene()
     {
-        
-        Scene scene = SceneManager.GetActiveScene(); SceneManager.LoadScene(scene.name);
+        Time.timeScale = 1;
+        Scene scene = SceneManager.GetActiveScene(); 
+        SceneManager.LoadScene(scene.name);
     }
 }

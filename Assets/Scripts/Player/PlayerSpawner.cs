@@ -14,14 +14,32 @@ public class PlayerSpawner : MonoBehaviour
     [HideInInspector]public List<InputSimulator> cloneInputs = new List<InputSimulator>();
     private GameObject player;
     private AudioSource audioSource;
+    private LineRenderer lineRenderer;
     void Start()
     {
         player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
         player.GetComponent<DeathReturn>().SetSpawner(this);
         audioSource = GetComponent<AudioSource>();
+        lineRenderer = GetComponent<LineRenderer>();
         StartCoroutine(SpawnClonesRoutine());
-    }
 
+
+
+
+        for(int i = 0 ; i < lineRenderer.positionCount; i++)
+        {
+            lineRenderer.SetPosition(i, transform.position);
+        }
+        lineRenderer.enabled = false;
+    }
+    private void OnEnable() {
+        timeEvents.StopTimeEvent += DrawLine;
+        timeEvents.ContinueTimeEvent += RemoveLine;
+    }
+    private void OnDisable() {
+        timeEvents.StopTimeEvent -= DrawLine;
+        timeEvents.ContinueTimeEvent -= RemoveLine;
+    }
     private IEnumerator SpawnClonesRoutine()
     {
         timeEvents.RaiseSaveStateEvent();
@@ -70,5 +88,25 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject GetPlayer()
     {
         return player;
+    }
+
+    private void DrawLine()
+    {
+        int i = 0;
+        lineRenderer.enabled = true;
+        foreach(GameObject clone in clones)
+        {
+            lineRenderer.SetPosition(i, clone.transform.position + Vector3.up * 0.2f);
+            i++;
+        }
+    }
+    private void RemoveLine()
+    {
+  
+        for(int i = 0 ; i < lineRenderer.positionCount; i++)
+        {
+            lineRenderer.SetPosition(i, transform.position);
+        }
+        lineRenderer.enabled = false;
     }
 }

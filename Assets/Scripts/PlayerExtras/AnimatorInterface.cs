@@ -8,6 +8,7 @@ public class AnimatorInterface : MonoBehaviour
 {
     private CharacterControl characterControl;
     private ShootController shootController;
+    private Health health;
     private Animator animator;
     private float shotAnimTime = 1f;
     private Coroutine restoreShotRoutine;
@@ -17,6 +18,7 @@ public class AnimatorInterface : MonoBehaviour
         animator = GetComponent<Animator>();
         characterControl = transform.parent.GetComponent<CharacterControl>();
         shootController = transform.parent.GetComponent<ShootController>();
+        health = transform.parent.GetComponent<Health>();
 
     }
     private void Start() {
@@ -25,10 +27,12 @@ public class AnimatorInterface : MonoBehaviour
         characterControl.StartRunningEvent += StartWalkingEvent;
         shootController.ShootEvent += ShootEvent;
         characterControl.JumpEvent += JumpEvent;
+        characterControl.WallJumpEvent += JumpEvent;
         characterControl.checkGround.landedEvent += LandEvent;
         characterControl.SlideEvent += SlideEvent;
         characterControl.StopSlideEvent += StopSlideEvent;
         characterControl.checkWall.walledEvent += ClingEvent;
+        health.DeathEvent += DieEvent;
     }
 
     // Update is called once per frame
@@ -39,11 +43,16 @@ public class AnimatorInterface : MonoBehaviour
         animator.SetFloat("AimDir", characterControl.bufferedVerticalInput);
         animator.SetBool("AimingNeutral",  characterControl.bufferedVerticalInput == 0);
         animator.SetFloat("HorizontalSpeed",  Mathf.Abs(characterControl.rb.velocity.x)/5);
+        animator.SetBool("Ducking",  characterControl.ducking);
+        animator.SetBool("Walled",  characterControl.checkWall.walled);
       /*  animator.SetBool("Slide",  characterControl.sliding);
         animator.SetBool("WallSlide",  characterControl.checkWall.walled && !characterControl.checkGround.grounded);*/
 
     }
-
+    private void DieEvent()
+    {
+        animator.SetTrigger("Die");
+    }
     private void JumpEvent()
     {
         animator.SetTrigger("Jump");
