@@ -110,15 +110,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.b
-      value: 0.4845499
+      value: 0.04947
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.g
-      value: 0.20699996
+      value: 0.6475214
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_SortingOrder
@@ -129,8 +129,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8271358129027913968, guid: 37f787534eed58642a6601ac74938104, type: 3}
     - target: {fileID: 7386570874678979522, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386570874678979522, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_InstanceId
-      value: -111918
+      value: -433888
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4414015657050889916, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
