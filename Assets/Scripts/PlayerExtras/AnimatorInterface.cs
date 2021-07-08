@@ -26,6 +26,7 @@ public class AnimatorInterface : MonoBehaviour
         characterControl.StopRunningEvent += StopWalkingEvent;
         characterControl.StartRunningEvent += StartWalkingEvent;
         shootController.ShootEvent += ShootEvent;
+        shootController.ShootBounceEvent += ShootBounceEvent;
         characterControl.JumpEvent += JumpEvent;
         characterControl.WallJumpEvent += JumpEvent;
         characterControl.checkGround.landedEvent += LandEvent;
@@ -111,5 +112,9 @@ public class AnimatorInterface : MonoBehaviour
     {
         animator.ResetTrigger("StopSlide");
         animator.SetTrigger("StopSlide");
+    }
+    private void ShootBounceEvent()
+    {
+        animator.SetTrigger("ShootBounce");
     }
 }

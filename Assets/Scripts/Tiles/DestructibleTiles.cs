@@ -16,6 +16,8 @@ public class DestructibleTiles : MonoBehaviour
 
     private List<UnityEngine.Vector3Int> destructibleTiles = new List<UnityEngine.Vector3Int>();
 
+    public AudioSource destroySound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,18 +58,26 @@ public class DestructibleTiles : MonoBehaviour
                     if(cell == position && destructibleTilemap.GetTile(cell) != null) {
                         destructibleTilemap.SetTile(cell, null);
                         other.GetComponent<Health>().Damage(1);
+                        if(Time.timeScale != 0)
+                            destroySound.Play();
                     }
                     if(cell2 == position && destructibleTilemap.GetTile(cell2) != null) {
                         destructibleTilemap.SetTile(cell2, null);
                         other.GetComponent<Health>().Damage(1);
+                        if(Time.timeScale != 0)
+                            destroySound.Play();
                     }
                     if(cell3 == position && destructibleTilemap.GetTile(cell3) != null) {
                         destructibleTilemap.SetTile(cell3, null);
                         other.GetComponent<Health>().Damage(1);
+                        if(Time.timeScale != 0)
+                            destroySound.Play();
                     }
                     if(cell4 == position && destructibleTilemap.GetTile(cell4) != null) {
                         destructibleTilemap.SetTile(cell4, null);
                         other.GetComponent<Health>().Damage(1);
+                        if(Time.timeScale != 0)
+                            destroySound.Play();
                     }
             }
 
