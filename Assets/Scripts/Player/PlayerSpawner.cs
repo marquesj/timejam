@@ -23,8 +23,7 @@ public class PlayerSpawner : MonoBehaviour
         lineRenderer = GetComponent<LineRenderer>();
         StartCoroutine(SpawnClonesRoutine());
 
-        timeEvents.StopTimeEvent += DrawLine;
-        timeEvents.ContinueTimeEvent += RemoveLine;
+
 
 
         for(int i = 0 ; i < lineRenderer.positionCount; i++)
@@ -33,7 +32,14 @@ public class PlayerSpawner : MonoBehaviour
         }
         lineRenderer.enabled = false;
     }
-
+    private void OnEnable() {
+        timeEvents.StopTimeEvent += DrawLine;
+        timeEvents.ContinueTimeEvent += RemoveLine;
+    }
+    private void OnDisable() {
+        timeEvents.StopTimeEvent -= DrawLine;
+        timeEvents.ContinueTimeEvent -= RemoveLine;
+    }
     private IEnumerator SpawnClonesRoutine()
     {
         timeEvents.RaiseSaveStateEvent();

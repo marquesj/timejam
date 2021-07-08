@@ -9,15 +9,25 @@ public class MusicManager : MonoBehaviour
     public AudioSource slowSong;
     void Start()
     {
-        timeEvents.SlowTimeEvent += SlowDownTime;
-        timeEvents.RestoreTimeEvent += RestoreTime;
-        timeEvents.StopTimeEvent += StopTime;
-        timeEvents.ContinueTimeEvent += ContinueTime;
+
 
         slowSong.volume = 0;
         slowSong.pitch= 0.444f;
     }
-
+    private void OnEnable() 
+    {
+        timeEvents.SlowTimeEvent += SlowDownTime;
+        timeEvents.RestoreTimeEvent += RestoreTime;
+        timeEvents.StopTimeEvent += StopTime;
+        timeEvents.ContinueTimeEvent += ContinueTime;
+    }    
+    private void OnDisable() 
+    {
+        timeEvents.SlowTimeEvent -= SlowDownTime;
+        timeEvents.RestoreTimeEvent -= RestoreTime;
+        timeEvents.StopTimeEvent -= StopTime;
+        timeEvents.ContinueTimeEvent -= ContinueTime;    
+    }
 
     private void SlowDownTime()
     {

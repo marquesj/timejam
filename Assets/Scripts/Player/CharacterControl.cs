@@ -56,6 +56,8 @@ public class CharacterControl : MonoBehaviour
     private BoxCollider2D boxCollider2D;
 
     public bool queuedGetUp = false;
+
+    private PhysicsMaterial2D physicsMaterial2D;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
@@ -76,6 +78,8 @@ public class CharacterControl : MonoBehaviour
         checkGround.landedEvent += StopBounce;
         checkGround.landedEvent += CheckSlide;
         checkWall.walledEvent += StopBounce;
+
+        physicsMaterial2D = rb.sharedMaterial;
     }    
 
     private void FixedUpdate() {
@@ -106,6 +110,8 @@ public class CharacterControl : MonoBehaviour
         if(!checkGround.grounded && checkWall.walled)
         {
             WallSlide();
+            if(sliding)
+                StopSlide();
         }
     }
 
@@ -148,6 +154,8 @@ public class CharacterControl : MonoBehaviour
 
     private void Jump()
     {
+        if(sliding)
+            StopSlide();
         if((checkGround.grounded || checkWall.walled))
         {
             Vector2 dir = jumpForce * Vector2.up;
@@ -200,14 +208,14 @@ public class CharacterControl : MonoBehaviour
 
     private void WallSlide()
     {
-        if(checkWall.isLeft && bufferedMovementInput < 0)
+       /* if(checkWall.isLeft && bufferedMovementInput < 0)
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
         if(!checkWall.isLeft && bufferedMovementInput > 0)
         {
              rb.velocity = new Vector2(0, rb.velocity.y);
-        }
+        }*/
 
         if(!checkWall.GoingDown())
         {
@@ -307,12 +315,17 @@ public class CharacterControl : MonoBehaviour
     }
     private void CheckSlide()
     {
+        if(bufferedMovementInput == 1)
+            SetRotation(0);
+        if(bufferedMovementInput == -1)
+            SetRotation(180);
         sliding = false;
         CheckSlide(bufferedVerticalInput);
     }
 
     private void StopSlide()
     {
+        rb.sharedMaterial = physicsMaterial2D; 
         if(sliding && StopSlideEvent != null)
             StopSlideEvent.Invoke();
         SetDefaultCollider();
@@ -325,6 +338,8 @@ public class CharacterControl : MonoBehaviour
     }
     private void ApplySlide()
     {
+        
+        rb.sharedMaterial = null;
         rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
         SetSlideCollider();
         sliding = true;

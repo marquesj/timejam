@@ -45,8 +45,16 @@ public class PostProcessorInterface : MonoBehaviour
         colorAdjustments.colorFilter.value = Color.white;
         chromaticAberration.intensity.value = 0;
 
+    }
+    private void OnEnable() {
         timeEvents.SlowTimeEvent += ActivateSlowMode;
         timeEvents.RestoreTimeEvent += DeactivateSlowMode;
+        
+    }
+    private void OnDisable() {
+        timeEvents.SlowTimeEvent -= ActivateSlowMode;
+        timeEvents.RestoreTimeEvent -= DeactivateSlowMode;
+        
     }
     void Update()
     {
