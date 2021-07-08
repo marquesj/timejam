@@ -16,6 +16,7 @@ MonoBehaviour:
   timeOffset: 1
   jumpHeld: 0
   timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
+  actionIndex: 0
 --- !u!114 &7212832816922009746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42,6 +43,10 @@ PrefabInstance:
     - target: {fileID: 757061511394070599, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 757061511394070599, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 928327646669947360, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: inputGenerator
@@ -105,15 +110,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.b
-      value: 0.4845499
+      value: 0.04947
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.g
-      value: 0.20699996
+      value: 0.6475214
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_Color.r
-      value: 1
+      value: 0.97
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_SortingOrder
@@ -123,6 +128,14 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 8271358129027913968, guid: 37f787534eed58642a6601ac74938104, type: 3}
+    - target: {fileID: 7386570874678979522, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7386570874678979522, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
+      propertyPath: m_InstanceId
+      value: -433888
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4414015657050889916, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
     - {fileID: 5266592118577542966, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}

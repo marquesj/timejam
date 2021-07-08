@@ -10,6 +10,8 @@ public class PlayerSpawner : MonoBehaviour
     public GameObject playerClonePrefab;
     public float timePeriod = .3f;
     private int currentOffset = 0;
+
+    public ParticleSystem explosionParticles;
     public List<GameObject> clones = new List<GameObject>();
     [HideInInspector]public List<InputSimulator> cloneInputs = new List<InputSimulator>();
     private GameObject player;
@@ -58,6 +60,8 @@ public class PlayerSpawner : MonoBehaviour
             timeEvents.RaiseSaveStateEvent();
 
             audioSource.Play();
+            if(explosionParticles!=null)
+                explosionParticles.Play();
         }
 
     }
