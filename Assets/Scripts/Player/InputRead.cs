@@ -7,7 +7,7 @@ public class InputRead : InputGenerator
 {
     [HideInInspector]public event UnityAction SlowTimeEvent;
     [HideInInspector]public event UnityAction RestoreTimeEvent;
-    
+    [HideInInspector]public event UnityAction PauseEvent;
     private Controls playerControls;
 
     void Awake()
@@ -21,6 +21,7 @@ public class InputRead : InputGenerator
         playerControls.player.SlowTime.performed += _ => SlowTime();
         playerControls.player.RestoreTime.performed += _ => RestoreTime();
         playerControls.player.Restart.performed += _ => RestartScene();
+        playerControls.player.Pause.performed += _ => PauseScene();
         timeOffset = 0;
     }
 
@@ -85,5 +86,10 @@ public class InputRead : InputGenerator
         Time.timeScale = 1;
         Scene scene = SceneManager.GetActiveScene(); 
         SceneManager.LoadScene(scene.name);
+    }
+
+    private void PauseScene()
+    {
+        PauseEvent.Invoke();
     }
 }

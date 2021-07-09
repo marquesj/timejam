@@ -3,25 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 public class Pausemenu : MonoBehaviour
 {
+    public InputRead inputRead;
     public static bool GameISPaused = false;
     public GameObject pauseMenuUI;
+    [HideInInspector]public event UnityAction PauseEvent;
 
     // Update is called once per frame
-    void Update()
+
+    void Start()
     {
-        
-        if (Input.GetKeyDown(KeyCode.Escape)) {
-                UnityEngine.Debug.Log("escape");
-            if (GameISPaused) {
+        inputRead.PauseEvent += Paused;
+    }
+    public void Paused() {
+        if (GameISPaused) {
                 Resume();
             }
             else {
                 Pause();
             }
-        }
     }
 
     public void Resume () {
