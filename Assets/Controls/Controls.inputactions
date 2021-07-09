@@ -104,7 +104,7 @@
                 {
                     "name": "",
                     "id": "7c4ffa28-3ba3-47a2-926c-90a72ba64dad",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
@@ -126,7 +126,7 @@
                 {
                     "name": "",
                     "id": "a18a17fc-2aaf-40ef-a211-6abcbbb5c2f4",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
@@ -357,7 +357,7 @@
                 {
                     "name": "",
                     "id": "94bf265a-f323-4ab2-ba2c-0cebe3a98b94",
-                    "path": "<Gamepad>/buttonWest",
+                    "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "player",
@@ -389,6 +389,17 @@
                 },
                 {
                     "name": "",
+                    "id": "66cf0555-68c4-40cb-a0e3-fb7366f0191b",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SlowTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "adb54eae-8ba2-4e53-8b25-150fa9e6bef8",
                     "path": "<Keyboard>/shift",
                     "interactions": "",
@@ -402,6 +413,17 @@
                     "name": "",
                     "id": "60241d61-927f-49f6-b976-72605798300f",
                     "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "RestoreTime",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c3eb4944-0842-4352-b741-cecbf367e5db",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
