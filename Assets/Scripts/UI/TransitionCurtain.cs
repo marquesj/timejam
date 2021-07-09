@@ -39,26 +39,27 @@ public class TransitionCurtain : MonoBehaviour
     }
     private void NextRoom()
     {
-        if(destroyMusicManager)
-            Destroy(GameObject.Find("SoundPlayer"));
+
         Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex + 1);
     }
     private IEnumerator MoveTo(float targetX,float duration)
     {
+        Time.timeScale = 0;
         targetX = transform.parent.position.x + targetX;
-        float startTime = Time.time;
+        float startTime = Time.realtimeSinceStartup;
         float startingX = transform.position.x;
         float percent = 0;
         float x;
         while(percent < 1)
         {
        
-            percent = (Time.time - startTime)/duration;
+            percent = (Time.realtimeSinceStartup - startTime)/duration;
             x = Mathf.Lerp(startingX, targetX, percent);
             transform.position = new Vector3(x,transform.position.y, transform.position.z);
             yield return null;
         }
+        Time.timeScale = 1;
     }
 }

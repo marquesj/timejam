@@ -118,7 +118,7 @@ public class InputSimulator : InputGenerator
 
     private void Bounce(float force)
     {
-        characterControl.ApplyBounce(force);
+        characterControl.ApplyBounce(force,false);
     }
     public override void SaveBounceInput(float force)
     {
