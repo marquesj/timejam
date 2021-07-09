@@ -7,8 +7,8 @@ public class InputRead : InputGenerator
 {
     [HideInInspector]public event UnityAction SlowTimeEvent;
     [HideInInspector]public event UnityAction RestoreTimeEvent;
-    [HideInInspector]public event UnityAction PauseEvent;
     private Controls playerControls;
+    public  GameObject pauseMenu;
 
     void Awake()
     {
@@ -23,6 +23,13 @@ public class InputRead : InputGenerator
         playerControls.player.Restart.performed += _ => RestartScene();
         playerControls.player.Pause.performed += _ => PauseScene();
         timeOffset = 0;
+    }
+
+    void Start()
+    {
+        GameObject[] objs= GameObject.FindGameObjectsWithTag("Pause");
+        if(objs != null)
+            pauseMenu = objs[0];
     }
 
     private void OnEnable() 
@@ -90,6 +97,6 @@ public class InputRead : InputGenerator
 
     private void PauseScene()
     {
-        PauseEvent.Invoke();
+        pauseMenu.GetComponentInChildren<PauseMenu>().Paused();
     }
 }

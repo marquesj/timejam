@@ -46,42 +46,45 @@ public class DestructibleTiles : MonoBehaviour
             hitPosition.x = other.transform.position.x + 0.025f * otherVelocity.x;// add bias to enter the grid cell where the tile is
             hitPosition.y = other.transform.position.y + 0.025f * otherVelocity.y;
 
-            UnityEngine.Vector3Int cell = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, 0.07f, 0f));
+            UnityEngine.Vector3Int[] cellsPositions = new UnityEngine.Vector3Int[4];
 
-            UnityEngine.Vector3Int cell2 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, -0.07f, 0f));
+            cellsPositions[0] = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, 0.07f, 0f));
 
-            UnityEngine.Vector3Int cell3 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, 0.07f, 0f));
+            cellsPositions[1] = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, -0.07f, 0f));
 
-            UnityEngine.Vector3Int cell4 = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, -0.07f, 0f));
+            cellsPositions[2] = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(-0.07f, 0.07f, 0f));
+
+            cellsPositions[3] = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, -0.07f, 0f));
 
             foreach(UnityEngine.Vector3Int position in destructibleTiles) {
-                    if(cell == position && destructibleTilemap.GetTile(cell) != null) {
-                        destructibleTilemap.SetTile(cell, null);
+                    if(cellsPositions[0] == position && destructibleTilemap.GetTile(cellsPositions[0]) != null) {
+                        destructibleTilemap.SetTile(cellsPositions[0], null);
                         other.GetComponent<Health>().Damage(1);
                         if(Time.timeScale != 0)
                             destroySound.Play();
                     }
-                    if(cell2 == position && destructibleTilemap.GetTile(cell2) != null) {
-                        destructibleTilemap.SetTile(cell2, null);
+                    if(cellsPositions[1] == position && destructibleTilemap.GetTile(cellsPositions[1]) != null) {
+                        destructibleTilemap.SetTile(cellsPositions[1], null);
                         other.GetComponent<Health>().Damage(1);
                         if(Time.timeScale != 0)
                             destroySound.Play();
                     }
-                    if(cell3 == position && destructibleTilemap.GetTile(cell3) != null) {
-                        destructibleTilemap.SetTile(cell3, null);
+                    if(cellsPositions[2] == position && destructibleTilemap.GetTile(cellsPositions[2]) != null) {
+                        destructibleTilemap.SetTile(cellsPositions[2], null);
                         other.GetComponent<Health>().Damage(1);
                         if(Time.timeScale != 0)
                             destroySound.Play();
                     }
-                    if(cell4 == position && destructibleTilemap.GetTile(cell4) != null) {
-                        destructibleTilemap.SetTile(cell4, null);
+                    if(cellsPositions[3] == position && destructibleTilemap.GetTile(cellsPositions[3]) != null) {
+                        destructibleTilemap.SetTile(cellsPositions[3], null);
                         other.GetComponent<Health>().Damage(1);
                         if(Time.timeScale != 0)
                             destroySound.Play();
                     }
             }
 
-            cells.Add((cell, Time.time));
+            foreach(UnityEngine.Vector3Int cell in cellsPositions)
+                cells.Add((cell, Time.time));
         }
     }
 
