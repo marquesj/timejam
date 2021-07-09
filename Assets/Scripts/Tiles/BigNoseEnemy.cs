@@ -15,6 +15,12 @@ public class BigNoseEnemy : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float speed = 1.0f;
     private List<(int, float)> records = new List<(int, float)>(); //int: 0 - left ; 1 - right
+
+    private Collider2D fireCollider;
+    private Coroutine disableFireRoutine;
+
+    public AudioSource fireSound;
+    public AudioSource turnSound;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,6 +38,8 @@ public class BigNoseEnemy : MonoBehaviour
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
 
+        fireCollider = transform.GetChild(0).GetComponent<Collider2D>();
+
     }
     private void OnDestroy() {
         timeEvents.GoBackInTimeEvent -= GoBack;
@@ -42,6 +50,7 @@ public class BigNoseEnemy : MonoBehaviour
         
         if( layermask == (layermask | (1 << other.gameObject.layer))) {
             
+            turnSound.Play();
             if(!isRightSprite) {
                 isRightSprite = true;
                 records.Add((1, Time.time));
@@ -54,7 +63,17 @@ public class BigNoseEnemy : MonoBehaviour
                 reposition(false);
                 
             }
+           
         }
+
+    }
+    private IEnumerator DisableFire()
+    {
+        fireSound.Stop();
+        fireCollider.enabled = false;
+        yield return new WaitForSeconds(0.3f);
+        fireCollider.enabled = true;
+        fireSound.Play();
     }
 
     private void reposition(bool right) {
@@ -62,6 +81,11 @@ public class BigNoseEnemy : MonoBehaviour
             transform.rotation = UnityEngine.Quaternion.Euler(0f,0f,0f);
         else
             transform.rotation = UnityEngine.Quaternion.Euler(0f,180f,0f);
+
+        if(disableFireRoutine!=null)
+            StopCoroutine(disableFireRoutine);
+        
+        disableFireRoutine = StartCoroutine(DisableFire());
     }
     private void GoBack(float time) {
         float offset = (Time.time - time);

@@ -269,16 +269,20 @@ public class CharacterControl : MonoBehaviour
         if(BounceEvent!=null)
             BounceEvent.Invoke();
 
-        ApplyBounce(bounciness);
+        ApplyBounce(bounciness,false);
         
         inputGenerator.SaveBounceInput(bounciness);
     }
-    public void ApplyBounce(float bounciness)
+    public void ApplyBounce(float bounciness, bool shouldBlockShoot)
     {
         rb.velocity = Vector2.zero;
         rb.AddForce(Vector2.up * jumpForce * bounciness ,ForceMode2D.Impulse);
         bouncing = true;
-        shootController.BlockShoot();
+        if(shouldBlockShoot)
+        {
+            shootController.BlockShoot();
+
+        }
 
         if(StopBounceRoutine != null)
             StopCoroutine(StopBounceRoutine);
