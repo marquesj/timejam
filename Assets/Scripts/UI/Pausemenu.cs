@@ -12,9 +12,9 @@ public class Pausemenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UnityEngine.Debug.Log("ddddd");
+        
         if (Input.GetKeyDown(KeyCode.Escape)) {
-                
+                UnityEngine.Debug.Log("escape");
             if (GameISPaused) {
                 Resume();
             }
