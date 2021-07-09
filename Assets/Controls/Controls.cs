@@ -81,6 +81,14 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": ""Press""
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""780d7d58-078d-4c7e-9ae3-0e89f3f8ec8d"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": ""Press""
                 }
             ],
             ""bindings"": [
@@ -435,6 +443,28 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""action"": ""Restart"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbaf1ece-91e2-4a13-a47a-1f5cd76a9e71"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f861fe2-3061-4be3-85a2-8d45ce24f5d6"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -468,6 +498,7 @@ public class @Controls : IInputActionCollection, IDisposable
         m_player_SlowTime = m_player.FindAction("SlowTime", throwIfNotFound: true);
         m_player_RestoreTime = m_player.FindAction("RestoreTime", throwIfNotFound: true);
         m_player_Restart = m_player.FindAction("Restart", throwIfNotFound: true);
+        m_player_Pause = m_player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -525,6 +556,7 @@ public class @Controls : IInputActionCollection, IDisposable
     private readonly InputAction m_player_SlowTime;
     private readonly InputAction m_player_RestoreTime;
     private readonly InputAction m_player_Restart;
+    private readonly InputAction m_player_Pause;
     public struct PlayerActions
     {
         private @Controls m_Wrapper;
@@ -537,6 +569,7 @@ public class @Controls : IInputActionCollection, IDisposable
         public InputAction @SlowTime => m_Wrapper.m_player_SlowTime;
         public InputAction @RestoreTime => m_Wrapper.m_player_RestoreTime;
         public InputAction @Restart => m_Wrapper.m_player_Restart;
+        public InputAction @Pause => m_Wrapper.m_player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -570,6 +603,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Restart.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
                 @Restart.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
                 @Restart.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestart;
+                @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -598,6 +634,9 @@ public class @Controls : IInputActionCollection, IDisposable
                 @Restart.started += instance.OnRestart;
                 @Restart.performed += instance.OnRestart;
                 @Restart.canceled += instance.OnRestart;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -621,5 +660,6 @@ public class @Controls : IInputActionCollection, IDisposable
         void OnSlowTime(InputAction.CallbackContext context);
         void OnRestoreTime(InputAction.CallbackContext context);
         void OnRestart(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

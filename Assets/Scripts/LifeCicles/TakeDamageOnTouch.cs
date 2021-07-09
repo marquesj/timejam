@@ -18,7 +18,7 @@ public class TakeDamageOnTouch : MonoBehaviour
    
     private void OnTriggerEnter2D(Collider2D other) 
     {
-      //  Debug.Log("hgeuh");
+        
         foreach(string t in imuneTags)
         {
             if(other.gameObject.tag == t) {
@@ -29,6 +29,7 @@ public class TakeDamageOnTouch : MonoBehaviour
         
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
+            Debug.Log("hgeuh");
             health.Damage(damage);
             if(audioSource!=null)
                 audioSource.Play();
