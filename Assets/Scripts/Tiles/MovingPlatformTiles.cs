@@ -26,7 +26,7 @@ public class MovingPlatformTiles : MonoBehaviour
 
         platform.position = UnityEngine.Vector2.MoveTowards(platform.position, points[goalPoint].position, Time.deltaTime*speed);
 
-        if(UnityEngine.Vector2.Distance(platform.position, points[goalPoint].position)<0.1f)
+        if(UnityEngine.Vector2.Distance(platform.position, points[goalPoint].position)<0.01f)
         {
             //If so change goal point to the next one
             //Check if we reached the last point, reset to first point
