@@ -14,6 +14,8 @@ public class MusicManager : MonoBehaviour
 
         slowSong.volume = 0;
         slowSong.pitch= 0.444f;
+
+        DontDestroyOnLoad(gameObject);
     }
     private void OnEnable() 
     {

@@ -7,6 +7,7 @@ public class BouncyElement : MonoBehaviour
     public float bounciness = 0;
     public float bouncinessDelay = 0;
     private float actualBounciness;
+    public bool destroyOnBounce = false;
     private void Awake() {
         if(bouncinessDelay > 0)
         {

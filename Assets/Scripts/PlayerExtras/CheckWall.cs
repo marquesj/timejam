@@ -126,7 +126,7 @@ public class CheckWall : MonoBehaviour
     public bool GoingDown()
     {
         if(rb == null) return true;
-        if(rb.velocity.y <= 0) return true;
+        if(rb.velocity.y < 0) return true;
         return false;
     }
 
