@@ -1,14 +1,17 @@
-using System.Diagnostics;
-using System.Net.Mime;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-//using UnityEngine.EventSystems;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject playFirstButton, loadFirstButton, controlsFirstButton;
+
+    public EventSystem eventSystem;
+
+    private void Start()
+    {
+        eventSystem = EventSystem.current;
+    }
     //public Leaderboard leaderboard;
     public void PlayGame() {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
@@ -25,13 +28,13 @@ public class MainMenu : MonoBehaviour
     }*/
     /*
     public void GotoMain() {
-        UnityEngine.EventSystem.current.currentSelectedGameObject (null);
-        UnityEngine.EventSystem.current.currentSelectedGameObject (playFirstButton);
+        eventSystem.currentSelected(null);
+        eventSystem.currentSelected(playFirstButton);
     }
 
     public void GotoLoad() {
-        UnityEngine.EventSystem.current.currentSelectedGameObject (null);
-        UnityEngine.EventSystem.current.currentSelectedGameObject (loadFirstButton);
+        EventSystem.current.firstSelectedGameObject(null);
+        EventSystem.current.firstSelectedGameObject(loadFirstButton);
     }
     */
 

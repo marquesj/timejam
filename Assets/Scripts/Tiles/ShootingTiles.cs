@@ -46,13 +46,13 @@ public class ShootingTiles : MonoBehaviour
             UnityEngine.Vector3 worldPosition = shootingTiles[i].Item2;
             Sprite sprite = tilemap.GetSprite(tilemap.WorldToCell(worldPosition));
             if(sprite == leftSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, 0.16f,0f), UnityEngine.Quaternion.Euler(0f,180f,0f));//tilemap.GetTransformMatrix(tilemap.WorldToCell(worldPosition)).rotation);
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(-0.16f, 0.16f, 0f), UnityEngine.Quaternion.Euler(0f,180f,0f));//tilemap.GetTransformMatrix(tilemap.WorldToCell(worldPosition)).rotation);
             else if(sprite == rightSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, 0.16f,0f), UnityEngine.Quaternion.Euler(0f,0f,0f));
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.40f, 0.16f, 0f), UnityEngine.Quaternion.Euler(0f,0f,0f));
             else if(sprite == upSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, 0.16f,0f), UnityEngine.Quaternion.Euler(0f,0f,90f));
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, 0.40f,0f), UnityEngine.Quaternion.Euler(0f,0f,90f));
             else if(sprite == downSprite)
-                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, 0.16f,0f), UnityEngine.Quaternion.Euler(0f,0f,-90f));
+                obj = Instantiate(projectilePrefab, worldPosition + new UnityEngine.Vector3(0.16f, -0.16f,0f), UnityEngine.Quaternion.Euler(0f,0f,-90f));
             TimedElement timedElement = obj.GetComponent<TimedElement>();
         }
     }

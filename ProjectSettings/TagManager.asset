@@ -9,6 +9,7 @@ TagManager:
   - DestructibleTiles
   - TransitionCurtain
   - Pause
+  - ShootingTiles
   layers:
   - Default
   - TransparentFX
