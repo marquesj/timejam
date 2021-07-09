@@ -100,6 +100,8 @@ public class CharacterControl : MonoBehaviour
             StopSlide();
             queuedGetUp = false;
         }
+        if(sliding && !CanGetUp())
+            ApplySmallSlide();
 
         if(!movementBlock)
         {
@@ -378,6 +380,16 @@ public class CharacterControl : MonoBehaviour
         
         rb.sharedMaterial = null;
         rb.AddForce(transform.right * slideForce ,ForceMode2D.Impulse);
+        SetSlideCollider();
+        sliding = true;
+        if(SlideEvent!=null)
+            SlideEvent.Invoke();
+    }
+    private void ApplySmallSlide()
+    {
+        
+        rb.sharedMaterial = null;
+        rb.AddForce(transform.right * slideForce /10,ForceMode2D.Impulse);
         SetSlideCollider();
         sliding = true;
         if(SlideEvent!=null)

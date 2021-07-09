@@ -52,7 +52,7 @@ public class ShootController : MonoBehaviour
     private void Shoot()
     {
         bool automaticRestore = true;
-        if(canShoot && Time.timeScale > 0)
+        if(canShoot && !characterControl.sliding && !checkWall.walled && Time.timeScale > 0)
         {
 
             weapon.Shoot(inputGenerator.timeOffset);

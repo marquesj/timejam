@@ -269,6 +269,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285a34ccb58fbbf468dc4b5e1a48e167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnOnDestroyPrefabs:
+  - {fileID: 7023487211390935699, guid: 2ec5aaf0ad5f21a438dae144883ae9de, type: 3}
 --- !u!82 &8540803337407258992
 AudioSource:
   m_ObjectHideFlags: 0
