@@ -113,8 +113,13 @@ public class CheckGround : MonoBehaviour
             }
             TimedElement timedElement = bounce.GetComponent<TimedElement>();
             if(bounce.bounciness!=0 && IsFromPastOrPresent(timedElement))
+            {
+                if(bounce.destroyOnBounce)
+                    hit.gameObject.GetComponent<Health>().Damage(1);
                 if(bounceEvent != null)
                     bounceEvent.Invoke(bounce.bounciness);
+
+            }
 
         }
     }
