@@ -57,30 +57,14 @@ public class DestructibleTiles : MonoBehaviour
             cellsPositions[3] = destructibleTilemap.WorldToCell(hitPosition + new UnityEngine.Vector3(0.07f, -0.07f, 0f));
 
             foreach(UnityEngine.Vector3Int position in destructibleTiles) {
-                    if(cellsPositions[0] == position && destructibleTilemap.GetTile(cellsPositions[0]) != null) {
-                        destructibleTilemap.SetTile(cellsPositions[0], null);
+                foreach(UnityEngine.Vector3Int cell in cellsPositions) {
+                    if(cell == position && destructibleTilemap.GetTile(cell) != null) {
+                        destructibleTilemap.SetTile(cell, null);
                         other.GetComponent<Health>().Damage(1);
                         if(Time.timeScale != 0)
                             destroySound.Play();
                     }
-                    if(cellsPositions[1] == position && destructibleTilemap.GetTile(cellsPositions[1]) != null) {
-                        destructibleTilemap.SetTile(cellsPositions[1], null);
-                        other.GetComponent<Health>().Damage(1);
-                        if(Time.timeScale != 0)
-                            destroySound.Play();
-                    }
-                    if(cellsPositions[2] == position && destructibleTilemap.GetTile(cellsPositions[2]) != null) {
-                        destructibleTilemap.SetTile(cellsPositions[2], null);
-                        other.GetComponent<Health>().Damage(1);
-                        if(Time.timeScale != 0)
-                            destroySound.Play();
-                    }
-                    if(cellsPositions[3] == position && destructibleTilemap.GetTile(cellsPositions[3]) != null) {
-                        destructibleTilemap.SetTile(cellsPositions[3], null);
-                        other.GetComponent<Health>().Damage(1);
-                        if(Time.timeScale != 0)
-                            destroySound.Play();
-                    }
+                }
             }
 
             foreach(UnityEngine.Vector3Int cell in cellsPositions)
