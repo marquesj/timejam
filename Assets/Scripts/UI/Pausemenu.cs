@@ -5,19 +5,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
-public class Pausemenu : MonoBehaviour
+public class PauseMenu : MonoBehaviour
 {
-    public InputRead inputRead;
     public static bool GameISPaused = false;
     public GameObject pauseMenuUI;
-    [HideInInspector]public event UnityAction PauseEvent;
 
     // Update is called once per frame
-
-    void Start()
-    {
-        inputRead.PauseEvent += Paused;
-    }
     public void Paused() {
         if (GameISPaused) {
                 Resume();
