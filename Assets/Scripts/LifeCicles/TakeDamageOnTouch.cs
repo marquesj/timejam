@@ -29,7 +29,7 @@ public class TakeDamageOnTouch : MonoBehaviour
         
         if( layermask == (layermask | (1 << other.gameObject.layer)))
         {
-            Debug.Log("hgeuh");
+//            Debug.Log("hgeuh");
             health.Damage(damage);
             if(audioSource!=null)
                 audioSource.Play();

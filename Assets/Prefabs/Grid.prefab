@@ -881,6 +881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bounciness: 1
   bouncinessDelay: 0
+  destroyOnBounce: 0
 --- !u!1 &8888252113017925650
 GameObject:
   m_ObjectHideFlags: 0

@@ -159,7 +159,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""negative"",
+                    ""name"": ""Negative"",
                     ""id"": ""3360a7b3-eee8-4085-812f-cdda2c663db9"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
@@ -170,7 +170,7 @@ public class @Controls : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""positive"",
+                    ""name"": ""Positive"",
                     ""id"": ""87945257-89a3-4b04-815a-4056c3d43731"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",

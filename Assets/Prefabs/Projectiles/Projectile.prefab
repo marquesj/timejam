@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   layermask:
     serializedVersion: 2
-    m_Bits: 1216
+    m_Bits: 3264
   damage: 1
   imuneTags:
   - DestructibleTiles

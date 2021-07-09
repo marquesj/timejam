@@ -39,7 +39,7 @@ public class DeathReturn : MonoBehaviour
         {
             Scene scene = SceneManager.GetActiveScene(); 
             SceneManager.LoadScene(scene.name);
-
+            return;
         }
         active = true;
         Time.timeScale = 0;

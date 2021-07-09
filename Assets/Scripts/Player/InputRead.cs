@@ -9,6 +9,8 @@ public class InputRead : InputGenerator
     [HideInInspector]public event UnityAction RestoreTimeEvent;
     [HideInInspector]public event UnityAction PauseEvent;
     private Controls playerControls;
+    private float currentHorizontal = 0;
+    private float currentVertical = 0;
 
     void Awake()
     {
@@ -55,11 +57,32 @@ public class InputRead : InputGenerator
     }
     protected override void BufferMovementHorizontal(float dir)
     {
+        
+        if(dir >0)
+            dir = 1;
+        if(dir < 0)
+            dir = -1;
+
+        if(dir == currentHorizontal)
+            return;
+
+        currentHorizontal = dir;
+
         inputLog.AddAction(Time.time, InputActionType.Movement, dir, transform.position);
         RaiseChangeDirHorizontalEvent(dir);
     }
     protected override void BufferMovementVertical(float dir)
     {
+        if(dir >0)
+            dir = 1;
+        if(dir < 0)
+            dir = -1;
+
+        if(dir == currentVertical)
+            return;
+
+        currentVertical = dir;
+
         inputLog.AddAction(Time.time, InputActionType.Aim, dir, transform.position);
         RaiseChangeDirVerticalEvent(dir);
     }

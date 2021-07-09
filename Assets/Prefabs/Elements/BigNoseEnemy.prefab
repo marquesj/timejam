@@ -1,5 +1,37 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!70 &5188012720474272512
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531098679468097131}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.46116775, y: 0.02080378}
+  m_Size: {x: 0.9405823, y: 0.20350139}
+  m_Direction: 1
+--- !u!114 &2822877370037758171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531098679468097131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1982d67e14f2fa547a32f18698f81804, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layermask:
+    serializedVersion: 2
+    m_Bits: 256
+  damage: 1
 --- !u!1 &1848455818611022784
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +44,8 @@ GameObject:
   - component: {fileID: 1848455818611022845}
   - component: {fileID: 1848455818611022786}
   - component: {fileID: 1848455818611022844}
-  m_Layer: 12
+  - component: {fileID: 6969110711907609939}
+  m_Layer: 11
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +150,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.0032129288, y: -0.020488948}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -128,8 +161,23 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.38}
+  m_Size: {x: 0.22564316, y: 0.3390221}
   m_EdgeRadius: 0
+--- !u!114 &6969110711907609939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848455818611022784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf27c5145fa91e748aac5a1719706d6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounciness: 1.5
+  bouncinessDelay: 0
+  destroyOnBounce: 0
 --- !u!1 &1848455820136316755
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,6 +282,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40e40a8b0d046b7469c6a63b9a8cfbb3, type: 3}
+--- !u!1 &531098679468097131 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2232061009356743783, guid: 40e40a8b0d046b7469c6a63b9a8cfbb3, type: 3}
+  m_PrefabInstance: {fileID: 1848455818990230028}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &531098679468097130 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2232061009356743782, guid: 40e40a8b0d046b7469c6a63b9a8cfbb3, type: 3}
