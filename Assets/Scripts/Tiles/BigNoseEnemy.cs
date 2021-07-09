@@ -11,15 +11,24 @@ public class BigNoseEnemy : MonoBehaviour
     public float shootingPeriod = 0.5f;
     public Sprite sprite;
     public LayerMask layermask;
-    private bool isRightSprite;
+    private bool isRightSprite = true;
     private SpriteRenderer spriteRenderer;
     public float speed = 1.0f;
     private List<(int, float)> records = new List<(int, float)>(); //int: 0 - left ; 1 - right
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprite;
-        isRightSprite = false;
+        if (transform.rotation == UnityEngine.Quaternion.Euler(0f, 0f, 0f))
+        {
+            isRightSprite = false;
+            records.Add((0, Time.time));
+        }
+        else
+        {
+            records.Add((1, Time.time));
+        }
+
+
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
 
@@ -65,15 +74,7 @@ public class BigNoseEnemy : MonoBehaviour
         for(int i = 0; i < records.Count; i++) {
             if(time < records[i].Item2)
             {
-                
-                if(records[i].Item1 == 0) {
-                    isRightSprite = false;
-                    reposition(false);
-                }
-                else {
-                    isRightSprite = true;
-                    reposition(true);
-                }  
+
                 return;
             }
             else
