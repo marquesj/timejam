@@ -44,6 +44,27 @@ TextureImporter:
   - first:
       213: -5865784966103707491
     second: tile_set_undeground_13
+  - first:
+      213: -901754337360232674
+    second: tile_set_undeground_14
+  - first:
+      213: 5913977753003844371
+    second: tile_set_undeground_15
+  - first:
+      213: -4360147682312698089
+    second: tile_set_undeground_16
+  - first:
+      213: 4364341635546858414
+    second: tile_set_undeground_17
+  - first:
+      213: -5588970220241912580
+    second: tile_set_undeground_18
+  - first:
+      213: -7528307841242513042
+    second: tile_set_undeground_19
+  - first:
+      213: 688252998056326081
+    second: tile_set_undeground_20
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -136,8 +157,8 @@ TextureImporter:
       name: tile_set_undeground_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 96
+        x: 32
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -157,8 +178,8 @@ TextureImporter:
       name: tile_set_undeground_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 96
+        x: 64
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -178,8 +199,8 @@ TextureImporter:
       name: tile_set_undeground_2
       rect:
         serializedVersion: 2
-        x: 64
-        y: 96
+        x: 96
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -199,8 +220,8 @@ TextureImporter:
       name: tile_set_undeground_3
       rect:
         serializedVersion: 2
-        x: 96
-        y: 96
+        x: 128
+        y: 128
         width: 32
         height: 32
       alignment: 0
@@ -221,7 +242,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -242,7 +263,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 32
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -263,7 +284,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -283,8 +304,8 @@ TextureImporter:
       name: tile_set_undeground_7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 32
+        x: 96
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -304,8 +325,8 @@ TextureImporter:
       name: tile_set_undeground_8
       rect:
         serializedVersion: 2
-        x: 64
-        y: 32
+        x: 128
+        y: 96
         width: 32
         height: 32
       alignment: 0
@@ -325,8 +346,8 @@ TextureImporter:
       name: tile_set_undeground_9
       rect:
         serializedVersion: 2
-        x: 96
-        y: 32
+        x: 0
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -346,8 +367,8 @@ TextureImporter:
       name: tile_set_undeground_10
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
+        x: 32
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -367,8 +388,8 @@ TextureImporter:
       name: tile_set_undeground_11
       rect:
         serializedVersion: 2
-        x: 32
-        y: 0
+        x: 96
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -388,8 +409,8 @@ TextureImporter:
       name: tile_set_undeground_12
       rect:
         serializedVersion: 2
-        x: 64
-        y: 0
+        x: 128
+        y: 64
         width: 32
         height: 32
       alignment: 0
@@ -409,8 +430,8 @@ TextureImporter:
       name: tile_set_undeground_13
       rect:
         serializedVersion: 2
-        x: 96
-        y: 0
+        x: 0
+        y: 32
         width: 32
         height: 32
       alignment: 0
@@ -422,6 +443,153 @@ TextureImporter:
       bones: []
       spriteID: d90df8ec6ab889ea0800000000000000
       internalID: -5865784966103707491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_14
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1fb9f635335c73f0800000000000000
+      internalID: -901754337360232674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_15
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3136b59ce6ba21250800000000000000
+      internalID: 5913977753003844371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_16
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7174283b8c4ad73c0800000000000000
+      internalID: -4360147682312698089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea3c7312891419c30800000000000000
+      internalID: 4364341635546858414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_18
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfc7e32423dff62b0800000000000000
+      internalID: -5588970220241912580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_19
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e61c3f2b7e3168790800000000000000
+      internalID: -7528307841242513042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tile_set_undeground_20
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c3beb8847a2d8900800000000000000
+      internalID: 688252998056326081
       vertices: []
       indices: 
       edges: []

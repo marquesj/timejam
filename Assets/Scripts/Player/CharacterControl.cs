@@ -41,6 +41,7 @@ public class CharacterControl : MonoBehaviour
     [HideInInspector]public event UnityAction StopSlideEvent;
     [HideInInspector]public event UnityAction BounceEvent;
     
+    
     [HideInInspector]public bool movementBlock = false;
     [HideInInspector]public float bufferedMovementInput;
     [HideInInspector]public float bufferedVerticalInput;
@@ -59,6 +60,7 @@ public class CharacterControl : MonoBehaviour
     public bool queuedGetUp = false;
 
     private PhysicsMaterial2D physicsMaterial2D;
+    private Coroutine StopBounceRoutine;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
@@ -78,12 +80,18 @@ public class CharacterControl : MonoBehaviour
         checkGround.bounceEvent += Bounce;
         checkGround.landedEvent += StopBounce;
         checkGround.landedEvent += CheckSlide;
-        checkWall.walledEvent += StopBounce;
+       // checkWall.walledEvent += StopBounce;
         checkWall.walledEvent += SetWallDir;
         checkWall.walledEvent += StopSlide;
 
         physicsMaterial2D = rb.sharedMaterial;
-    }    
+
+
+    }   
+    private void Start() {
+        if(!CanGetUp())
+            ApplySlide();
+    } 
 
     private void FixedUpdate() {
         
@@ -110,7 +118,7 @@ public class CharacterControl : MonoBehaviour
                 CheckSlide(0);
         }
         
-        if(!checkGround.grounded && checkWall.walled)
+        if(!checkGround.grounded && checkWall.walled &&!bouncing)
         {
             WallSlide();
             if(sliding)
@@ -252,6 +260,7 @@ public class CharacterControl : MonoBehaviour
 
     public void Bounce(float bounciness)
     {
+        Debug.Log("Bounced");
         if(inputGenerator.timeOffset != 0)
             return;
 
@@ -268,8 +277,17 @@ public class CharacterControl : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce * bounciness ,ForceMode2D.Impulse);
         bouncing = true;
         shootController.BlockShoot();
+
+        if(StopBounceRoutine != null)
+            StopCoroutine(StopBounceRoutine);
+        StopBounceRoutine = StartCoroutine(QueueStopBounce());
     }
 
+    private IEnumerator QueueStopBounce()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StopBounce();
+    }
 
 
     private void BlockMovement()
