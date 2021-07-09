@@ -10,10 +10,16 @@ public class MusicManager : MonoBehaviour
     public AudioSource comebackSound;
     void Start()
     {
+        GameObject previousPlayer = GameObject.Find("SoundPlayer");
+        if(previousPlayer!=null)
+            Destroy(previousPlayer);
 
+        if(slowSong !=null)
+        {
+            slowSong.volume = 0;
+            slowSong.pitch= 0.444f;
 
-        slowSong.volume = 0;
-        slowSong.pitch= 0.444f;
+        }
 
         DontDestroyOnLoad(gameObject);
     }

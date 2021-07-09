@@ -64,6 +64,7 @@ public class ShootController : MonoBehaviour
                 if(arm.transform.eulerAngles.z == 270)
                 {
                     characterControl.Bounce(shootDownImpulse);
+                    BlockShoot();
                     automaticRestore = false;
                     if(ShootBounceEvent!=null)
                         ShootBounceEvent.Invoke();

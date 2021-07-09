@@ -27,6 +27,7 @@ public class CameraManager : MonoBehaviour
             target = spawner.GetPlayer();
             //player.GetComponent<DeathReturn>().getNextSelf();
         }
-        cam.Follow = target.transform;
+      
+            cam.Follow = target.transform;
     }
 }
