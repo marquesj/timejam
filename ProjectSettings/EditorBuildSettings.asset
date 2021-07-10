@@ -75,6 +75,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/CloneHarder/Fly.unity
     guid: bbf5d888cf0582540b6bc7e88aa7b85e
   - enabled: 1
+    path: Assets/Scenes/Levels/CloneHarder/Boss.unity
+    guid: e47c0f9004e12c9469387080f8bdc8b1
+  - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/Ending.unity
     guid: a4578b1de214fde47a103d22987ba63d
   m_configObjects:

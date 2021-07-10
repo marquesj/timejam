@@ -12,7 +12,8 @@ public class Door : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         openSound = GetComponent<AudioSource>();
-        entry.enabled = false;
+        if(entry!=null)
+            entry.enabled = false;
        
     }
 
@@ -26,7 +27,8 @@ public class Door : MonoBehaviour
     private void Open()
     {
         openSound.Play();
-        animator.SetTrigger("Open");
+        if(animator!=null)
+            animator.SetTrigger("Open");
         door.enabled = false;
         entry.enabled = true;
     }
@@ -50,6 +52,9 @@ public class Door : MonoBehaviour
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.tag != "Player") {
+            return;
+        }
         GameObject.FindGameObjectWithTag("MainCamera").transform.Find("TransitionCurtain").GetComponent<TransitionCurtain>().CloseCurtain();
     }
 }

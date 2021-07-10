@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.SceneManagement;
 public class BloomWithX : MonoBehaviour
 {
     private Bloom bloom;
@@ -44,6 +45,14 @@ public class BloomWithX : MonoBehaviour
         {
             bloom.intensity.value = bloom.intensity.value +0.05f;
             Time.timeScale = 0;
+            Invoke("EndScene", 1);
         }
+    }
+
+    private void EndScene()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

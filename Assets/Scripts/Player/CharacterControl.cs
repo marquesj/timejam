@@ -262,7 +262,7 @@ public class CharacterControl : MonoBehaviour
 
     public void Bounce(float bounciness)
     {
-        Debug.Log("Bounced");
+//        Debug.Log("Bounced");
         if(inputGenerator.timeOffset != 0)
             return;
 
@@ -431,7 +431,7 @@ public class CharacterControl : MonoBehaviour
         Debug.DrawRay(pos, Vector3.up*0.3f, Color.red,1);
         if (hit.collider != null)
         {   
-        Debug.Log(hit.collider.gameObject.name);
+//        Debug.Log(hit.collider.gameObject.name);
             return false;
         }
         
