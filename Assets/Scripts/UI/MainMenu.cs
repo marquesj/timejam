@@ -21,6 +21,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void LoadGame() {
+        PlayerPrefs.SetInt("SavedScene", PlayerPrefs.GetInt("SavedScene"));
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
 
         
