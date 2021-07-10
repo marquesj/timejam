@@ -24,7 +24,7 @@ public class CheckGround : MonoBehaviour
     private void Awake() {
         inputGenerator = GetComponent<InputGenerator>();
     }
-    void Update()
+    void FixedUpdate()
     {
         bool checkResult = TripleCheck();
         if(!grounded && checkResult /*&& !queuedUnground*/ )
@@ -70,7 +70,7 @@ public class CheckGround : MonoBehaviour
     {
         /*Check(-sideOffset);
         Check(sideOffset);*/
-        CheckBounce();
+        //CheckBounce();
         if(Check(0))
             return true;
         else if(Check(-sideOffset))
@@ -100,10 +100,10 @@ public class CheckGround : MonoBehaviour
     }
     private void CheckBounce()
     {
-        Vector3 pos = transform.position + Vector3.up * verticalOffset;
-        Collider2D hit = Physics2D.OverlapCapsule(new Vector2(pos.x,pos.y),new Vector2(0.28f,0.06f), CapsuleDirection2D.Horizontal,0,bouncyLayers);
+        Vector3 pos = transform.position + Vector3.up * 0.04355644f;
+        Collider2D hit = Physics2D.OverlapCapsule(new Vector2(pos.x,pos.y),new Vector2(0.3025943f,0.2520498f), CapsuleDirection2D.Horizontal,0,bouncyLayers);
 
-        if (hit != null && hit.transform.position.y < pos.y)
+        if (hit != null )
         {
             BouncyElement bounce = hit.gameObject.GetComponent<BouncyElement>();
             if(bounce == null)
@@ -131,5 +131,11 @@ public class CheckGround : MonoBehaviour
         if(inputGenerator.timeOffset < timedElement.timeOffset) 
             return true;
         return false;
+    }
+    private void OnTriggerEnter2D(Collider2D other) {
+        if( bouncyLayers == (bouncyLayers | (1 << other.gameObject.layer)))
+        {
+            CheckBounce();
+        }
     }
 }
