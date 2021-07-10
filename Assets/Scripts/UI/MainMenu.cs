@@ -1,10 +1,13 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject playFirstButton, loadFirstButton, controlsFirstButton;
+    public Button playFirstButton, loadFirstButton, controlsFirstButton;
+
+    public GameObject mainScreen, controlScreen, loadScreen;
 
     public EventSystem eventSystem;
 
@@ -19,6 +22,8 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame() {
         SceneManager.LoadScene(PlayerPrefs.GetInt("SavedScene"));
+
+        
     }
     /*public void GoToMainMenu() {
         SceneManager.LoadScene("MainMenu");
@@ -26,18 +31,22 @@ public class MainMenu : MonoBehaviour
     public void GoToLeaderboard() {
         SceneManager.LoadScene("HighScore");
     }*/
-    /*
+    
     public void GotoMain() {
-        eventSystem.currentSelected(null);
-        eventSystem.currentSelected(playFirstButton);
+        //if (EventSystem.current.currentSelectedGameObject == null)
+            playFirstButton.Select();
     }
 
     public void GotoLoad() {
-        EventSystem.current.firstSelectedGameObject(null);
-        EventSystem.current.firstSelectedGameObject(loadFirstButton);
+        //if (EventSystem.current.currentSelectedGameObject == null)
+            loadFirstButton.Select();
     }
-    */
 
+    public void GotoControls()
+    {
+        //if (EventSystem.current.currentSelectedGameObject == null)
+            controlsFirstButton.Select();
+    }
 
     public void QuitGame () {
         PlayerPrefs.SetInt("SavedScene", SceneManager.GetActiveScene().buildIndex);
