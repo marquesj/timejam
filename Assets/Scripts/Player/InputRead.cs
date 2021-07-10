@@ -124,6 +124,6 @@ public class InputRead : InputGenerator
 
     private void PauseScene()
     {
-        pauseMenu.GetComponentInChildren<PauseMenu>().Paused();
+        pauseMenu.GetComponentInChildren<Pausemenu>().Paused();
     }
 }
