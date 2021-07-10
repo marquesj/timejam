@@ -122,7 +122,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6971132377056877905, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_SortingOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7028659043862504900, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: projectilePrefab
@@ -134,7 +134,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7386570874678979522, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}
       propertyPath: m_InstanceId
-      value: -433888
+      value: -334968
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 4414015657050889916, guid: 77c4abcbf9b84d145ab75d5fd038cd48, type: 3}

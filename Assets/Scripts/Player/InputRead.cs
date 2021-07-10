@@ -29,6 +29,8 @@ public class InputRead : InputGenerator
 
     void Start()
     {
+        BufferMovementHorizontal(0);
+        BufferMovementVertical(0);
         GameObject[] objs= GameObject.FindGameObjectsWithTag("Pause");
         if(objs != null)
             pauseMenu = objs[0];
@@ -44,6 +46,8 @@ public class InputRead : InputGenerator
     private void OnDisable() 
     {
         playerControls.Disable();
+                BufferMovementHorizontal(0);
+        BufferMovementVertical(0);
     }
 
     protected override void Jump()
