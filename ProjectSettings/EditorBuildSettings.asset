@@ -27,7 +27,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/CloneIntro/spikey_slidey.unity
     guid: ce569abcc3fe6b947acbc97310faa6ac
   - enabled: 1
-    path: Assets/Scenes/Levels/CloneIntro/vertical_platforms.unity
+    path: Assets/Scenes/Levels/CloneIntro/dig.unity
     guid: 22d87d0709919ba4ba4fa070bf3eae1c
   - enabled: 1
     path: Assets/Scenes/Levels/CloneIntro/MovingPlatforms.unity
@@ -38,9 +38,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/CloneIntro/LevelBase redo 2(actualy good)backup.unity
     guid: 0818a56c69fe04444a874317e9f18d9d
-  - enabled: 1
-    path: Assets/Scenes/Levels/CloneIntro/dig.unity
-    guid: 941018196172bee4a96c9a38f3b3906d
   - enabled: 1
     path: Assets/Scenes/Levels/CloneIntro/BackAndForth.unity
     guid: b870aa4a9590a3740aaf00d6f08d3c55
@@ -54,10 +51,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/CloneHarder/BackAndForth2.unity
     guid: 35b28dd9c7a7e7e4186e55579876355a
   - enabled: 1
-    path: Assets/Scenes/Levels/CloneHarder/BigNose2.unity
+    path: Assets/Scenes/Levels/CloneHarder/DigDown.unity
     guid: fbb5a273ffe7377479055c862f036e43
   - enabled: 1
-    path: Assets/Scenes/Levels/CloneHarder/DigDown.unity
+    path: Assets/Scenes/Levels/CloneHarder/BigNose2.unity
     guid: 6bfd8c37b439ace4e80c1c0b2253f2d5
   - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/VerticalLines2.unity
