@@ -82,4 +82,12 @@ public class MusicManager : MonoBehaviour
 
         comebackSound.Play();
     }
+    public void PlaySecondary()
+    {
+        slowSong.volume = 1;
+        slowSong.pitch = 1;
+        normalSong.Stop();
+        slowSong.Stop();
+        slowSong.Play();
+    }
 }
