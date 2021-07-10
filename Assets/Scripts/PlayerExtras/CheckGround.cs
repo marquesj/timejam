@@ -138,4 +138,12 @@ public class CheckGround : MonoBehaviour
             CheckBounce();
         }
     }
+    private void OnCollisionEnter2D(Collision2D other) {
+        
+        if( bouncyLayers == (bouncyLayers | (1 << other.gameObject.layer)))
+        {
+            CheckBounce();
+        }
+    }
+
 }
