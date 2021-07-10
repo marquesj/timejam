@@ -228,6 +228,7 @@ MonoBehaviour:
   inputLog: {fileID: 11400000, guid: 251d78a15d9e56744aaa45be833ff265, type: 2}
   timeOffset: 1
   jumpHeld: 0
+  pauseMenu: {fileID: 0}
 --- !u!114 &5467736938828656189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +349,7 @@ MonoBehaviour:
   - {x: -0.06232358, y: 0.37, z: 0}
   m_ShapePathHash: -1137555362
   m_Mesh: {fileID: 0}
-  m_InstanceId: 50742
+  m_InstanceId: 101282
 --- !u!1 &2681284753194239235
 GameObject:
   m_ObjectHideFlags: 0
@@ -476,7 +477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 7309844833446704383, guid: a8a8ec9fcfbcc564bbb7144dbdc3f47b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

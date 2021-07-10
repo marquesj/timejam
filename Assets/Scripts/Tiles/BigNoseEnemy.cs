@@ -24,7 +24,7 @@ public class BigNoseEnemy : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        if (transform.rotation == UnityEngine.Quaternion.Euler(0f, 0f, 0f))
+        if (transform.rotation == UnityEngine.Quaternion.identity)
         {
             isRightSprite = false;
             records.Add((0, Time.time));

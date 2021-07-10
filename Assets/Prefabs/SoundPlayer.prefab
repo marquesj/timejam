@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2352959851119238891}
   m_Layer: 0
   m_Name: SoundPlayer
-  m_TagString: Untagged
+  m_TagString: SoundManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -50,6 +50,7 @@ MonoBehaviour:
   normalSong: {fileID: 4310179865884852391}
   slowSong: {fileID: 7873872896698040385}
   comebackSound: {fileID: 2352959851119238891}
+  overridePreviousPlayer: 0
 --- !u!82 &4310179865884852391
 AudioSource:
   m_ObjectHideFlags: 0
