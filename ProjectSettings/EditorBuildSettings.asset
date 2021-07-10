@@ -59,5 +59,11 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/VerticalLines2.unity
     guid: df8aff7830eb4ae4ba569c303f66c69c
+  - enabled: 1
+    path: Assets/Scenes/Levels/LevelBase redo 1.unity
+    guid: dd78af38bbcbf7f4f8c671bc93be58fb
+  - enabled: 1
+    path: Assets/Scenes/UI/EndCredits.unity
+    guid: 92efdf9d9c9d6e344ae2386d67413e1f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ab420a588573a884c9c501d2367ac336, type: 2}
