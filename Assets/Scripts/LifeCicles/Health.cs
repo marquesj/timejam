@@ -5,7 +5,7 @@ using UnityEngine.Events;
 public class Health : MonoBehaviour
 {
     public float totalHP = 1;
-    private float hp;
+    public float hp;
     [HideInInspector] public event UnityAction DeathEvent;
     [HideInInspector] public event UnityAction DamageEvent;
     private void Awake() {
@@ -17,8 +17,8 @@ public class Health : MonoBehaviour
 
     public void Damage(float damage)
     {
-        totalHP -= damage;
-        if(totalHP <= 0)
+        hp -= damage;
+        if(hp <= 0)
         {
             if(DeathEvent != null)
                 DeathEvent.Invoke();

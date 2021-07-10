@@ -126,11 +126,10 @@ GameObject:
   - component: {fileID: 1200464928718913410}
   - component: {fileID: 1497382144852922790}
   - component: {fileID: 8507131721691622258}
-  - component: {fileID: 235979907879177145}
-  - component: {fileID: 7173462487224612781}
   - component: {fileID: 2608759351171430598}
   - component: {fileID: 5682934440471650770}
-  m_Layer: 7
+  - component: {fileID: 4659209063677229069}
+  m_Layer: 11
   m_Name: Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,7 +216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bcfa6cc092a7434cbad4d061ef44a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  totalHP: 1
+  totalHP: 150
+  hp: 0
 --- !u!114 &1497382144852922790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   - {fileID: 1584702659901048640}
   - {fileID: 8244648783265498595}
   - {fileID: 3779803780153216834}
---- !u!61 &235979907879177145
+--- !u!61 &2608759351171430598
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -266,7 +266,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 1.2684681, y: -0.6516979}
+  m_Offset: {x: 0.25477314, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -277,47 +277,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.3430638, y: 3.1966043}
-  m_EdgeRadius: 0
---- !u!114 &7173462487224612781
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5293826103069122334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1284169557002c64fb4b89b0fc44be7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  door: {fileID: 235979907879177145}
-  entry: {fileID: 2608759351171430598}
---- !u!61 &2608759351171430598
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5293826103069122334}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4.88, y: 4.5}
-    newSize: {x: 4.88, y: 4.5}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 4.88, y: 4.5}
+  m_Size: {x: 4.370454, y: 4.5}
   m_EdgeRadius: 0
 --- !u!114 &5682934440471650770
 MonoBehaviour:
@@ -331,6 +291,110 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ec4391a70e75647a590679536beb41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timedEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
+  eye: {fileID: 2114449821480519755}
+  eyeRadius: 0.1
+  projectilePrefab: {fileID: 9207835224195559861, guid: e8d50e1dbbeeaa94494b2f12ea82e32e, type: 3}
+  minShootInterval: 1
+  maxShootInterval: 5
+  slider: {fileID: 0}
+  bossdeadPrefab: {fileID: 5293826103069122334, guid: a7113d2434a15ef43a6830013de43437, type: 3}
+--- !u!82 &4659209063677229069
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5293826103069122334}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 5243719e782649f42ae313980581a4ee, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7839722838298456311
 GameObject:
   m_ObjectHideFlags: 0
@@ -483,7 +547,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 3
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: e07d5ee4c97c99b4e80d0f269fcd7979, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
