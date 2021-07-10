@@ -17,7 +17,7 @@ public class SoundPlayer : MonoBehaviour
     private CharacterControl characterControl;
     private ShootController shootController;
    private AudioSource[] audioSources;
-
+   private bool running = false;
     void Awake()
     {
         characterControl = transform.parent.GetComponent<CharacterControl>();
@@ -46,6 +46,17 @@ public class SoundPlayer : MonoBehaviour
         timeEvents.ContinueTimeEvent -= ContinueTime;
         timeEvents.SlowTimeEvent -= SlowTime;
         timeEvents.RestoreTimeEvent -= RestoreTime;
+
+        foreach(AudioSource audio in audioSources)
+        {
+           audio.Stop();
+        }
+    }
+    private void Update() {
+       if((!characterControl.checkGround.grounded || characterControl.sliding) && walkSound.isPlaying)
+         walkSound.Stop();
+      if(characterControl.checkGround.grounded && !characterControl.sliding && running &&  !walkSound.isPlaying)
+         walkSound.Play();
     }
     private void StopTime()
     {
@@ -67,6 +78,7 @@ public class SoundPlayer : MonoBehaviour
     }
     private void JumpEvent()
     {
+
         jumpSound.Play();
     }
 
@@ -97,10 +109,12 @@ public class SoundPlayer : MonoBehaviour
     }
     private void StartWalkingEvent() 
     {
+       running=true;
        walkSound.Play();
     }
     private void StopWalkingEvent() 
     {
+       running=false;
        walkSound.Stop();
     }
     private void BounceEvent()

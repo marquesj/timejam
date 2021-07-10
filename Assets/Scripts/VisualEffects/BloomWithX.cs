@@ -12,6 +12,7 @@ public class BloomWithX : MonoBehaviour
     private float normalBloom;
     private GameObject target;
     private float targetStartX;
+    private AudioSource[] playerAudios;
     void Start()
     {
         volume = GetComponent<Volume>();
@@ -19,6 +20,11 @@ public class BloomWithX : MonoBehaviour
         normalBloom = bloom.intensity.value;
         target = GameObject.FindGameObjectWithTag("Player");
         targetStartX = transform.position.x;
+        playerAudios = target.GetComponentsInChildren<AudioSource>();
+            foreach(AudioSource audio in playerAudios)
+            {
+                audio.volume = .5f;
+            }
     }
 
     // Update is called once per frame
@@ -26,8 +32,12 @@ public class BloomWithX : MonoBehaviour
     {
         if(bloom.intensity.value < 10)
         {
-
             float percent = (target.transform.position.x - targetStartX)/maxDistance;
+            foreach(AudioSource audio in playerAudios)
+            {
+                audio.volume = Mathf.Lerp(.5f,0,percent*1.5f);
+            }
+
             bloom.intensity.value = Mathf.Lerp(normalBloom, maxBloom,percent );
         }
         else
