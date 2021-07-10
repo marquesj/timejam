@@ -346,10 +346,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootingPeriod: 1
   projectilePrefab: {fileID: 9207835224195559861, guid: 66d0920e0bef3db498a59b82bb25c157, type: 3}
-  leftSprite: {fileID: -2415139115741656642, guid: c4c1a39941f59b642a2406c79994a925, type: 3}
-  upSprite: {fileID: 674139173073065337, guid: 038516e017641ad4aac853c06120d0a0, type: 3}
-  rightSprite: {fileID: 1427219404490082891, guid: 038516e017641ad4aac853c06120d0a0, type: 3}
-  downSprite: {fileID: -7039215639445563650, guid: 038516e017641ad4aac853c06120d0a0, type: 3}
+  leftSprite: {fileID: 21300000, guid: 678e38341a7dac347841659ba8497e7e, type: 3}
+  upSprite: {fileID: 21300000, guid: 6aa1f4c7d36548b468b889b8447dd39d, type: 3}
+  rightSprite: {fileID: 21300000, guid: b620d07c359daf24d939427af3141126, type: 3}
+  downSprite: {fileID: 21300000, guid: 296d630b5da39084c88626dcf31abced, type: 3}
   speed: 1
 --- !u!19719996 &8888252111450814594
 TilemapCollider2D:
