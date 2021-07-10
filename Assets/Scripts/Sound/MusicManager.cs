@@ -8,11 +8,29 @@ public class MusicManager : MonoBehaviour
     public AudioSource normalSong;
     public AudioSource slowSong;
     public AudioSource comebackSound;
+    public bool overridePreviousPlayer = false;
     void Start()
     {
-        GameObject previousPlayer = GameObject.Find("SoundPlayer");
-        if(previousPlayer!=null)
+
+        GameObject[] previousPlayers = GameObject.FindGameObjectsWithTag("SoundManager");
+
+        Debug.Log(previousPlayers.Length);
+        GameObject previousPlayer = null;
+        foreach(GameObject p in previousPlayers)
+        {
+            if(p!=gameObject)
+                previousPlayer = p;
+
+        }
+
+        if(previousPlayer!=null && overridePreviousPlayer)
             Destroy(previousPlayer);
+        else if(previousPlayer != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+            
 
         if(slowSong !=null)
         {

@@ -81,7 +81,7 @@ public class CharacterControl : MonoBehaviour
         checkGround.landedEvent += StopBounce;
         checkGround.landedEvent += CheckSlide;
        // checkWall.walledEvent += StopBounce;
-        checkWall.walledEvent += SetWallDir;
+        //checkWall.walledEvent += SetWallDir;
         checkWall.walledEvent += StopSlide;
 
         physicsMaterial2D = rb.sharedMaterial;
@@ -393,11 +393,9 @@ public class CharacterControl : MonoBehaviour
     {
         
         rb.sharedMaterial = null;
-        rb.AddForce(transform.right * slideForce /10,ForceMode2D.Impulse);
+        rb.AddForce(transform.right * slideForce /20,ForceMode2D.Impulse);
         SetSlideCollider();
         sliding = true;
-        if(SlideEvent!=null)
-            SlideEvent.Invoke();
     }
 
     private void StopBounce()

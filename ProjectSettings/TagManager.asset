@@ -9,6 +9,7 @@ TagManager:
   - DestructibleTiles
   - TransitionCurtain
   - Pause
+  - SoundManager
   layers:
   - Default
   - TransparentFX
