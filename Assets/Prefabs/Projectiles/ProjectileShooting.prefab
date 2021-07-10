@@ -321,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnOnDestroyPrefabs:
-  - {fileID: 0}
+  - {fileID: 7023487211390935699, guid: a01932666749b01488e9406e410ebe69, type: 3}
 --- !u!82 &8540803337407258992
 AudioSource:
   m_ObjectHideFlags: 0

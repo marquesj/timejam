@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     public float totalHP = 1;
     private float hp;
     [HideInInspector] public event UnityAction DeathEvent;
+    [HideInInspector] public event UnityAction DamageEvent;
     private void Awake() {
         hp = totalHP;
     }
@@ -21,6 +22,11 @@ public class Health : MonoBehaviour
         {
             if(DeathEvent != null)
                 DeathEvent.Invoke();
+        }else
+        {
+            if(DamageEvent != null)
+                DamageEvent.Invoke();
+
         }
     }
 }
