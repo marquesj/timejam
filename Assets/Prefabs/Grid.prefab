@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeEvents: {fileID: 11400000, guid: 6b65e2f3f3ecd8c4ca168321cb0b9219, type: 2}
-  tileBase: {fileID: 11400000, guid: eb4c0c8f01cf7904ea0866c0c5247b2c, type: 2}
+  tileBase: {fileID: 11400000, guid: ab9fc15205a0dc24a8a56bcd22fdd275, type: 2}
   destructibleTilemap: {fileID: 8888252112056509542}
   layermask:
     serializedVersion: 2
