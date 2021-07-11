@@ -47,6 +47,7 @@ public class PlayerSpawner : MonoBehaviour
         ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
         foreach(ParticleSystem p in particleSystems)
             p.Play();
+            
         player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
         player.GetComponent<DeathReturn>().SetSpawner(this);
         timeEvents.RaiseSaveStateEvent();

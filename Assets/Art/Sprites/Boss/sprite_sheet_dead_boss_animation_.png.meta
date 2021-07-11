@@ -80,6 +80,495 @@ TextureImporter:
   - first:
       213: -737300380034946439
     second: sprite_sheet_dead_boss_animation__25
+  - first:
+      213: 135373979266141068
+    second: sprite_sheet_dead_boss_animation__26
+  - first:
+      213: -7374058459070239349
+    second: sprite_sheet_dead_boss_animation__27
+  - first:
+      213: 4008533205353949117
+    second: sprite_sheet_dead_boss_animation__28
+  - first:
+      213: 8352221061728774134
+    second: sprite_sheet_dead_boss_animation__29
+  - first:
+      213: -3228731714796103074
+    second: sprite_sheet_dead_boss_animation__30
+  - first:
+      213: 2359993652079155425
+    second: sprite_sheet_dead_boss_animation__31
+  - first:
+      213: 2601057790767006782
+    second: sprite_sheet_dead_boss_animation__32
+  - first:
+      213: 4603308057367819592
+    second: sprite_sheet_dead_boss_animation__33
+  - first:
+      213: 3442119548853305586
+    second: sprite_sheet_dead_boss_animation__34
+  - first:
+      213: -7907079551223286650
+    second: sprite_sheet_dead_boss_animation__35
+  - first:
+      213: 1115025802417094305
+    second: sprite_sheet_dead_boss_animation__36
+  - first:
+      213: -5662062345362454420
+    second: sprite_sheet_dead_boss_animation__37
+  - first:
+      213: 7700291402465631399
+    second: sprite_sheet_dead_boss_animation__38
+  - first:
+      213: 5446044587592174667
+    second: sprite_sheet_dead_boss_animation__39
+  - first:
+      213: 7199117741172168315
+    second: sprite_sheet_dead_boss_animation__40
+  - first:
+      213: 8139109716720915510
+    second: sprite_sheet_dead_boss_animation__41
+  - first:
+      213: 934546159816618304
+    second: sprite_sheet_dead_boss_animation__42
+  - first:
+      213: 7385719767364733424
+    second: sprite_sheet_dead_boss_animation__43
+  - first:
+      213: -8992191124125912158
+    second: sprite_sheet_dead_boss_animation__44
+  - first:
+      213: 8343117315039169543
+    second: sprite_sheet_dead_boss_animation__45
+  - first:
+      213: 1086621418742736053
+    second: sprite_sheet_dead_boss_animation__46
+  - first:
+      213: -4217196230879008818
+    second: sprite_sheet_dead_boss_animation__47
+  - first:
+      213: 7412068662829981764
+    second: sprite_sheet_dead_boss_animation__48
+  - first:
+      213: -8467252379080898888
+    second: sprite_sheet_dead_boss_animation__49
+  - first:
+      213: 8088717966696231586
+    second: sprite_sheet_dead_boss_animation__50
+  - first:
+      213: -1277443680680904689
+    second: sprite_sheet_dead_boss_animation__51
+  - first:
+      213: 1019797358459646527
+    second: sprite_sheet_dead_boss_animation__52
+  - first:
+      213: -6903446004087954737
+    second: sprite_sheet_dead_boss_animation__53
+  - first:
+      213: -7370158156640937619
+    second: sprite_sheet_dead_boss_animation__54
+  - first:
+      213: -4038610732910046893
+    second: sprite_sheet_dead_boss_animation__55
+  - first:
+      213: 6518886364334544318
+    second: sprite_sheet_dead_boss_animation__56
+  - first:
+      213: 1175515666043245437
+    second: sprite_sheet_dead_boss_animation__57
+  - first:
+      213: 3979638701186933770
+    second: sprite_sheet_dead_boss_animation__58
+  - first:
+      213: -4383342618292354279
+    second: sprite_sheet_dead_boss_animation__59
+  - first:
+      213: -1999671179914749684
+    second: sprite_sheet_dead_boss_animation__60
+  - first:
+      213: -6064317434695630540
+    second: sprite_sheet_dead_boss_animation__61
+  - first:
+      213: -7103312339894001051
+    second: sprite_sheet_dead_boss_animation__62
+  - first:
+      213: 4484324200230921937
+    second: sprite_sheet_dead_boss_animation__63
+  - first:
+      213: -6327829149349274644
+    second: sprite_sheet_dead_boss_animation__64
+  - first:
+      213: -6937181692682460135
+    second: sprite_sheet_dead_boss_animation__65
+  - first:
+      213: 1513500543781970841
+    second: sprite_sheet_dead_boss_animation__66
+  - first:
+      213: 8328671529815056013
+    second: sprite_sheet_dead_boss_animation__67
+  - first:
+      213: 3636175904724372882
+    second: sprite_sheet_dead_boss_animation__68
+  - first:
+      213: 1728797287832057786
+    second: sprite_sheet_dead_boss_animation__69
+  - first:
+      213: -6025637247467886680
+    second: sprite_sheet_dead_boss_animation__70
+  - first:
+      213: -404226667906263520
+    second: sprite_sheet_dead_boss_animation__71
+  - first:
+      213: -251037793741880842
+    second: sprite_sheet_dead_boss_animation__72
+  - first:
+      213: 5205983930463550991
+    second: sprite_sheet_dead_boss_animation__73
+  - first:
+      213: -5331037904525123090
+    second: sprite_sheet_dead_boss_animation__74
+  - first:
+      213: 6877607849432418923
+    second: sprite_sheet_dead_boss_animation__75
+  - first:
+      213: 7090979759075373709
+    second: sprite_sheet_dead_boss_animation__76
+  - first:
+      213: -5220472165092113645
+    second: sprite_sheet_dead_boss_animation__77
+  - first:
+      213: 6136413598321279227
+    second: sprite_sheet_dead_boss_animation__78
+  - first:
+      213: -1671591691489309376
+    second: sprite_sheet_dead_boss_animation__79
+  - first:
+      213: -2947248481918997465
+    second: sprite_sheet_dead_boss_animation__80
+  - first:
+      213: 1177167892669752198
+    second: sprite_sheet_dead_boss_animation__81
+  - first:
+      213: 4965793658176874417
+    second: sprite_sheet_dead_boss_animation__82
+  - first:
+      213: 2228088767238837296
+    second: sprite_sheet_dead_boss_animation__83
+  - first:
+      213: 1086077498628143116
+    second: sprite_sheet_dead_boss_animation__84
+  - first:
+      213: 5255111884637457968
+    second: sprite_sheet_dead_boss_animation__85
+  - first:
+      213: -2391490163193284611
+    second: sprite_sheet_dead_boss_animation__86
+  - first:
+      213: 8949110901090534973
+    second: sprite_sheet_dead_boss_animation__87
+  - first:
+      213: -8181973451028661074
+    second: sprite_sheet_dead_boss_animation__88
+  - first:
+      213: 5254845742592712383
+    second: sprite_sheet_dead_boss_animation__89
+  - first:
+      213: -4812781337354310784
+    second: sprite_sheet_dead_boss_animation__90
+  - first:
+      213: 6601249656071791052
+    second: sprite_sheet_dead_boss_animation__91
+  - first:
+      213: 8644692844215142645
+    second: sprite_sheet_dead_boss_animation__92
+  - first:
+      213: 8414949917534985230
+    second: sprite_sheet_dead_boss_animation__93
+  - first:
+      213: 6841136470186001809
+    second: sprite_sheet_dead_boss_animation__94
+  - first:
+      213: -8237074213884890819
+    second: sprite_sheet_dead_boss_animation__95
+  - first:
+      213: -3819116527353771516
+    second: sprite_sheet_dead_boss_animation__96
+  - first:
+      213: -8291007459132969773
+    second: sprite_sheet_dead_boss_animation__97
+  - first:
+      213: 8511096763659965465
+    second: sprite_sheet_dead_boss_animation__98
+  - first:
+      213: -6579114717271535113
+    second: sprite_sheet_dead_boss_animation__99
+  - first:
+      213: -3616400613137963422
+    second: sprite_sheet_dead_boss_animation__100
+  - first:
+      213: -4746250050189043260
+    second: sprite_sheet_dead_boss_animation__101
+  - first:
+      213: 5831762091329367758
+    second: sprite_sheet_dead_boss_animation__102
+  - first:
+      213: 851356984698416090
+    second: sprite_sheet_dead_boss_animation__103
+  - first:
+      213: -4178150270078973107
+    second: sprite_sheet_dead_boss_animation__104
+  - first:
+      213: 114237641270315751
+    second: sprite_sheet_dead_boss_animation__105
+  - first:
+      213: 1324089373930478600
+    second: sprite_sheet_dead_boss_animation__106
+  - first:
+      213: 2551755540707846036
+    second: sprite_sheet_dead_boss_animation__107
+  - first:
+      213: 1359970951436741659
+    second: sprite_sheet_dead_boss_animation__108
+  - first:
+      213: 4407163270576059559
+    second: sprite_sheet_dead_boss_animation__109
+  - first:
+      213: 2228499020698034314
+    second: sprite_sheet_dead_boss_animation__110
+  - first:
+      213: -8276861103289950149
+    second: sprite_sheet_dead_boss_animation__111
+  - first:
+      213: -846640089618915246
+    second: sprite_sheet_dead_boss_animation__112
+  - first:
+      213: 5061843429782951476
+    second: sprite_sheet_dead_boss_animation__113
+  - first:
+      213: 399164063361957764
+    second: sprite_sheet_dead_boss_animation__114
+  - first:
+      213: 4886425270381636261
+    second: sprite_sheet_dead_boss_animation__115
+  - first:
+      213: -8501637468689887281
+    second: sprite_sheet_dead_boss_animation__116
+  - first:
+      213: -5350470635146334087
+    second: sprite_sheet_dead_boss_animation__117
+  - first:
+      213: -5675122229224100083
+    second: sprite_sheet_dead_boss_animation__118
+  - first:
+      213: 5742716216022395895
+    second: sprite_sheet_dead_boss_animation__119
+  - first:
+      213: 5785393273539908686
+    second: sprite_sheet_dead_boss_animation__120
+  - first:
+      213: 8628585016626163095
+    second: sprite_sheet_dead_boss_animation__121
+  - first:
+      213: 3019391412604667523
+    second: sprite_sheet_dead_boss_animation__122
+  - first:
+      213: -8653525859076246810
+    second: sprite_sheet_dead_boss_animation__123
+  - first:
+      213: -5777861842851398693
+    second: sprite_sheet_dead_boss_animation__124
+  - first:
+      213: -4478696403320370016
+    second: sprite_sheet_dead_boss_animation__125
+  - first:
+      213: 3448981208697823846
+    second: sprite_sheet_dead_boss_animation__126
+  - first:
+      213: -312912830500625679
+    second: sprite_sheet_dead_boss_animation__127
+  - first:
+      213: -8816876792292862004
+    second: sprite_sheet_dead_boss_animation__128
+  - first:
+      213: 1342827545350965688
+    second: sprite_sheet_dead_boss_animation__129
+  - first:
+      213: 4867556506537148756
+    second: sprite_sheet_dead_boss_animation__130
+  - first:
+      213: 9189447091513708833
+    second: sprite_sheet_dead_boss_animation__131
+  - first:
+      213: -5796945313960190363
+    second: sprite_sheet_dead_boss_animation__132
+  - first:
+      213: -3208811825925972605
+    second: sprite_sheet_dead_boss_animation__133
+  - first:
+      213: 6931541409384344773
+    second: sprite_sheet_dead_boss_animation__134
+  - first:
+      213: 8614692349728086311
+    second: sprite_sheet_dead_boss_animation__135
+  - first:
+      213: 4335151470537392912
+    second: sprite_sheet_dead_boss_animation__136
+  - first:
+      213: -6977551421200669336
+    second: sprite_sheet_dead_boss_animation__137
+  - first:
+      213: 2279100393140860566
+    second: sprite_sheet_dead_boss_animation__138
+  - first:
+      213: -2644030379717277387
+    second: sprite_sheet_dead_boss_animation__139
+  - first:
+      213: -5561686301541413618
+    second: sprite_sheet_dead_boss_animation__140
+  - first:
+      213: -6069723518084629374
+    second: sprite_sheet_dead_boss_animation__141
+  - first:
+      213: -7209239023192205253
+    second: sprite_sheet_dead_boss_animation__142
+  - first:
+      213: -827925443029512219
+    second: sprite_sheet_dead_boss_animation__143
+  - first:
+      213: 7808119936468196322
+    second: sprite_sheet_dead_boss_animation__144
+  - first:
+      213: 2122350590648895841
+    second: sprite_sheet_dead_boss_animation__145
+  - first:
+      213: 4279133819742245207
+    second: sprite_sheet_dead_boss_animation__146
+  - first:
+      213: -2932395806358527348
+    second: sprite_sheet_dead_boss_animation__147
+  - first:
+      213: -6293938681289728360
+    second: sprite_sheet_dead_boss_animation__148
+  - first:
+      213: 7542996743582607194
+    second: sprite_sheet_dead_boss_animation__149
+  - first:
+      213: -633231304641490568
+    second: sprite_sheet_dead_boss_animation__150
+  - first:
+      213: -8121149260429493755
+    second: sprite_sheet_dead_boss_animation__151
+  - first:
+      213: -4684467838386901606
+    second: sprite_sheet_dead_boss_animation__152
+  - first:
+      213: -2591002772279408893
+    second: sprite_sheet_dead_boss_animation__153
+  - first:
+      213: 5931810991711930516
+    second: sprite_sheet_dead_boss_animation__154
+  - first:
+      213: -6403361143553059353
+    second: sprite_sheet_dead_boss_animation__155
+  - first:
+      213: -4670938812803309212
+    second: sprite_sheet_dead_boss_animation__156
+  - first:
+      213: 3868903133514605063
+    second: sprite_sheet_dead_boss_animation__157
+  - first:
+      213: -8986714468392769776
+    second: sprite_sheet_dead_boss_animation__158
+  - first:
+      213: -7586382420069156181
+    second: sprite_sheet_dead_boss_animation__159
+  - first:
+      213: -3008351670447213695
+    second: sprite_sheet_dead_boss_animation__160
+  - first:
+      213: 5907487584641884771
+    second: sprite_sheet_dead_boss_animation__161
+  - first:
+      213: 8137254922631179649
+    second: sprite_sheet_dead_boss_animation__162
+  - first:
+      213: -4121719345629484423
+    second: sprite_sheet_dead_boss_animation__163
+  - first:
+      213: 4062672647614017948
+    second: sprite_sheet_dead_boss_animation__164
+  - first:
+      213: 7985594514423265660
+    second: sprite_sheet_dead_boss_animation__165
+  - first:
+      213: -2527503015357314763
+    second: sprite_sheet_dead_boss_animation__166
+  - first:
+      213: 8100834266578830865
+    second: sprite_sheet_dead_boss_animation__167
+  - first:
+      213: -2936668959958537671
+    second: sprite_sheet_dead_boss_animation__168
+  - first:
+      213: -3638038526285432684
+    second: sprite_sheet_dead_boss_animation__169
+  - first:
+      213: 6999380661925258358
+    second: sprite_sheet_dead_boss_animation__170
+  - first:
+      213: -8635529692742630939
+    second: sprite_sheet_dead_boss_animation__171
+  - first:
+      213: -4211188667240468621
+    second: sprite_sheet_dead_boss_animation__172
+  - first:
+      213: 4811789525485324168
+    second: sprite_sheet_dead_boss_animation__173
+  - first:
+      213: -5256309693329119072
+    second: sprite_sheet_dead_boss_animation__174
+  - first:
+      213: 6452064071917392901
+    second: sprite_sheet_dead_boss_animation__175
+  - first:
+      213: 8113465388667055236
+    second: sprite_sheet_dead_boss_animation__176
+  - first:
+      213: 8610025728979013910
+    second: sprite_sheet_dead_boss_animation__177
+  - first:
+      213: 807770000349438883
+    second: sprite_sheet_dead_boss_animation__178
+  - first:
+      213: -4797299219391808300
+    second: sprite_sheet_dead_boss_animation__179
+  - first:
+      213: 382573029420827041
+    second: sprite_sheet_dead_boss_animation__180
+  - first:
+      213: -4813682691366112464
+    second: sprite_sheet_dead_boss_animation__181
+  - first:
+      213: 8836957259328438489
+    second: sprite_sheet_dead_boss_animation__182
+  - first:
+      213: -8938791785486718995
+    second: sprite_sheet_dead_boss_animation__183
+  - first:
+      213: -2256839401615348441
+    second: sprite_sheet_dead_boss_animation__184
+  - first:
+      213: 8496523155220321796
+    second: sprite_sheet_dead_boss_animation__185
+  - first:
+      213: -5937181016714256826
+    second: sprite_sheet_dead_boss_animation__186
+  - first:
+      213: 3055099919333399580
+    second: sprite_sheet_dead_boss_animation__187
+  - first:
+      213: 6012909213981839156
+    second: sprite_sheet_dead_boss_animation__188
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +610,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 0
+  spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -144,7 +633,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
     maxTextureSize: 16384
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -156,7 +645,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: Standalone
     maxTextureSize: 16384
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -168,7 +657,7 @@ TextureImporter:
   - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 16384
-    resizeAlgorithm: 1
+    resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 0
     compressionQuality: 50
@@ -184,10 +673,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 480
-        height: 450
+        x: 5
+        y: 2
+        width: 479
+        height: 439
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,10 +694,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__1
       rect:
         serializedVersion: 2
-        x: 480
-        y: 0
-        width: 480
-        height: 450
+        x: 489
+        y: 2
+        width: 479
+        height: 439
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,10 +715,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__2
       rect:
         serializedVersion: 2
-        x: 960
+        x: 973
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,10 +736,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__3
       rect:
         serializedVersion: 2
-        x: 1440
+        x: 1457
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,10 +757,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__4
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 1939
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,10 +778,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__5
       rect:
         serializedVersion: 2
-        x: 2400
+        x: 2423
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,10 +799,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__6
       rect:
         serializedVersion: 2
-        x: 2880
+        x: 2907
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,10 +820,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__7
       rect:
         serializedVersion: 2
-        x: 3360
+        x: 3391
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -352,10 +841,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__8
       rect:
         serializedVersion: 2
-        x: 3840
+        x: 3875
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,10 +862,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__9
       rect:
         serializedVersion: 2
-        x: 4320
+        x: 4358
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -394,10 +883,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__10
       rect:
         serializedVersion: 2
-        x: 4800
+        x: 4841
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -415,10 +904,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__11
       rect:
         serializedVersion: 2
-        x: 5280
+        x: 5324
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -436,10 +925,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__12
       rect:
         serializedVersion: 2
-        x: 5760
+        x: 5807
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 441
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -457,10 +946,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__13
       rect:
         serializedVersion: 2
-        x: 6240
+        x: 6293
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -478,10 +967,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__14
       rect:
         serializedVersion: 2
-        x: 6720
+        x: 6776
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -499,10 +988,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__15
       rect:
         serializedVersion: 2
-        x: 7200
+        x: 7262
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -520,10 +1009,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__16
       rect:
         serializedVersion: 2
-        x: 7680
+        x: 7745
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -541,10 +1030,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__17
       rect:
         serializedVersion: 2
-        x: 8160
+        x: 8228
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -562,10 +1051,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__18
       rect:
         serializedVersion: 2
-        x: 8640
+        x: 8714
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -583,10 +1072,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__19
       rect:
         serializedVersion: 2
-        x: 9120
+        x: 9197
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -604,10 +1093,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__20
       rect:
         serializedVersion: 2
-        x: 9600
+        x: 9680
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -625,10 +1114,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__21
       rect:
         serializedVersion: 2
-        x: 10080
+        x: 10163
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -646,10 +1135,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__22
       rect:
         serializedVersion: 2
-        x: 10560
+        x: 10646
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -667,10 +1156,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__23
       rect:
         serializedVersion: 2
-        x: 11040
+        x: 11129
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -688,10 +1177,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__24
       rect:
         serializedVersion: 2
-        x: 11520
+        x: 11612
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -709,10 +1198,10 @@ TextureImporter:
       name: sprite_sheet_dead_boss_animation__25
       rect:
         serializedVersion: 2
-        x: 12000
+        x: 12095
         y: 0
-        width: 480
-        height: 450
+        width: 479
+        height: 447
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -722,6 +1211,27 @@ TextureImporter:
       bones: []
       spriteID: 97aa143f53594c5f0800000000000000
       internalID: -737300380034946439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sprite_sheet_dead_boss_animation__26
+      rect:
+        serializedVersion: 2
+        x: 12581
+        y: 0
+        width: 479
+        height: 447
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8b4df9bae1f0e100800000000000000
+      internalID: 135373979266141068
       vertices: []
       indices: 
       edges: []
