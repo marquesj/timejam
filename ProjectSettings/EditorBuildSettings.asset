@@ -60,9 +60,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/CloneHarder/BigNose2.unity
     guid: fbb5a273ffe7377479055c862f036e43
   - enabled: 1
-    path: Assets/Scenes/Levels/CloneHarder/DigDown.unity
-    guid: 6bfd8c37b439ace4e80c1c0b2253f2d5
-  - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/ShootingIntro.unity
     guid: 02a3a2de8c22d194d953faa91db412b1
   - enabled: 1
