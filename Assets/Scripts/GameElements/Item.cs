@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Rendering;
 using UnityEngine.Experimental.Rendering.Universal;
 public class Item : MonoBehaviour
 {
+    public List<GameObject> masks;
+    public GameObject veil;
+    public GameObject textbox;
     public Door door;
     public GameObject playerPrefab;
     public GameObject characterSprite;
@@ -69,10 +73,56 @@ public class Item : MonoBehaviour
             yield return null;
         }
 
+        FadeOut veilFade = veil.GetComponent<FadeOut>();
+        veilFade.StartFadeInEffect();
+        yield return new WaitForSeconds(3);
+         mLight.intensity = 0;
+        masks[0].GetComponent<FadeOut>().StartFadeInEffect();
 
+        
+        yield return new WaitForSeconds(3);
+        SpriteRenderer spriteRenderer=   masks[1].GetComponent<SpriteRenderer>();
+        spriteRenderer.color = new Color(spriteRenderer.color.r,spriteRenderer.color.g,spriteRenderer.color.b, 1);
+        foreach(GameObject mask in masks)
+        {
+            mask.GetComponent<Animator>().Play("Open");
+            yield return new WaitForSeconds(2);
+        }
+
+        //yield return new WaitForSeconds(3);
+        startTime = Time.time;
+        percent = 0;
+        duration = 1;
+        Image image = textbox.GetComponent<Image>();
+        while(percent <1)
+        {
+
+            percent = (Time.time - startTime)/duration;
+            float alpha = Mathf.Lerp(0,1,percent);
+            image.color = new Color(image.color.r,image.color.g,image.color.b,alpha);
+            yield return null;
+        }
+        yield return new WaitForSeconds(2);
         GetComponent<TextWriter>().Begin();
         yield return new WaitForSeconds(15);
 
+
+                //yield return new WaitForSeconds(3);
+        startTime = Time.time;
+        percent = 0;
+        duration = 1;
+        while(percent <1)
+        {
+
+            percent = (Time.time - startTime)/duration;
+            float alpha = Mathf.Lerp(1,0,percent);
+            image.color = new Color(image.color.r,image.color.g,image.color.b,alpha);
+            yield return null;
+        }
+
+        masks[0].GetComponent<FadeOut>().StartEffect();
+        masks[1].GetComponent<FadeOut>().StartEffect();
+        veilFade.StartEffect();
         /*animatorInterface.enabled = true;
         inputRead.enabled = true;*/
         GetComponent<Collider2D>().enabled = false;

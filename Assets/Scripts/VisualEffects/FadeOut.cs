@@ -19,6 +19,10 @@ public class FadeOut : MonoBehaviour
     {
         StartCoroutine(FadeOutCoroutine());
     }
+    public void StartFadeInEffect()
+    {
+        StartCoroutine(FadeInCoroutine());
+    }
 
     private IEnumerator FadeOutCoroutine()
     {
@@ -30,6 +34,22 @@ public class FadeOut : MonoBehaviour
         {
             percent = (Time.realtimeSinceStartup - startTime)/ effectDuration;
             alpha = Mathf.Lerp(startalpha, 0, percent);
+            spriteRenderer.color = new Color(spriteRenderer.color.r,spriteRenderer.color.g,spriteRenderer.color.b, alpha);
+            yield return null;
+        }
+        if(destroyWhenInvisible)
+            Destroy(gameObject);
+    }
+    private IEnumerator FadeInCoroutine()
+    {
+        float percent = 0;
+        float startTime = Time.realtimeSinceStartup;
+        float startalpha = spriteRenderer.color.a;
+        float alpha = 0;
+        while(percent < 1)
+        {
+            percent = (Time.realtimeSinceStartup - startTime)/ effectDuration;
+            alpha = Mathf.Lerp(startalpha, 1, percent);
             spriteRenderer.color = new Color(spriteRenderer.color.r,spriteRenderer.color.g,spriteRenderer.color.b, alpha);
             yield return null;
         }

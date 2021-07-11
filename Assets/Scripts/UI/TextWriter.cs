@@ -27,13 +27,13 @@ public class TextWriter : MonoBehaviour
                 endTime = timings[i]+fadeoutime;
             StartCoroutine(QueueLine(timings[i],lines[i],endTime));
         }
+        StartCoroutine(QueueLine(timings[timings.Count-1]+5,"",0));
     }
     private IEnumerator QueueLine(float time,string line,float endTime)
     {
         yield return new WaitForSeconds(time);
         StartCoroutine(WriteTextCharacterByCharacter(line, speed)); 
-        yield return new WaitForSeconds(endTime - time);
-        StartCoroutine(FadeOut());
+
     }
 
     private IEnumerator WriteTextCharacterByCharacter(string text, float speed)
@@ -56,7 +56,7 @@ public class TextWriter : MonoBehaviour
         float percent = 0;
         while(percent < 1)
         {
-            percent = (startTime-Time.time)/fadeouduration;
+            percent = (Time.time-startTime)/fadeouduration;
             float alpha = Mathf.Lerp(1,0,percent);
             textBox.faceColor  = new Color(textBox.color.r,textBox.color.g,textBox.color.b,alpha);
             yield return null;
