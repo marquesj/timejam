@@ -29,9 +29,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/CloneIntro/spikey_slidey.unity
     guid: ce569abcc3fe6b947acbc97310faa6ac
-  - enabled: 1
-    path: Assets/Scenes/Levels/CloneIntro/vertical_platforms.unity
-    guid: 22d87d0709919ba4ba4fa070bf3eae1c
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Levels/CloneIntro/MovingPlatforms.unity
     guid: 73e42ae97789fd6488f53bd059ffecd0

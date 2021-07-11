@@ -34,12 +34,19 @@ public class InputRead : InputGenerator
         GameObject[] objs= GameObject.FindGameObjectsWithTag("Pause");
         if(objs != null)
             pauseMenu = objs[0];
+
+        Invoke("Saftetything",0.1f);
     }
 
     private void OnEnable() 
     {
         playerControls.Enable();
         BufferMovementHorizontal(0);
+        BufferMovementVertical(0);
+    }
+    private void  Saftetything()
+    {
+                BufferMovementHorizontal(0);
         BufferMovementVertical(0);
     }
 

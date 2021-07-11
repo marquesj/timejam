@@ -55,6 +55,15 @@ public class Door : MonoBehaviour
         if(other.gameObject.tag != "Player") {
             return;
         }
+
+        Collider2D[] colliders = other.gameObject.GetComponents<Collider2D>();
+        AudioSource[] audios = other.gameObject.GetComponents<AudioSource>();
+
+        foreach(AudioSource audioSource in audios)
+            audioSource.volume = 0;
+        foreach(Collider2D col in colliders)
+            col.enabled = false;
+
         GameObject.FindGameObjectWithTag("MainCamera").transform.Find("TransitionCurtain").GetComponent<TransitionCurtain>().CloseCurtain();
     }
 }
