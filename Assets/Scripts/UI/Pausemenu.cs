@@ -17,6 +17,9 @@ public class Pausemenu : MonoBehaviour
     public Button controlsFirstButton;
 
     // Update is called once per frame
+    private void Start() {
+        Cursor.visible = false;
+    }
     public void Paused()
     {
         if (GameISPaused)
@@ -31,6 +34,7 @@ public class Pausemenu : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.visible = false;
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         GameISPaused = false;
@@ -38,6 +42,7 @@ public class Pausemenu : MonoBehaviour
 
     void Pause()
     {
+        Cursor.visible = true;
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         GameISPaused = true;
