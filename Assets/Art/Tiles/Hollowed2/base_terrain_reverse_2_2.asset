@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: base_terrain_reverse_2_2
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1073748004571554903, guid: 20a9728dcfa685d4c9f3992b4bf6f1d4, type: 3}
+  m_Sprite: {fileID: -6342625146715763949, guid: 633b1b2d2ae5ce94ca9c5880777b9aa4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
