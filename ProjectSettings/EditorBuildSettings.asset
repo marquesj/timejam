@@ -54,7 +54,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Levels/CloneHarder/BackAndForth2.unity
     guid: 35b28dd9c7a7e7e4186e55579876355a
   - enabled: 1
-    path: Assets/Scenes/Levels/CloneHarder/DigDown.unity
+    path: Assets/Scenes/Levels/CloneHarder/BigNose2.unity
     guid: fbb5a273ffe7377479055c862f036e43
   - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/ShootingIntro.unity
@@ -74,5 +74,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Levels/CloneHarder/Ending.unity
     guid: a4578b1de214fde47a103d22987ba63d
+  - enabled: 1
+    path: Assets/Scenes/UI/EndCredits.unity
+    guid: 92efdf9d9c9d6e344ae2386d67413e1f
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: ab420a588573a884c9c501d2367ac336, type: 2}
