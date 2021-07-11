@@ -799,7 +799,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4682541383710244999, guid: 160ee4122b62a9d4fb309a8e9ca75d8b, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7014673091057074975, guid: 160ee4122b62a9d4fb309a8e9ca75d8b, type: 3}
       propertyPath: m_Name
@@ -882,7 +882,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4682541383710244999, guid: 75994f7eb29b27542a727baa707170f1, type: 3}
       propertyPath: playOnAwake
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4682541383710244999, guid: 75994f7eb29b27542a727baa707170f1, type: 3}
       propertyPath: TrailModule.enabled

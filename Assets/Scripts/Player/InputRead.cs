@@ -29,24 +29,27 @@ public class InputRead : InputGenerator
 
     void Start()
     {
-        BufferMovementHorizontal(0);
-        BufferMovementVertical(0);
+
         GameObject[] objs= GameObject.FindGameObjectsWithTag("Pause");
         if(objs != null)
             pauseMenu = objs[0];
 
-        Invoke("Saftetything",0.1f);
     }
 
     private void OnEnable() 
     {
+        
         playerControls.Enable();
+        BufferMovementHorizontal(playerControls.player.Horizontal.ReadValue<float>());
+        BufferMovementVertical(playerControls.player.Vertical.ReadValue<float>());
+
+    }
+    private void  SafetyThing()
+    {
         BufferMovementHorizontal(0);
         BufferMovementVertical(0);
-    }
-    private void  Saftetything()
-    {
-                BufferMovementHorizontal(0);
+        playerControls.Enable();
+        BufferMovementHorizontal(0);
         BufferMovementVertical(0);
     }
 

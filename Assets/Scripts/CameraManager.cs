@@ -25,6 +25,8 @@ public class CameraManager : MonoBehaviour
         // TODO: subscribe to changes instead of checking every frame
         if(spawner != null){
             target = spawner.GetPlayer();
+            if(target == null)
+                target = spawner.gameObject;
             //player.GetComponent<DeathReturn>().getNextSelf();
         }
       

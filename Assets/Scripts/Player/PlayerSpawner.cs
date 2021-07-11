@@ -19,8 +19,7 @@ public class PlayerSpawner : MonoBehaviour
     private LineRenderer lineRenderer;
     void Start()
     {
-        player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        player.GetComponent<DeathReturn>().SetSpawner(this);
+
         audioSource = GetComponent<AudioSource>();
         lineRenderer = GetComponent<LineRenderer>();
         StartCoroutine(SpawnClonesRoutine());
@@ -44,6 +43,12 @@ public class PlayerSpawner : MonoBehaviour
     }
     private IEnumerator SpawnClonesRoutine()
     {
+        yield return new WaitForSeconds(0.05f);
+        ParticleSystem[] particleSystems = GetComponentsInChildren<ParticleSystem>();
+        foreach(ParticleSystem p in particleSystems)
+            p.Play();
+        player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
+        player.GetComponent<DeathReturn>().SetSpawner(this);
         timeEvents.RaiseSaveStateEvent();
         while(true)
         {
