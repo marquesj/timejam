@@ -13,9 +13,10 @@ public class ParallaxEffect : MonoBehaviour
     {
         startpos = transform.position.x;
         length = GetComponent<SpriteRenderer>().bounds.size.x;
+        cam = GameObject.FindGameObjectWithTag("MainCamera");
     }
  
-    void Update()
+    void FixedUpdate()
     {
         float temp     = cam.transform.position.x * (1 - parallaxFactor);
         float distance = cam.transform.position.x * parallaxFactor;
