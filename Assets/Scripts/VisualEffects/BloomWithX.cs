@@ -45,7 +45,7 @@ public class BloomWithX : MonoBehaviour
         {
             bloom.intensity.value = bloom.intensity.value +0.05f;
             Time.timeScale = 0;
-            Invoke("EndScene", 1);
+            EndScene();
         }
     }
 
