@@ -23,7 +23,7 @@ public class ParallaxEffect : MonoBehaviour
     
         Vector3 newPosition = new Vector3(startpos + distance, transform.position.y, transform.position.z);
     
-        transform.position = PixelPerfectClamp(newPosition, PixelsPerUnit);
+        transform.position = newPosition;//PixelPerfectClamp(newPosition, PixelsPerUnit);
     
         if (temp > startpos + (length / 2))    startpos += length;
         else if (temp < startpos - (length / 2)) startpos -= length;
