@@ -119,4 +119,13 @@ public class PlayerSpawner : MonoBehaviour
         }
         lineRenderer.enabled = false;
     }
+
+    public void AdjustCloneTimes(int diff)
+    {
+        currentOffset += diff;
+        foreach(InputSimulator clone in cloneInputs)
+        {
+            clone.timeOffset += diff * timePeriod;
+        }
+    }
 }

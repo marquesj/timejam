@@ -29,7 +29,9 @@ public class CheckWall : MonoBehaviour
     private bool inRoutineLeft = false;
     private bool inRoutineRight = false;
     public bool nearWall = false;
+    private Coroutine coyoteTimeRoutine;
     [HideInInspector]public event UnityAction<bool> walledEvent;
+    public bool inCoyoteTime = false;
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
         checkGround = GetComponent<CheckGround>();
@@ -54,7 +56,7 @@ public class CheckWall : MonoBehaviour
             if(leftCooldownRoutine != null)
                 StopCoroutine(leftCooldownRoutine);
             pressingLeft = true;
-        }else if(pressingLeft && ! inRoutineLeft)
+        }else if(pressingLeft && !leftPressedRightNow)
         {
             leftCooldownRoutine = StartCoroutine(LeftKeyCooldown(cooldownTime));
          
@@ -65,7 +67,7 @@ public class CheckWall : MonoBehaviour
             if(rightCooldownRoutine != null)
                 StopCoroutine(rightCooldownRoutine);
             pressingRight = true;
-        }else if(pressingRight && ! inRoutineRight)
+        }else if(pressingRight && ! rightPressedRightNow)
         {
             rightCooldownRoutine = StartCoroutine(RightKeyCooldown(cooldownTime));
         }
@@ -91,38 +93,58 @@ public class CheckWall : MonoBehaviour
     {
         (bool,bool) leftCheck = Check(Vector2.left);
         (bool,bool) rightCheck = Check(Vector2.right);
-        bool checkWallLeft  = leftCheck.Item1;// && (pressingLeft) ;
-        bool checkWallRight = rightCheck.Item1;// && (pressingRight);
+        bool checkWallLeft  = leftCheck.Item1 && (pressingLeft) ;
+        bool checkWallRight = rightCheck.Item1  && (pressingRight);
         bool checkWall = (checkWallLeft||checkWallRight);// && GoingDown();
 
         nearWall = checkWall;
-        isLeft = checkWallLeft;
+
+
         if(checkGround != null)
             checkWall = checkWall && !checkGround.grounded ;
         
         bool previousStateOfisJumpable = isJumpable;
         isJumpable = leftCheck.Item2 || rightCheck.Item2;
+        if(walled && !checkWall)
+        {
+            LeaveWall();
+       
+            
+        }
+        if(!inCoyoteTime)
+            isLeft = checkWallLeft;
         if(!walled && checkWall)
         {
             if(walledEvent != null)
             {
-                walledEvent.Invoke(checkWallLeft);
+                walledEvent.Invoke(isLeft);
+                
             }
-            isLeft = checkWallLeft;
+          //  inCoyoteTime = false;
+          
             walled = true;
-        }
-        else if(walled && !checkWall)
-        {
-            walled = false;
         }
         else if(walled && checkWall && isJumpable != previousStateOfisJumpable)
         {
-            walledEvent.Invoke(checkWallLeft);
-            Debug.Log("sewitch");
+            if(walledEvent !=null)
+                walledEvent.Invoke(isLeft);
         }
   
     }
-
+    private void LeaveWall()
+    {
+        walled = false;
+        if(coyoteTimeRoutine != null)
+            StopCoroutine(coyoteTimeRoutine);
+        coyoteTimeRoutine = StartCoroutine(ApplyCoyoteTime());
+        
+    }
+    private IEnumerator ApplyCoyoteTime()
+    {
+        inCoyoteTime = true;
+        yield return new WaitForSeconds(cooldownTime);
+        inCoyoteTime = false;
+    }
     public bool GoingDown()
     {
         if(rb == null) return true;

@@ -72,6 +72,8 @@ MonoBehaviour:
   gracePeriod: 1
   verticalOffset: 0.01
   circleRadius: 0.05
+  coyoteTime: 0.1
+  inCoyoteTime: 0
 --- !u!114 &-1790731193023277950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,11 +97,12 @@ MonoBehaviour:
   walled: 0
   isJumpable: 0
   isLeft: 1
-  cooldownTime: 0.3
+  cooldownTime: 0.08
   sideOffset: 0.2
   pressingLeft: 1
   pressingRight: 1
   nearWall: 0
+  inCoyoteTime: 0
 --- !u!114 &7885511917918399103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -241,6 +244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHP: 1
+  hp: 0
 --- !u!114 &5266592118577542966
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +336,7 @@ MonoBehaviour:
   - {x: -0.06232358, y: 0.37, z: 0}
   m_ShapePathHash: -1137555362
   m_Mesh: {fileID: 0}
-  m_InstanceId: 63788
+  m_InstanceId: 130870
 --- !u!1 &2681284753194239235
 GameObject:
   m_ObjectHideFlags: 0

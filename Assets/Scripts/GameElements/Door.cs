@@ -35,7 +35,8 @@ public class Door : MonoBehaviour
     [ContextMenu("Close")]
     private void Close()
     {
-        animator.Play("Closed");
+        
+        animator.SetTrigger("Close");
         door.enabled = true;
         entry.enabled = false;
     }

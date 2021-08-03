@@ -10,31 +10,56 @@ public class TimedElement : MonoBehaviour
     public List<MonoBehaviour> deactivateComponentOnDestroy = new List<MonoBehaviour>();
     public List<GameObject> deactivateObjectOnDestroy = new List<GameObject>();
     public List<GameObject> activateObjectOnDestroy = new List<GameObject>();
+   // public List<TimedElement> deactivateTimedElementOnDestroy  = new List<TimedElement>();
+    public List<TimedElement> activateTimedElementOnDestroy = new List<TimedElement>();
     private Collider2D[] colliders;
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
     private float precision = .5f;
     private float destructedTime = -1;
-    private float createTime;
+    private float createTime=-1;
     private bool destroyed = false;
     private Vector3 creationPos;
     public bool startDisabled = false;
+    public bool canBeDestroyed = true;
+    
     [HideInInspector]public event UnityAction<bool> SetStateEvent;
     private void Awake() {
 
-        createTime = Time.time;
         colliders = GetComponents<Collider2D>();
         creationPos = transform.position;
 
         if(startDisabled)
         {
-            gameObject.SetActive(false);
+            TimeSafeDestroy();
+            destructedTime = -1;
+            //gameObject.SetActive(false);
         }
+        else
+            createTime = Time.time;
 //        Debug.Log("HI");
+        TransferTimedElementGameObjects(activateTimedElementOnDestroy,activateObjectOnDestroy);
+        //TransferTimedElementGameObjects(deactivateTimedElementOnDestroy,deactivateObjectOnDestroy);
     }
     private void OnEnable() {
         timeEvents.GoBackInTimeEvent += GoBack;
         timeEvents.SaveStateEvent += SavePosition;
         timeEvents.PreviewBackInTimeEvent += PreviewPosition;
+    }
+    private void TransferTimedElementGameObjects(List<TimedElement> timeList,List<GameObject> objectList )
+    {
+        int i = 0;
+        while(i < activateObjectOnDestroy.Count)
+        {
+            TimedElement timedElement = activateObjectOnDestroy[i].GetComponent<TimedElement>();
+            if(timedElement != null)
+            {
+                activateTimedElementOnDestroy.Add(timedElement);
+                activateObjectOnDestroy.RemoveAt(i);
+            }else
+            {
+                i++;
+            }
+        }
     }
     public void SetTimeOffset(float n)
     {
@@ -44,11 +69,12 @@ public class TimedElement : MonoBehaviour
     private void GoBack(float time)
     {
         float offset = (Time.time - time);
-        if(time < createTime )
+        if(time < createTime && canBeDestroyed)
         {
             Destroy(gameObject);
             return;
         }
+        
         SetPastState(time);
         AdjustTimeline(offset);
     }
@@ -60,20 +86,33 @@ public class TimedElement : MonoBehaviour
 
     private void SetPastState(float time)
     {
-        float offset = (Time.time - time);
-        if(time < createTime)
+ Debug.Log("[" + gameObject.name+"]Current time " + time + " destroy at " + destructedTime + " created at " + createTime,gameObject);
+     
+        if(destructedTime<createTime)
+            destructedTime=-1;
+        if((time < createTime && createTime !=-1) ||  (time >destructedTime&& destructedTime!=-1)  )
         {
-          //  Debug.Log("destroy");
-            //destroyed = true;
+            
+            destroyed = true;
             SetAllPartsActive(false);
+            if(time >destructedTime && destructedTime!=-1)
+                if(SetStateEvent!=null)
+                    SetStateEvent.Invoke(false);
+            else    
+                if(SetStateEvent!=null)
+                    SetStateEvent.Invoke(true);
             return;
         }
-        if( destructedTime > time || destructedTime == -1)
+        if( destructedTime > time || destructedTime != -1)
         {
+           
          //  Debug.Log("comming back");
             destroyed = false;
             SetAllPartsActive(true);
-
+              
+            if(SetStateEvent!=null)
+                SetStateEvent.Invoke(true);
+        
         }
 
         if(positions.Count >= 1 && positions[0].Item1 > time)
@@ -122,12 +161,37 @@ public class TimedElement : MonoBehaviour
         destroyed = true;
         destructedTime = Time.time;
         SetAllPartsActive(false);
+        SetTimedElementsActive(false);
+        if(SetStateEvent!=null)
+            SetStateEvent.Invoke(false);
+    }
+    public void TimeSafeDestroy2()
+    {
+        destroyed = true;
+     
+        SetAllPartsActive(false);
+    }
+    public void TimeSafeInstantiate()
+    {
+        destroyed = false;
+        createTime = Time.time;
+        SetAllPartsActive(true);
+        SetTimedElementsActive(true);
+         if(SetStateEvent!=null)
+            SetStateEvent.Invoke(true);
+    }
+    public void TimeSafeInstantiate2()
+    {
+        destroyed = false;
+        createTime = Time.time;
+        SetAllPartsActive(true);
     }
 
     private void SetAllPartsActive(bool state)
     {
         foreach(MonoBehaviour behaviour in deactivateComponentOnDestroy)
         {
+            
             behaviour.enabled = state;
         }
         foreach(GameObject obj in deactivateObjectOnDestroy)
@@ -143,10 +207,21 @@ public class TimedElement : MonoBehaviour
             obj.SetActive(!state);
         }
 
-        if(SetStateEvent!=null)
-            SetStateEvent.Invoke(state);
-    }
 
+
+
+    }
+    private void SetTimedElementsActive(bool state)
+    {
+        foreach(TimedElement timedElement in activateTimedElementOnDestroy)
+        {
+            if(state)
+                timedElement.TimeSafeDestroy2();
+            else    
+                timedElement.TimeSafeInstantiate2();
+        }
+        
+    }
     private void OnDisable() {
         timeEvents.GoBackInTimeEvent -= GoBack;
         timeEvents.SaveStateEvent -= SavePosition; 

@@ -176,13 +176,15 @@ public class CharacterControl : MonoBehaviour
 
     private void Jump()
     {
+     //   Debug.Log("Jump");
         if(sliding)
             StopSlide();
-        if((checkGround.grounded || checkWall.walled))
+        if((checkGround.inCoyoteTime || checkGround.grounded || checkWall.walled || checkWall.inCoyoteTime))
         {
+
             Vector2 dir = jumpForce * Vector2.up;
             
-           if(checkWall.walled)//wall jump
+           if((checkWall.walled || checkWall.inCoyoteTime) && !checkGround.grounded)//wall jump
            {
                 if(checkWall.isLeft)
                     SetRotation(0);
@@ -201,13 +203,16 @@ public class CharacterControl : MonoBehaviour
                 
                 if(WallJumpEvent!=null)
                     WallJumpEvent.Invoke();
+//                Debug.Log("wallJump");
            }else//regular jump
            {
                 if(JumpEvent!=null)
                     JumpEvent.Invoke();
            }
 //            Debug.Log(dir);
+            rb.velocity = new Vector2(rb.velocity.x,0);
             rb.AddForce(dir ,ForceMode2D.Impulse);
+
            // bufferedImpulse = bufferedMovementInput*speed*horizontalSpeedModifier;
            // hasTurnedInAir = false;
 

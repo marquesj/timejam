@@ -14,7 +14,11 @@ public class CheckGround : MonoBehaviour
     public float gracePeriod = 0;
     public float verticalOffset  =0;
     public float circleRadius = 0.05f;
+    public float coyoteTime = 0.1f;
+    [HideInInspector]public bool inCoyoteTime = false;
     private Coroutine ungroundQueue = null;
+    private Coroutine coyoteTimeRoutine = null;
+    private bool blockedCoyoteTime = false;
  //   private bool queuedUnground = false;
     private InputGenerator inputGenerator;
 
@@ -24,6 +28,9 @@ public class CheckGround : MonoBehaviour
     private void Awake() {
         inputGenerator = GetComponent<InputGenerator>();
     }
+    private void Start() {
+        inputGenerator.JumpEvent += JumpEvent;
+    }
     void FixedUpdate()
     {
         bool checkResult = TripleCheck();
@@ -31,6 +38,7 @@ public class CheckGround : MonoBehaviour
         {
            // MakeSureCoroutineStops(ungroundQueue);
             grounded = true;
+            blockedCoyoteTime = false;
             if(landedEvent != null)
                 landedEvent.Invoke();
 //            Debug.Log("landedEvent");
@@ -38,7 +46,9 @@ public class CheckGround : MonoBehaviour
         }
         else if(grounded && !checkResult /*&& ungroundQueue == null*/)
         {
-           grounded = false;
+            grounded = false;
+            if(!blockedCoyoteTime)
+                ApplyCoyoteTime();
            // ungroundQueue = StartCoroutine(QueueUnground(gracePeriod));
         }
     }
@@ -60,11 +70,8 @@ public class CheckGround : MonoBehaviour
 
     private void JumpEvent()
     {
-      /* if(grounded)return;
-        MakeSureCoroutineStops(ungroundQueue);
-        grounded = false;
-        ungroundQueue = null;
-        queuedUnground = false;*/
+      blockedCoyoteTime = true;
+      inCoyoteTime = false;
     }
     private bool TripleCheck()
     {
@@ -132,6 +139,24 @@ public class CheckGround : MonoBehaviour
             return true;
         return false;
     }
+
+    private void ApplyCoyoteTime()
+    {
+        blockedCoyoteTime = true;
+        inCoyoteTime = true;
+        if(coyoteTimeRoutine != null)
+            StopCoroutine(coyoteTimeRoutine);
+        coyoteTimeRoutine = StartCoroutine(StopCoyoteTimeRoutine());
+
+    }
+    private IEnumerator StopCoyoteTimeRoutine()
+    {
+        yield return new WaitForSeconds(coyoteTime);
+        inCoyoteTime = false;
+
+    }
+
+
     private void OnTriggerEnter2D(Collider2D other) {
         if( bouncyLayers == (bouncyLayers | (1 << other.gameObject.layer)))
         {

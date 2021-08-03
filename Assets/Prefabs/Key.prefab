@@ -256,6 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalHP: 1
+  hp: 0
 --- !u!114 &1308354450728582861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,7 +296,9 @@ MonoBehaviour:
   deactivateObjectOnDestroy:
   - {fileID: 6311972967506902645}
   activateObjectOnDestroy: []
+  activateTimedElementOnDestroy: []
   startDisabled: 0
+  canBeDestroyed: 0
 --- !u!114 &4031842383232138321
 MonoBehaviour:
   m_ObjectHideFlags: 0
