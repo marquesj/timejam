@@ -72,15 +72,15 @@ public class MusicManager : MonoBehaviour
     }
     private void StopTime()
     {
-        slowSong.Pause();
-        normalSong.Pause();
+       /* slowSong.Pause();
+        normalSong.Pause();*/
     }
     private void ContinueTime()
     {
-        slowSong.Play();
+        /*slowSong.Play();
         normalSong.Play();
 
-        comebackSound.Play();
+        comebackSound.Play();*/
     }
     public void PlaySecondary()
     {

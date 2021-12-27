@@ -18,7 +18,12 @@ public abstract class InputGenerator : MonoBehaviour
     protected abstract void BufferMovementHorizontal(float dir);
     protected abstract void BufferMovementVertical(float dir);
     public abstract void SaveBounceInput(float force);
-
+    protected Rigidbody2D rb;
+    protected CharacterControl characterControl;
+    protected virtual void Awake() {
+        rb = GetComponent<Rigidbody2D>();
+        characterControl = GetComponent<CharacterControl>();
+    }
     protected void RaiseJumpEvent()
     {
         jumpHeld = true;

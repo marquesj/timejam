@@ -10,8 +10,9 @@ public class InputSimulator : InputGenerator
     [SerializeField]private int actionIndex = 0;
 
     private float positionalErrorFixThreshold = 0.1f;
-    private CharacterControl characterControl;
-    private void Awake() {
+  
+    protected override void Awake() {
+        base.Awake();
         timeEvents.GoBackInTimeEvent += CancelCoroutines;
     }
     private void OnDestroy() {
@@ -32,7 +33,7 @@ public class InputSimulator : InputGenerator
             Debug.Log("Missed input simulaion!",gameObject);
             actionIndex++;
         }
-        characterControl = GetComponent<CharacterControl>();
+        
     }
 
     private IEnumerator QueueInputSim(float desiredTime, InputNode node, int nodeIndex)
@@ -65,10 +66,21 @@ public class InputSimulator : InputGenerator
                 {
                     // inputLog.inputs[nodeIndex-1].pos += positionalError;
                      
-                    Debug.Log("Error");
+//                    Debug.Log("Error");
 
                 }
             }
+
+            if(node.hasVelocity)
+            {
+                rb.velocity = node.velocity;
+            }
+
+            if(node.characterControlState!=null)
+            {
+                characterControl.ApplyState(node.characterControlState);
+            }
+
             switch(node.type)
             {
                 case InputActionType.Jump:

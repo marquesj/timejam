@@ -11,9 +11,11 @@ public class InputRead : InputGenerator
     private float currentHorizontal = 0;
     private float currentVertical = 0;
     public  GameObject pauseMenu;
+    
 
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
         playerControls = new Controls();
         playerControls.player.Horizontal.performed += dir => BufferMovementHorizontal(dir.ReadValue<float>());
         playerControls.player.Vertical.performed += dir => BufferMovementVertical(dir.ReadValue<float>());
@@ -63,17 +65,17 @@ public class InputRead : InputGenerator
     protected override void Jump()
     {
         
-        inputLog.AddAction(Time.time, InputActionType.Jump, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.Jump, transform.position,rb.velocity,characterControl.GetState());
         RaiseJumpEvent();
     }
     protected override void Shoot()
     {
-        inputLog.AddAction(Time.time, InputActionType.Shoot, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.Shoot, transform.position,rb.velocity,characterControl.GetState());
         RaiseShootEvent();
     }
     protected override void JumpRelease()
     {
-        inputLog.AddAction(Time.time, InputActionType.JumpRelease, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.JumpRelease, transform.position,rb.velocity,characterControl.GetState());
         RaiseJumpReleaseEvent();
     }
     protected override void BufferMovementHorizontal(float dir)
@@ -89,7 +91,7 @@ public class InputRead : InputGenerator
 
         currentHorizontal = dir;
 
-        inputLog.AddAction(Time.time, InputActionType.Movement, dir, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.Movement, dir, transform.position,rb.velocity,characterControl.GetState());
         RaiseChangeDirHorizontalEvent(dir);
     }
     protected override void BufferMovementVertical(float dir)
@@ -104,13 +106,13 @@ public class InputRead : InputGenerator
 
         currentVertical = dir;
 
-        inputLog.AddAction(Time.time, InputActionType.Aim, dir, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.Aim, dir, transform.position,rb.velocity,characterControl.GetState());
         RaiseChangeDirVerticalEvent(dir);
     }
 
     public override void SaveBounceInput(float force)
     {
-        inputLog.AddAction(Time.time, InputActionType.Bounce, force, transform.position);
+        inputLog.AddAction(Time.time, InputActionType.Bounce, force, transform.position,rb.velocity,characterControl.GetState());
     }
 
     private void SlowTime()

@@ -31,6 +31,11 @@ public class InputLog : ScriptableObject
         if(Time.timeScale == 0)return;
         inputs.Add(new InputNode(time, action, val,pos));
     }
+    public void AddAction(float time, InputActionType action, float val, Vector3 pos,Vector2 velocity)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action, val,pos,velocity));
+    }
     public void AddAction(float time, InputActionType action)
     {
         if(Time.timeScale == 0)return;
@@ -40,6 +45,41 @@ public class InputLog : ScriptableObject
     {
         if(Time.timeScale == 0)return;
         inputs.Add(new InputNode(time, action,pos));
+    }
+    public void AddAction(float time, InputActionType action,Vector3 pos,Vector2 velocity)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action,pos,velocity));
+    }
+    public void AddAction(float time, InputActionType action, float val,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action, val,characterControlState));
+    }
+    public void AddAction(float time, InputActionType action, float val, Vector3 pos,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action, val,pos,characterControlState));
+    }
+    public void AddAction(float time, InputActionType action, float val, Vector3 pos,Vector2 velocity,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action, val,pos,velocity,characterControlState));
+    }
+    public void AddAction(float time, InputActionType action,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action,characterControlState));
+    }
+    public void AddAction(float time, InputActionType action,Vector3 pos,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action,pos,characterControlState));
+    }
+    public void AddAction(float time, InputActionType action,Vector3 pos,Vector2 velocity,CharacterControlState characterControlState)
+    {
+        if(Time.timeScale == 0)return;
+        inputs.Add(new InputNode(time, action,pos,velocity,characterControlState));
     }
 
     public void RevertTo(float time)

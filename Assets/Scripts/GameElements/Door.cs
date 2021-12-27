@@ -28,7 +28,7 @@ public class Door : MonoBehaviour
     {
         openSound.Play();
         if(animator!=null)
-            animator.SetTrigger("Open");
+            animator.Play("Open");
         door.enabled = false;
         entry.enabled = true;
     }
@@ -36,7 +36,7 @@ public class Door : MonoBehaviour
     private void Close()
     {
         
-        animator.SetTrigger("Close");
+        animator.Play("Closed");
         door.enabled = true;
         entry.enabled = false;
     }

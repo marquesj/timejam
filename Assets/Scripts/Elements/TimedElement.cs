@@ -12,6 +12,8 @@ public class TimedElement : MonoBehaviour
     public List<GameObject> activateObjectOnDestroy = new List<GameObject>();
    // public List<TimedElement> deactivateTimedElementOnDestroy  = new List<TimedElement>();
     public List<TimedElement> activateTimedElementOnDestroy = new List<TimedElement>();
+    public bool startDisabled = false;
+    public bool canBeDestroyed = true;
     private Collider2D[] colliders;
     private List<(float, Vector3)> positions = new List<(float,Vector3)>();
     private float precision = .5f;
@@ -19,8 +21,8 @@ public class TimedElement : MonoBehaviour
     private float createTime=-1;
     private bool destroyed = false;
     private Vector3 creationPos;
-    public bool startDisabled = false;
-    public bool canBeDestroyed = true;
+
+    
     
     [HideInInspector]public event UnityAction<bool> SetStateEvent;
     private void Awake() {
@@ -76,6 +78,14 @@ public class TimedElement : MonoBehaviour
         }
         
         SetPastState(time);
+        Debug.Log("[" + gameObject.name+"] destroyed at " + destructedTime + " going back to " + time);
+        if(destructedTime<=time && destructedTime != -1)
+        {
+            if(SetStateEvent!=null)
+                SetStateEvent.Invoke(false);
+        }
+        else if(SetStateEvent!=null)
+                SetStateEvent.Invoke(true);
         AdjustTimeline(offset);
     }
 
@@ -86,7 +96,7 @@ public class TimedElement : MonoBehaviour
 
     private void SetPastState(float time)
     {
- Debug.Log("[" + gameObject.name+"]Current time " + time + " destroy at " + destructedTime + " created at " + createTime,gameObject);
+ //Debug.Log("[" + gameObject.name+"]Current time " + time + " destroy at " + destructedTime + " created at " + createTime,gameObject);
      
         if(destructedTime<createTime)
             destructedTime=-1;
@@ -95,23 +105,23 @@ public class TimedElement : MonoBehaviour
             
             destroyed = true;
             SetAllPartsActive(false);
-            if(time >destructedTime && destructedTime!=-1)
+            /*if(time >destructedTime && destructedTime!=-1)
                 if(SetStateEvent!=null)
                     SetStateEvent.Invoke(false);
             else    
                 if(SetStateEvent!=null)
-                    SetStateEvent.Invoke(true);
+                    SetStateEvent.Invoke(true);*/
             return;
         }
-        if( destructedTime > time || destructedTime != -1)
+        if( (destructedTime > time || destructedTime != -1) || (createTime != -1 && createTime < time && (destructedTime < time || destructedTime != -1)))
         {
            
          //  Debug.Log("comming back");
             destroyed = false;
             SetAllPartsActive(true);
-              
-            if(SetStateEvent!=null)
-                SetStateEvent.Invoke(true);
+
+               /* if(SetStateEvent!=null)
+                    SetStateEvent.Invoke(true);*/
         
         }
 
@@ -136,7 +146,12 @@ public class TimedElement : MonoBehaviour
 
     private void AdjustTimeline(float offset)
     {
-        createTime += offset;
+        if(createTime != -1)
+        {
+            createTime += offset;
+        }
+
+        
         if(destroyed)
             destructedTime += offset;
         
@@ -158,6 +173,8 @@ public class TimedElement : MonoBehaviour
 
     public void TimeSafeDestroy()
     {
+        if(destroyed)
+            return;
         destroyed = true;
         destructedTime = Time.time;
         SetAllPartsActive(false);
@@ -167,6 +184,8 @@ public class TimedElement : MonoBehaviour
     }
     public void TimeSafeDestroy2()
     {
+        if(destroyed)
+            return;
         destroyed = true;
      
         SetAllPartsActive(false);
@@ -177,8 +196,7 @@ public class TimedElement : MonoBehaviour
         createTime = Time.time;
         SetAllPartsActive(true);
         SetTimedElementsActive(true);
-         if(SetStateEvent!=null)
-            SetStateEvent.Invoke(true);
+
     }
     public void TimeSafeInstantiate2()
     {

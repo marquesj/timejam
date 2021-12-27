@@ -101,7 +101,8 @@ public class SoundPlayer : MonoBehaviour
     }
     private void WallSlideEvent(bool aux) 
     {
-      wallSlideSound.Play();
+       if(!characterControl.checkGround.inCoyoteTime)
+         wallSlideSound.Play();
     }
     private void SlideEvent() 
     {

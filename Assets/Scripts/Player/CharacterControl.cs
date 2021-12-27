@@ -56,7 +56,7 @@ public class CharacterControl : MonoBehaviour
     private Vector2 slideColliderSize = new Vector2(0.32f,0.13f);
     private float defaultCheckWallDistance;
     private BoxCollider2D boxCollider2D;
-
+    private Animator animator;
     public bool queuedGetUp = false;
 
     private PhysicsMaterial2D physicsMaterial2D;
@@ -68,6 +68,7 @@ public class CharacterControl : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         shootController = GetComponentInChildren<ShootController>();
         boxCollider2D = GetComponent<BoxCollider2D>();
+        animator = GetComponentInChildren<Animator>();
 
         defaultColliderSize = boxCollider2D.size;
         defaultColliderOffset = boxCollider2D.offset;
@@ -449,5 +450,37 @@ public class CharacterControl : MonoBehaviour
             SetRotation(0);
         else
             SetRotation(180);
+    }
+
+    public CharacterControlState GetState()
+    {
+        CharacterControlState state = new CharacterControlState()
+        {
+            sliding  = this.sliding,
+            bouncing  = this.bouncing,
+            ducking  =    this.ducking,
+            running  = this.running,
+            animatorState = this.animator.GetCurrentAnimatorStateInfo(0).fullPathHash
+        };
+        return state;
+    }
+    public void ApplyState(CharacterControlState state)
+    {
+            this.sliding  = state.sliding;
+            if(sliding)
+                SetSlideCollider();
+            else    
+                SetDefaultCollider();
+
+            this.bouncing  = state.bouncing;
+            if(StopBounceRoutine != null)
+                StopCoroutine(StopBounceRoutine);
+            if(bouncing)
+                StopBounceRoutine = StartCoroutine(QueueStopBounce());
+
+            this.ducking  =  state.ducking;
+            this.running  = state.running;
+
+            this.animator.Play(state.animatorState);  
     }
 }
